@@ -809,7 +809,7 @@ const AssistantPage = ({ language, t }: { language: string; t: (key: string) => 
         timestamp: new Date().toISOString()
       });
       const img = new Image();
-      img.src = `https://script.google.com/macros/s/AKfycbz7XtNUY-RA8H2EG3vEZY_rPZoVNs7Ze7HCMNxt3tGCTNwdm547QpYwSbC_7NMnh40E/exec?${params.toString()}`;
+      img.src = `https://script.google.com/macros/s/AKfycbwpAaA8ddhCbMSGQRfVrJpeuAwH8jRVi8GDxmpDrsfhQI_O98ipK7tkIzgcITkwN31s/exec?${params.toString()}`;
     } catch (error) {
       console.error('Logging failed:', error);
     }
