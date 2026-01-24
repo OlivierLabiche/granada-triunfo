@@ -679,31 +679,31 @@ const translations: Record<string, Record<string, string>> = {
   }
 };
 
-// Suggestions par langue
+// Suggestions par langue - MODIFIEZ ICI pour ajouter/enlever des suggestions
 const allSuggestions: Record<string, string[]> = {
   fr: [
     "Code WiFi ?", "Comment entrer ?", "Où manger ce soir ?", "Un resto végétarien ?", "Tapas gratuites ?",
-    "Où boire un thé ?", "Bonne paella ?", "Où faire les courses ?", "Du bon pain ?",
+    "Où boire un thé ?", "Hammam ?", "Où faire les courses ?", "Du bon pain ?",
     "Comment marche la clim ?", "Comment marche le chauffage ?", "Changer le gaz ?", "Visiter l'Alhambra ?",
-    "Coucher de soleil ?", "Spectacle flamenco ?", "Se détendre ?", "Où se baigner ?",
-    "Activités enfants ?", "Parc pour enfants ?", "Prendre un taxi ?", "Navette aéroport ?", "Bus Albaicín ?",
-    "Sierra Nevada ?", "Urgences ?", "Pharmacie ?", "Heure checkout ?", "Plages proches ?"
+    "Coucher de soleil ?", "Spectacle flamenco ?", "Se détendre ?", "Plages proches ?",
+    "Activités enfants ?", "Parc pour enfants ?", "Prendre un taxi ?", "Navette aéroport ?",
+    "Sierra Nevada ?", "Urgences ?", "Heure checkout ?"
   ],
   en: [
     "WiFi code?", "How to enter?", "Where to eat tonight?", "Vegetarian restaurant?", "Free tapas?",
-    "Where to drink tea?", "Good paella?", "Where to shop?", "Good bread?",
+    "Where to drink tea?", "Hammam?", "Where to shop?", "Good bread?",
     "How does AC work?", "How does heating work?", "Change gas bottle?", "Visit Alhambra?",
-    "Sunset spot?", "Flamenco show?", "Relax activity?", "Where to swim?",
-    "Kids activities?", "Playground?", "Get a taxi?", "Airport shuttle?", "Albaicín bus?",
-    "Sierra Nevada?", "Emergencies?", "Pharmacy?", "Checkout time?", "Nearby beaches?"
+    "Sunset spot?", "Flamenco show?", "Relax activity?", "Nearby beaches?",
+    "Kids activities?", "Playground?", "Get a taxi?", "Airport shuttle?",
+    "Sierra Nevada?", "Emergencies?", "Checkout time?"
   ],
   es: [
     "¿Código WiFi?", "¿Cómo entrar?", "¿Dónde cenar?", "¿Restaurante vegetariano?", "¿Tapas gratis?",
-    "¿Dónde tomar té?", "¿Buena paella?", "¿Dónde comprar?", "¿Buen pan?",
+    "¿Dónde tomar té?", "¿Hammam?", "¿Dónde comprar?", "¿Buen pan?",
     "¿Cómo funciona el aire?", "¿Cómo funciona la calefacción?", "¿Cambiar gas?", "¿Visitar Alhambra?",
-    "¿Atardecer?", "¿Flamenco?", "¿Relajarse?", "¿Dónde bañarse?",
-    "¿Actividades niños?", "¿Parque infantil?", "¿Taxi?", "¿Bus aeropuerto?", "¿Bus Albaicín?",
-    "¿Sierra Nevada?", "¿Urgencias?", "¿Farmacia?", "¿Hora checkout?", "¿Playas cercanas?"
+    "¿Atardecer?", "¿Flamenco?", "¿Relajarse?", "¿Playas cercanas?",
+    "¿Actividades niños?", "¿Parque infantil?", "¿Taxi?", "¿Bus aeropuerto?",
+    "¿Sierra Nevada?", "¿Urgencias?", "¿Hora checkout?"
   ]
 };
 
@@ -979,6 +979,10 @@ const AssistantPage = ({ language, t }: { language: string; t: (key: string) => 
     }
   };
 
+  // ============================================
+  // RÉPONSES CÔTÉ CLIENT (gaz + baignade)
+  // ============================================
+  
   const gasKeywords: Record<string, string[]> = {
     fr: ['gaz', 'bouteille', 'bonbonne', 'chauffe-eau', 'eau chaude'],
     en: ['gas', 'bottle', 'water heater', 'hot water', 'propane'],
@@ -991,6 +995,20 @@ const AssistantPage = ({ language, t }: { language: string; t: (key: string) => 
     es: '🎬 Aquí tienes el video explicativo para cambiar la botella de gas:'
   };
 
+  // NOUVEAU: Mots-clés baignade
+  const baignadeKeywords: Record<string, string[]> = {
+    fr: ['baigner', 'baignade', 'piscine', 'plage', 'nager', 'rivière', 'mer'],
+    en: ['swim', 'swimming', 'pool', 'beach', 'river', 'sea'],
+    es: ['bañar', 'bañarse', 'piscina', 'playa', 'nadar', 'río', 'mar']
+  };
+
+  // NOUVEAU: Réponses baignade
+  const baignadeResponse: Record<string, string> = {
+    fr: "🏊 Pour se baigner près de Grenade :\n\n• **Rivière gratuite** : au bout du Paseo de los Tristes, sous le pont\n• **Piscines été** : restaurants JR et EL GUERRA\n• **Plages (45min)** : Almuñécar, Salobreña, La Herradura",
+    en: "🏊 For swimming near Granada:\n\n• **Free river** : end of Paseo de los Tristes, under the bridge\n• **Summer pools** : JR and EL GUERRA restaurants\n• **Beaches (45min)** : Almuñécar, Salobreña, La Herradura",
+    es: "🏊 Para bañarse cerca de Granada:\n\n• **Río gratis** : al final del Paseo de los Tristes, bajo el puente\n• **Piscinas verano** : restaurantes JR y EL GUERRA\n• **Playas (45min)** : Almuñécar, Salobreña, La Herradura"
+  };
+
   const sendMessage = async (overrideMessage?: string) => {
     const userMessage = (overrideMessage || input).trim();
     if (!userMessage || isLoading) return;
@@ -999,9 +1017,11 @@ const AssistantPage = ({ language, t }: { language: string; t: (key: string) => 
     setSuggestions(getRandomSuggestions(5, language));
     setIsLoading(true);
 
-    // Check for gas-related questions in any language
-    const keywords = gasKeywords[language] || gasKeywords.fr;
-    const isGasQuestion = keywords.some(kw => userMessage.toLowerCase().includes(kw));
+    const lowerMessage = userMessage.toLowerCase();
+
+    // Check for gas-related questions
+    const gasKw = gasKeywords[language] || gasKeywords.fr;
+    const isGasQuestion = gasKw.some(kw => lowerMessage.includes(kw));
 
     if (isGasQuestion) {
       const assistantResponse = gasResponse[language] || gasResponse.fr;
@@ -1016,6 +1036,22 @@ const AssistantPage = ({ language, t }: { language: string; t: (key: string) => 
       return;
     }
 
+    // NOUVEAU: Check for baignade-related questions
+    const baignadeKw = baignadeKeywords[language] || baignadeKeywords.fr;
+    const isBaignadeQuestion = baignadeKw.some(kw => lowerMessage.includes(kw));
+
+    if (isBaignadeQuestion) {
+      const assistantResponse = baignadeResponse[language] || baignadeResponse.fr;
+      setMessages(prev => [...prev, { 
+        role: 'assistant', 
+        content: assistantResponse
+      }]);
+      logConversation(userMessage, assistantResponse, language);
+      setIsLoading(false);
+      return;
+    }
+
+    // Sinon, appel à l'API
     try {
       const response = await fetch("/api/chat", {
         method: "POST",
@@ -1087,6 +1123,17 @@ const AssistantPage = ({ language, t }: { language: string; t: (key: string) => 
     });
   };
 
+  // Fonction pour formater le texte avec **bold**
+  const formatText = (text: string) => {
+    const parts = text.split(/(\*\*[^*]+\*\*)/g);
+    return parts.map((part, i) => {
+      if (part.startsWith('**') && part.endsWith('**')) {
+        return <strong key={i}>{part.slice(2, -2)}</strong>;
+      }
+      return renderMessageWithLinks(part);
+    });
+  };
+
   return (
     <div className="flex flex-col h-full bg-amber-50">
       <div className="flex-1 overflow-y-auto p-4 space-y-4">
@@ -1103,7 +1150,7 @@ const AssistantPage = ({ language, t }: { language: string; t: (key: string) => 
                     : "bg-white text-gray-800 border border-amber-100 rounded-tl-none"
                 }`}
               >
-                <div className="whitespace-pre-wrap">{renderMessageWithLinks(msg.content)}</div>
+                <div className="whitespace-pre-wrap">{formatText(msg.content)}</div>
                 {i === 0 && (
                   <a
                     href="https://wa.me/34661558334"
