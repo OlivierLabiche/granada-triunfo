@@ -683,27 +683,27 @@ const translations: Record<string, Record<string, string>> = {
 const allSuggestions: Record<string, string[]> = {
   fr: [
     "Code WiFi ?", "Comment entrer ?", "Où manger ce soir ?", "Un resto végétarien ?", "Tapas gratuites ?",
-    "Où boire un thé ?", "Un bar sympa ?", "Bonne paella ?", "Où faire les courses ?", "Du bon pain ?",
+    "Où boire un thé ?", "Bonne paella ?", "Où faire les courses ?", "Du bon pain ?",
     "Comment marche la clim ?", "Comment marche le chauffage ?", "Changer le gaz ?", "Visiter l'Alhambra ?",
-    "Coucher de soleil ?", "Spectacle flamenco ?", "Se détendre ?", "Où se baigner ?", "Chemin secret ?",
+    "Coucher de soleil ?", "Spectacle flamenco ?", "Se détendre ?", "Où se baigner ?",
     "Activités enfants ?", "Parc pour enfants ?", "Prendre un taxi ?", "Navette aéroport ?", "Bus Albaicín ?",
-    "Sierra Nevada ?", "Où se garer ?", "Urgences ?", "Pharmacie ?", "Heure checkout ?", "Sécurité la nuit ?"
+    "Sierra Nevada ?", "Urgences ?", "Pharmacie ?", "Heure checkout ?", "Plages proches ?"
   ],
   en: [
     "WiFi code?", "How to enter?", "Where to eat tonight?", "Vegetarian restaurant?", "Free tapas?",
-    "Where to drink tea?", "Nice bar?", "Good paella?", "Where to shop?", "Good bread?",
+    "Where to drink tea?", "Good paella?", "Where to shop?", "Good bread?",
     "How does AC work?", "How does heating work?", "Change gas bottle?", "Visit Alhambra?",
-    "Sunset spot?", "Flamenco show?", "Relax activity?", "Where to swim?", "Secret path?",
+    "Sunset spot?", "Flamenco show?", "Relax activity?", "Where to swim?",
     "Kids activities?", "Playground?", "Get a taxi?", "Airport shuttle?", "Albaicín bus?",
-    "Sierra Nevada?", "Where to park?", "Emergencies?", "Pharmacy?", "Checkout time?", "Safe at night?"
+    "Sierra Nevada?", "Emergencies?", "Pharmacy?", "Checkout time?", "Nearby beaches?"
   ],
   es: [
     "¿Código WiFi?", "¿Cómo entrar?", "¿Dónde cenar?", "¿Restaurante vegetariano?", "¿Tapas gratis?",
-    "¿Dónde tomar té?", "¿Un bar?", "¿Buena paella?", "¿Dónde comprar?", "¿Buen pan?",
+    "¿Dónde tomar té?", "¿Buena paella?", "¿Dónde comprar?", "¿Buen pan?",
     "¿Cómo funciona el aire?", "¿Cómo funciona la calefacción?", "¿Cambiar gas?", "¿Visitar Alhambra?",
-    "¿Atardecer?", "¿Flamenco?", "¿Relajarse?", "¿Dónde bañarse?", "¿Camino secreto?",
+    "¿Atardecer?", "¿Flamenco?", "¿Relajarse?", "¿Dónde bañarse?",
     "¿Actividades niños?", "¿Parque infantil?", "¿Taxi?", "¿Bus aeropuerto?", "¿Bus Albaicín?",
-    "¿Sierra Nevada?", "¿Dónde aparcar?", "¿Urgencias?", "¿Farmacia?", "¿Hora checkout?", "¿Seguro de noche?"
+    "¿Sierra Nevada?", "¿Urgencias?", "¿Farmacia?", "¿Hora checkout?", "¿Playas cercanas?"
   ]
 };
 
