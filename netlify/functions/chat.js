@@ -85,20 +85,23 @@ CUISINE:
 - Conteneurs en face de l'immeuble
 - Eau chaude : bonbonnes de gaz (3 disponibles), vidéo explicative disponible dans l'app
 
-SALON & CONFORT:
-- Radiateurs : mettre fusible en position haute sur compteur à gauche de l'entrée
-- Ventilateur plafond : télécommande Sulion (vitesse 1-6), activer d'abord l'interrupteur mural à gauche
-- Grande lampe : petit bouton noir à côté de l'abat-jour
-- Stores extérieurs en bois sur les balcons : baisser en été contre la chaleur
-- Smart TV Xiaomi : Netflix, Prime Video, YouTube
+CHAUFFAGE / HEATING / CALEFACCIÓN:
+- Pour activer les radiateurs (radiators/radiadores) : mettre le fusible (cercle rouge) en position HAUTE sur le compteur électrique situé à GAUCHE de la porte d'entrée
+- To activate radiators: set the fuse (red circle) to HIGH position on the electric meter located to the LEFT of the entrance door
+- Para activar los radiadores: poner el fusible (círculo rojo) en posición ALTA en el contador eléctrico situado a la IZQUIERDA de la puerta de entrada
+- Chauffage d'appoint disponible dans la salle de bain (portable heater in bathroom / calefactor portátil en el baño)
 
-CLIMATISATION & VENTILATION:
+CLIMATISATION & VENTILATION / AIR CONDITIONING / AIRE ACONDICIONADO:
 - Climatisation disponible dans CHAQUE CHAMBRE uniquement (pas dans le salon)
 - Chaque chambre a sa propre télécommande
 - SALON : pas de clim, mais un ventilateur de plafond
-- Ventilateur salon : d'abord allumer l'interrupteur mural, puis utiliser la télécommande Sulion (vitesse 1-6)
-- Stores extérieurs en bois : les baisser en été
+- Ventilateur salon : d'abord allumer l'interrupteur mural à gauche, puis utiliser la télécommande Sulion (vitesse 1-6)
+- Stores extérieurs en bois sur les balcons : baisser en été contre la chaleur
 - 2 autres ventilateurs dans buanderie et placard salon
+
+SALON & CONFORT:
+- Grande lampe : petit bouton noir à côté de l'abat-jour
+- Smart TV Xiaomi : Netflix, Prime Video, YouTube
 
 SALLE DE BAIN:
 - Interrupteur gauche = lumière d'appoint décorative
