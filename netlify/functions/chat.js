@@ -178,7 +178,7 @@ SI LA RÉPONSE N'EST PAS CI-DESSUS → "${fallbackMsg[lang]}"
       body: JSON.stringify({
         model: "claude-3-5-haiku-20241022",
         max_tokens: 512,
-        temperature: 0,
+        temperature: 0.5,
         system: systemPrompt,
         messages: [
           ...(history || []).map((msg) => ({
