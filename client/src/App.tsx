@@ -198,7 +198,16 @@ const RecycleIcon = ({ className }: { className?: string }) => (
     <path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
   </Icon>
 );
-const MapIcon = ({ className }: { className?: string }) => <Icon className={className}><path d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l5.447 2.724A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></Icon>;
+const MapIcon = ({ className }: { className?: string }) => (
+  <Icon className={className}>
+    <path d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l5.447 2.724A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+  </Icon>
+);
+const ExternalLinkIcon = ({ className }: { className?: string }) => (
+  <Icon className={className}>
+    <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3" />
+  </Icon>
+);
 
 // ============================================
 // CONFIGURATION
@@ -207,93 +216,17 @@ const HOST_NAME = "Marie";
 const HOST_PHOTO = "/images/host_marie.jpg";
 const GOOGLE_MAPS_URL =
   "https://www.google.com/maps/search/?api=1&query=Acera+de+San+Ildefonso+26+Granada+Spain";
+const MYMAPS_URL = "https://www.google.com/maps/d/u/0/viewer?mid=1qrG_alXS7iEoRPprpKYbHQW75Uz8PmE";
 const WIFI_INFO = { network: "MOVISTAR_9EEO", password: "Art&Deco2026" };
 
 const ADDRESS = {
   street: "Acera de San Ildefonso nº 26",
-  floor: "3ème étage – porte droite",
+  floor: {
+    fr: "3ème étage – porte droite",
+    en: "3rd floor – right door",
+    es: "3ª planta – puerta derecha"
+  },
   keyCode: "9119",
-};
-
-const translations: any = {
-  fr: {
-    welcome: "Bienvenue à Grenade",
-    assistant: "MariIA",
-    access: "Arrivée",
-    wifi: "WiFi",
-    kitchen: "Cuisine",
-    living: "Salon",
-    bathroom: "Salle de bain",
-    family: "En famille",
-    explorer: "Explorer",
-    transport: "Transport",
-    checkout: "Départ",
-    contact: "Contact",
-    map: "Mes Adresses",
-    access_desc: "Codes & accès",
-    wifi_desc: "Connexion",
-    kitchen_desc: "Équipements",
-    living_desc: "TV & confort",
-    bathroom_desc: "Buanderie",
-    family_desc: "Enfants",
-    explorer_desc: "Restos & visites",
-    transport_desc: "Se déplacer",
-    checkout_desc: "Urgences",
-    welcome_bot: "🌸 ¡Hola! Je suis MariIA, votre assistante virtuelle.\n\nMarie, votre hôte, vit à Grenade depuis 25 ans. Elle m'a transmis tous ses conseils et ses adresses préférées pour vous faire vivre le meilleur séjour.\n\n💡 Je suis une IA : mes réponses peuvent parfois être imprécises. En cas de doute, contactez Marie !",
-    contact_marie: "Contacter Marie"
-  },
-  en: {
-    welcome: "Welcome to Granada",
-    assistant: "MariIA",
-    access: "Arrival",
-    wifi: "WiFi",
-    kitchen: "Kitchen",
-    living: "Living room",
-    bathroom: "Bathroom",
-    family: "Family",
-    explorer: "Explore",
-    transport: "Transport",
-    checkout: "Checkout",
-    contact: "Contact",
-    map: "My Favorites",
-    access_desc: "Codes & access",
-    wifi_desc: "Connection",
-    kitchen_desc: "Equipment",
-    living_desc: "TV & comfort",
-    bathroom_desc: "Laundry",
-    family_desc: "Kids",
-    explorer_desc: "Food & visits",
-    transport_desc: "Getting around",
-    checkout_desc: "Emergencies",
-    welcome_bot: "🌸 ¡Hola! I'm MariIA, your virtual assistant.\n\nMarie, your host, has been living in Granada for 25 years. She shared all her tips and favorite spots with me to help you have the best stay.\n\n💡 I'm an AI: my answers may sometimes be inaccurate. When in doubt, contact Marie!",
-    contact_marie: "Contact Marie"
-  },
-  es: {
-    welcome: "Bienvenido a Granada",
-    assistant: "MariIA",
-    access: "Llegada",
-    wifi: "WiFi",
-    kitchen: "Cocina",
-    living: "Salón",
-    bathroom: "Baño",
-    family: "En familia",
-    explorer: "Explorar",
-    transport: "Transporte",
-    checkout: "Salida",
-    contact: "Contacto",
-    map: "Mis Direcciones",
-    access_desc: "Códigos y acceso",
-    wifi_desc: "Conexión",
-    kitchen_desc: "Equipamiento",
-    living_desc: "TV y confort",
-    bathroom_desc: "Lavandería",
-    family_desc: "Niños",
-    explorer_desc: "Restaurantes y visitas",
-    transport_desc: "Moverse",
-    checkout_desc: "Urgencias",
-    welcome_bot: "🌸 ¡Hola! Soy MariIA, tu asistente virtual.\n\nMarie, tu anfitriona, vive en Granada desde hace 25 años. Me ha transmitido todos sus consejos y direcciones favoritas para que disfrutes de la mejor estancia.\n\n💡 Soy una IA : mis respuestas pueden ser imprecisas a veces. En caso de duda, ¡contacta a Marie!",
-    contact_marie: "Contactar a Marie"
-  }
 };
 
 const PHOTOS: Record<string, string> = {
@@ -313,89 +246,460 @@ const PHOTOS: Record<string, string> = {
 };
 
 // ============================================
-// KNOWLEDGE BASE POUR L'IA
+// TRADUCTIONS COMPLÈTES
 // ============================================
-const KNOWLEDGE_BASE = `
-Tu es Marie, l'hôte de l'appartement Airbnb à Grenade.
+const translations: Record<string, Record<string, string>> = {
+  fr: {
+    // Navigation & Headers
+    welcome: "Bienvenue à Grenade",
+    subtitle: "Un havre de calme au cœur de l'Albayzin",
+    assistant: "MariIA",
+    assistant_subtitle: "Posez vos questions en temps réel",
+    access: "Arrivée",
+    wifi: "WiFi",
+    kitchen: "Cuisine",
+    living: "Salon",
+    bathroom: "Salle de bain",
+    family: "En famille",
+    explorer: "Explorer",
+    transport: "Transport",
+    checkout: "Départ",
+    contact: "Contact",
+    map: "Mes Adresses",
+    
+    // Descriptions menu
+    access_desc: "Codes & accès",
+    wifi_desc: "Connexion",
+    kitchen_desc: "Équipements",
+    living_desc: "TV & confort",
+    bathroom_desc: "Buanderie",
+    family_desc: "Enfants",
+    explorer_desc: "Restos & visites",
+    transport_desc: "Se déplacer",
+    checkout_desc: "Urgences",
+    map_desc: "Carte Marie",
+    
+    // Chatbot
+    welcome_bot: "🌸 ¡Hola! Je suis MariIA, votre assistante virtuelle.\n\nMarie, votre hôte, vit à Grenade depuis 25 ans. Elle m'a transmis tous ses conseils et ses adresses préférées pour vous faire vivre le meilleur séjour.\n\n💡 Je suis une IA : mes réponses peuvent parfois être imprécises. En cas de doute, contactez Marie !",
+    contact_marie: "Contacter Marie",
+    ask_question: "Posez votre question...",
+    
+    // Accès
+    access_title: "Arrivée",
+    address_label: "Adresse",
+    floor_label: "Étage",
+    keycode_label: "Code boîte à clés",
+    keycode_location: "en bas à gauche de la porte d'entrée de l'appartement, au 3ème étage",
+    building_door: "La porte de l'immeuble reste toujours ouverte",
+    no_elevator: "Pas d'ascenseur (3ème étage)",
+    open_maps: "Ouvrir dans Maps",
+    
+    // WiFi
+    wifi_title: "WiFi",
+    network_label: "Réseau",
+    password_label: "Mot de passe",
+    
+    // Cuisine
+    kitchen_title: "Équipements Cuisine",
+    induction_title: "Plaques Induction",
+    induction_desc: "Marque Bosch. Appuyez sur On/Off, sélectionnez la plaque, puis +/-.",
+    nespresso_title: "Cafetière Nespresso",
+    nespresso_desc: "Réservoir d'eau à l'arrière. Capsules disponibles dans le placard.",
+    trash_title: "Tri des déchets",
+    trash_blue: "Bleu : Papier/Carton",
+    trash_yellow: "Jaune : Plastiques/Conserves",
+    trash_green: "Vert : Verre",
+    trash_gray: "Gris : Reste",
+    trash_location: "Conteneurs en face de l'immeuble",
+    
+    // Salon
+    living_title: "Salon & Confort",
+    heating_title: "Chauffage",
+    heating_desc: "Pour activer les radiateurs, mettez le fusible (cercle rouge) en position haute sur le compteur.",
+    ac_title: "Climatisation",
+    ac_desc: "Disponible dans chaque chambre. Utilisez la télécommande dédiée.",
+    fan_title: "Ventilateur de plafond",
+    fan_desc: "Activez d'abord l'interrupteur mural à gauche, puis utilisez la télécommande Sulion (vitesse 1-6).",
+    tv_title: "Smart TV",
+    tv_desc: "Interface Xiaomi avec Netflix, Prime Video et YouTube pré-installés.",
+    
+    // Salle de bain
+    bathroom_title: "Salle de bain & Lessive",
+    washing_title: "Lave-linge",
+    washing_desc: "Situé dans la buanderie après la cuisine. Lessive dans le tiroir de la commode.",
+    bathroom_heater_title: "Chauffage d'appoint - Salle de bain",
+    
+    // Famille
+    family_title: "Pour les enfants",
+    toys_title: "Jeux & Livres",
+    toys_desc: "Une sélection est disponible dans le placard du salon.",
+    playground_title: "Parc de jeux",
+    playground_desc: "Situé à 100m à gauche en sortant de l'immeuble.",
+    
+    // Explorer
+    explorer_title: "Visites & Restaurants",
+    my_favorites: "Mes Restaurants Favoris",
+    must_see: "À ne pas manquer",
+    
+    // Restaurants
+    atipico_desc: "Petit-déjeuner sous les orangers, toasts tomate.",
+    atipico_addr: "Rez-de-chaussée de l'immeuble",
+    diamantes_desc: "Les meilleures tapas de poisson. Allez-y tôt !",
+    diamantes_addr: "Plaza Nueva",
+    torquato_desc: "Terrasse dans l'Albaicin, friture de poisson.",
+    torquato_addr: "Calle Pagés",
+    
+    // Monuments
+    alhambra_desc: "Réservez vos billets des semaines à l'avance !",
+    mirador_desc: "La plus belle vue sur l'Alhambra au coucher de soleil.",
+    hammam_desc: "Bains arabes traditionnels pour se détendre.",
+    
+    // Transport
+    transport_title: "Transports",
+    taxi_title: "Taxis",
+    taxi_desc: "Station à 4 min à pied (Calle San Juan de Dios).",
+    bus_title: "Bus",
+    bus_desc: "Arrêt \"Triunfo\" à 5 min à pied. Lignes vers le centre et l'Alhambra.",
+    airport_title: "Aéroport",
+    airport_desc: "Navette Ligne 245, arrêt \"Constitución\". 3,10€.",
+    
+    // Map / Adresses
+    map_title: "Adresses de Marie",
+    map_intro: "Découvrez tous mes coups de cœur sur ma carte personnalisée !",
+    open_map: "Ouvrir la carte",
+    shops_title: "Commerces & Adresses",
+    alsur_desc: "Épicerie fine, pain artisanal, vins et fromages locaux.",
+    alsur_addr: "200m de l'appartement",
+    horno_desc: "Excellente boulangerie traditionnelle.",
+    horno_addr: "Real de Cartuja, 13",
+    teteria_desc: "Thés à la menthe et pâtisseries arabes.",
+    teteria_addr: "Acera de la Merced, 4",
+    mercadona_desc: "Grand supermarché (fermé le dimanche).",
+    mercadona_addr: "Calle Ancha de Capuchinos, 15",
+    
+    // Checkout
+    emergencies_title: "Urgences",
+    general_emergency: "Général",
+    medical_center: "Centre Médical",
+    checkout_title: "Check-out",
+    checkout_time: "Départ avant 12h00",
+    checkout_keys: "Remettre les clés dans le boîtier",
+    checkout_lights: "Éteindre toutes les lumières et le chauffage",
+    checkout_trash: "Jeter les ordures dans les conteneurs en face",
+  },
+  
+  en: {
+    // Navigation & Headers
+    welcome: "Welcome to Granada",
+    subtitle: "A peaceful haven in the heart of Albayzin",
+    assistant: "MariIA",
+    assistant_subtitle: "Ask your questions in real time",
+    access: "Arrival",
+    wifi: "WiFi",
+    kitchen: "Kitchen",
+    living: "Living room",
+    bathroom: "Bathroom",
+    family: "Family",
+    explorer: "Explore",
+    transport: "Transport",
+    checkout: "Checkout",
+    contact: "Contact",
+    map: "My Favorites",
+    
+    // Descriptions menu
+    access_desc: "Codes & access",
+    wifi_desc: "Connection",
+    kitchen_desc: "Equipment",
+    living_desc: "TV & comfort",
+    bathroom_desc: "Laundry",
+    family_desc: "Kids",
+    explorer_desc: "Food & visits",
+    transport_desc: "Getting around",
+    checkout_desc: "Emergencies",
+    map_desc: "Marie's map",
+    
+    // Chatbot
+    welcome_bot: "🌸 ¡Hola! I'm MariIA, your virtual assistant.\n\nMarie, your host, has been living in Granada for 25 years. She shared all her tips and favorite spots with me to help you have the best stay.\n\n💡 I'm an AI: my answers may sometimes be inaccurate. When in doubt, contact Marie!",
+    contact_marie: "Contact Marie",
+    ask_question: "Ask your question...",
+    
+    // Accès
+    access_title: "Arrival",
+    address_label: "Address",
+    floor_label: "Floor",
+    keycode_label: "Key box code",
+    keycode_location: "bottom left of the apartment entrance door, on the 3rd floor",
+    building_door: "The building door is always open",
+    no_elevator: "No elevator (3rd floor)",
+    open_maps: "Open in Maps",
+    
+    // WiFi
+    wifi_title: "WiFi",
+    network_label: "Network",
+    password_label: "Password",
+    
+    // Cuisine
+    kitchen_title: "Kitchen Equipment",
+    induction_title: "Induction Hob",
+    induction_desc: "Bosch brand. Press On/Off, select the plate, then +/-.",
+    nespresso_title: "Nespresso Machine",
+    nespresso_desc: "Water tank at the back. Capsules available in the cupboard.",
+    trash_title: "Waste sorting",
+    trash_blue: "Blue: Paper/Cardboard",
+    trash_yellow: "Yellow: Plastics/Cans",
+    trash_green: "Green: Glass",
+    trash_gray: "Gray: Other waste",
+    trash_location: "Bins across from the building",
+    
+    // Salon
+    living_title: "Living Room & Comfort",
+    heating_title: "Heating",
+    heating_desc: "To activate the radiators, set the fuse (red circle) to the high position on the meter.",
+    ac_title: "Air Conditioning",
+    ac_desc: "Available in each bedroom. Use the dedicated remote control.",
+    fan_title: "Ceiling Fan",
+    fan_desc: "First turn on the wall switch on the left, then use the Sulion remote (speed 1-6).",
+    tv_title: "Smart TV",
+    tv_desc: "Xiaomi interface with Netflix, Prime Video and YouTube pre-installed.",
+    
+    // Salle de bain
+    bathroom_title: "Bathroom & Laundry",
+    washing_title: "Washing Machine",
+    washing_desc: "Located in the laundry room after the kitchen. Detergent in the dresser drawer.",
+    bathroom_heater_title: "Space Heater - Bathroom",
+    
+    // Famille
+    family_title: "For Children",
+    toys_title: "Games & Books",
+    toys_desc: "A selection is available in the living room closet.",
+    playground_title: "Playground",
+    playground_desc: "Located 100m to the left when leaving the building.",
+    
+    // Explorer
+    explorer_title: "Visits & Restaurants",
+    my_favorites: "My Favorite Restaurants",
+    must_see: "Must See",
+    
+    // Restaurants
+    atipico_desc: "Breakfast under the orange trees, tomato toast.",
+    atipico_addr: "Ground floor of the building",
+    diamantes_desc: "The best fish tapas. Go early!",
+    diamantes_addr: "Plaza Nueva",
+    torquato_desc: "Terrace in the Albaicin, fried fish.",
+    torquato_addr: "Calle Pagés",
+    
+    // Monuments
+    alhambra_desc: "Book your tickets weeks in advance!",
+    mirador_desc: "The most beautiful view of the Alhambra at sunset.",
+    hammam_desc: "Traditional Arab baths to relax.",
+    
+    // Transport
+    transport_title: "Transportation",
+    taxi_title: "Taxis",
+    taxi_desc: "Station 4 min walk (Calle San Juan de Dios).",
+    bus_title: "Bus",
+    bus_desc: "\"Triunfo\" stop 5 min walk. Lines to the center and Alhambra.",
+    airport_title: "Airport",
+    airport_desc: "Shuttle Line 245, \"Constitución\" stop. €3.10.",
+    
+    // Map / Adresses
+    map_title: "Marie's Addresses",
+    map_intro: "Discover all my favorites on my personalized map!",
+    open_map: "Open the map",
+    shops_title: "Shops & Addresses",
+    alsur_desc: "Gourmet grocery, artisan bread, local wines and cheeses.",
+    alsur_addr: "200m from the apartment",
+    horno_desc: "Excellent traditional bakery.",
+    horno_addr: "Real de Cartuja, 13",
+    teteria_desc: "Mint teas and Arab pastries.",
+    teteria_addr: "Acera de la Merced, 4",
+    mercadona_desc: "Large supermarket (closed on Sundays).",
+    mercadona_addr: "Calle Ancha de Capuchinos, 15",
+    
+    // Checkout
+    emergencies_title: "Emergencies",
+    general_emergency: "General",
+    medical_center: "Medical Center",
+    checkout_title: "Check-out",
+    checkout_time: "Departure before 12:00 PM",
+    checkout_keys: "Return the keys to the box",
+    checkout_lights: "Turn off all lights and heating",
+    checkout_trash: "Throw garbage in the bins across the street",
+  },
+  
+  es: {
+    // Navigation & Headers
+    welcome: "Bienvenido a Granada",
+    subtitle: "Un remanso de paz en el corazón del Albayzín",
+    assistant: "MariIA",
+    assistant_subtitle: "Haz tus preguntas en tiempo real",
+    access: "Llegada",
+    wifi: "WiFi",
+    kitchen: "Cocina",
+    living: "Salón",
+    bathroom: "Baño",
+    family: "En familia",
+    explorer: "Explorar",
+    transport: "Transporte",
+    checkout: "Salida",
+    contact: "Contacto",
+    map: "Mis Direcciones",
+    
+    // Descriptions menu
+    access_desc: "Códigos y acceso",
+    wifi_desc: "Conexión",
+    kitchen_desc: "Equipamiento",
+    living_desc: "TV y confort",
+    bathroom_desc: "Lavandería",
+    family_desc: "Niños",
+    explorer_desc: "Restaurantes y visitas",
+    transport_desc: "Moverse",
+    checkout_desc: "Urgencias",
+    map_desc: "Mapa de Marie",
+    
+    // Chatbot
+    welcome_bot: "🌸 ¡Hola! Soy MariIA, tu asistente virtual.\n\nMarie, tu anfitriona, vive en Granada desde hace 25 años. Me ha transmitido todos sus consejos y direcciones favoritas para que disfrutes de la mejor estancia.\n\n💡 Soy una IA: mis respuestas pueden ser imprecisas a veces. En caso de duda, ¡contacta a Marie!",
+    contact_marie: "Contactar a Marie",
+    ask_question: "Haz tu pregunta...",
+    
+    // Accès
+    access_title: "Llegada",
+    address_label: "Dirección",
+    floor_label: "Planta",
+    keycode_label: "Código de la caja de llaves",
+    keycode_location: "abajo a la izquierda de la puerta del apartamento, en el 3er piso",
+    building_door: "La puerta del edificio siempre está abierta",
+    no_elevator: "Sin ascensor (3ª planta)",
+    open_maps: "Abrir en Maps",
+    
+    // WiFi
+    wifi_title: "WiFi",
+    network_label: "Red",
+    password_label: "Contraseña",
+    
+    // Cuisine
+    kitchen_title: "Equipamiento de Cocina",
+    induction_title: "Placa de Inducción",
+    induction_desc: "Marca Bosch. Pulsa On/Off, selecciona la placa, luego +/-.",
+    nespresso_title: "Cafetera Nespresso",
+    nespresso_desc: "Depósito de agua en la parte trasera. Cápsulas disponibles en el armario.",
+    trash_title: "Reciclaje",
+    trash_blue: "Azul: Papel/Cartón",
+    trash_yellow: "Amarillo: Plásticos/Latas",
+    trash_green: "Verde: Vidrio",
+    trash_gray: "Gris: Resto",
+    trash_location: "Contenedores frente al edificio",
+    
+    // Salon
+    living_title: "Salón y Confort",
+    heating_title: "Calefacción",
+    heating_desc: "Para activar los radiadores, pon el fusible (círculo rojo) en posición alta en el contador.",
+    ac_title: "Aire Acondicionado",
+    ac_desc: "Disponible en cada habitación. Usa el mando a distancia dedicado.",
+    fan_title: "Ventilador de techo",
+    fan_desc: "Primero enciende el interruptor de pared a la izquierda, luego usa el mando Sulion (velocidad 1-6).",
+    tv_title: "Smart TV",
+    tv_desc: "Interfaz Xiaomi con Netflix, Prime Video y YouTube preinstalados.",
+    
+    // Salle de bain
+    bathroom_title: "Baño y Lavandería",
+    washing_title: "Lavadora",
+    washing_desc: "Situada en el lavadero después de la cocina. Detergente en el cajón de la cómoda.",
+    bathroom_heater_title: "Calefactor - Baño",
+    
+    // Famille
+    family_title: "Para los niños",
+    toys_title: "Juegos y Libros",
+    toys_desc: "Una selección está disponible en el armario del salón.",
+    playground_title: "Parque infantil",
+    playground_desc: "Situado a 100m a la izquierda al salir del edificio.",
+    
+    // Explorer
+    explorer_title: "Visitas y Restaurantes",
+    my_favorites: "Mis Restaurantes Favoritos",
+    must_see: "Imprescindibles",
+    
+    // Restaurants
+    atipico_desc: "Desayuno bajo los naranjos, tostadas de tomate.",
+    atipico_addr: "Planta baja del edificio",
+    diamantes_desc: "Las mejores tapas de pescado. ¡Ve temprano!",
+    diamantes_addr: "Plaza Nueva",
+    torquato_desc: "Terraza en el Albaicín, pescado frito.",
+    torquato_addr: "Calle Pagés",
+    
+    // Monuments
+    alhambra_desc: "¡Reserva tus entradas con semanas de antelación!",
+    mirador_desc: "La vista más bonita de la Alhambra al atardecer.",
+    hammam_desc: "Baños árabes tradicionales para relajarse.",
+    
+    // Transport
+    transport_title: "Transportes",
+    taxi_title: "Taxis",
+    taxi_desc: "Parada a 4 min a pie (Calle San Juan de Dios).",
+    bus_title: "Autobús",
+    bus_desc: "Parada \"Triunfo\" a 5 min a pie. Líneas al centro y la Alhambra.",
+    airport_title: "Aeropuerto",
+    airport_desc: "Lanzadera Línea 245, parada \"Constitución\". 3,10€.",
+    
+    // Map / Adresses
+    map_title: "Direcciones de Marie",
+    map_intro: "¡Descubre todos mis favoritos en mi mapa personalizado!",
+    open_map: "Abrir el mapa",
+    shops_title: "Comercios y Direcciones",
+    alsur_desc: "Tienda gourmet, pan artesanal, vinos y quesos locales.",
+    alsur_addr: "200m del apartamento",
+    horno_desc: "Excelente panadería tradicional.",
+    horno_addr: "Real de Cartuja, 13",
+    teteria_desc: "Tés de menta y pasteles árabes.",
+    teteria_addr: "Acera de la Merced, 4",
+    mercadona_desc: "Gran supermercado (cerrado los domingos).",
+    mercadona_addr: "Calle Ancha de Capuchinos, 15",
+    
+    // Checkout
+    emergencies_title: "Urgencias",
+    general_emergency: "General",
+    medical_center: "Centro Médico",
+    checkout_title: "Check-out",
+    checkout_time: "Salida antes de las 12:00",
+    checkout_keys: "Devolver las llaves en la caja",
+    checkout_lights: "Apagar todas las luces y la calefacción",
+    checkout_trash: "Tirar la basura en los contenedores de enfrente",
+  }
+};
 
-INFORMATIONS CLÉS:
-- Adresse : Acera de San Ildefonso nº 26, 3ème étage, porte droite
-- Code boîte à clés : 9119 (en bas à gauche de la porte d'entrée de l'immeuble)
-- La porte d'entrée de l'immeuble reste toujours ouverte
-- WiFi : MOVISTAR_9EEO / Art&Deco2026
-- Ascenseur : oui
+// Suggestions par langue
+const allSuggestions: Record<string, string[]> = {
+  fr: [
+    "Code WiFi ?", "Comment entrer ?", "Où manger ce soir ?", "Un resto végétarien ?", "Tapas gratuites ?",
+    "Où boire un thé ?", "Un bar sympa ?", "Bonne paella ?", "Où faire les courses ?", "Du bon pain ?",
+    "Comment marche la clim ?", "Comment marche le chauffage ?", "Changer le gaz ?", "Visiter l'Alhambra ?",
+    "Coucher de soleil ?", "Spectacle flamenco ?", "Se détendre ?", "Où se baigner ?", "Chemin secret ?",
+    "Activités enfants ?", "Parc pour enfants ?", "Prendre un taxi ?", "Navette aéroport ?", "Bus Albaicín ?",
+    "Sierra Nevada ?", "Où se garer ?", "Urgences ?", "Pharmacie ?", "Heure checkout ?", "Sécurité la nuit ?"
+  ],
+  en: [
+    "WiFi code?", "How to enter?", "Where to eat tonight?", "Vegetarian restaurant?", "Free tapas?",
+    "Where to drink tea?", "Nice bar?", "Good paella?", "Where to shop?", "Good bread?",
+    "How does AC work?", "How does heating work?", "Change gas bottle?", "Visit Alhambra?",
+    "Sunset spot?", "Flamenco show?", "Relax activity?", "Where to swim?", "Secret path?",
+    "Kids activities?", "Playground?", "Get a taxi?", "Airport shuttle?", "Albaicín bus?",
+    "Sierra Nevada?", "Where to park?", "Emergencies?", "Pharmacy?", "Checkout time?", "Safe at night?"
+  ],
+  es: [
+    "¿Código WiFi?", "¿Cómo entrar?", "¿Dónde cenar?", "¿Restaurante vegetariano?", "¿Tapas gratis?",
+    "¿Dónde tomar té?", "¿Un bar?", "¿Buena paella?", "¿Dónde comprar?", "¿Buen pan?",
+    "¿Cómo funciona el aire?", "¿Cómo funciona la calefacción?", "¿Cambiar gas?", "¿Visitar Alhambra?",
+    "¿Atardecer?", "¿Flamenco?", "¿Relajarse?", "¿Dónde bañarse?", "¿Camino secreto?",
+    "¿Actividades niños?", "¿Parque infantil?", "¿Taxi?", "¿Bus aeropuerto?", "¿Bus Albaicín?",
+    "¿Sierra Nevada?", "¿Dónde aparcar?", "¿Urgencias?", "¿Farmacia?", "¿Hora checkout?", "¿Seguro de noche?"
+  ]
+};
 
-CUISINE:
-- Plaques induction Bosch (bouton on/off, sélectionner plaque, régler avec +/-)
-- Lave-vaisselle disponible, tablettes sous l'évier
-- Hotte aspirante : BRANCHER LA PRISE pour activer l'extracteur
-- Cafetière Nespresso (réservoir eau à l'arrière)
-- Bouilloire électrique
-- Provisions : thé, miel, sucre, huile, vinaigre, épices, sel, pâtes
-- Grand placard en bois : interrupteur lumière sur sa droite
-
-SALON:
-- Radiateurs dans chaque pièce (bouton on/off et +/-)
-- Pour allumer les radiateurs : mettre en position haute le fusible avec cercle rouge sur le compteur à gauche de la porte d'entrée
-- Climatisation réversible dans les chambres (bouton orange pour allumer)
-- Ventilateur plafond : télécommande blanche Sulion, vitesse 1-6
-- Deux autres ventilateurs dans buanderie et placard salon
-- Smart TV Xiaomi : Netflix, Prime Video, YouTube
-- Grand placard avec cintres et espace valises
-- Oreillers, draps, couvertures pour canapé-lit sous la méridienne
-
-SALLE DE BAIN:
-- Interrupteur gauche : lumière d'appoint
-- À droite du lavabo : lumière principale + VMC
-- Chauffage d'appoint disponible
-- Lave-linge dans la laverie après la cuisine
-- Produits lessive dans le tiroir de la commode
-- Chauffe-eau au gaz : peut nécessiter changement de bouteille
-
-SÉCURITÉ:
-- Extincteur près de la porte d'entrée, sous le compteur
-- Trousse premiers soins sous le lavabo salle de bain
-- URGENCES : 112
-
-EN FAMILLE:
-- Jeux et livres pour enfants dans l'appartement
-- Parc de jeux à 100m à gauche en sortant
-
-RESTAURANTS & COMMERCES:
-- ATIPICO : au rez-de-chaussée de l'immeuble, toasts tomate, jus orange frais. Fermé dimanche.
-- PAPAS ELVIRA : cuisine marocaine, gâteaux maison. 1-10€. Calle Elvira, 9
-- FOCACCERIA SICILIANA : pizzas focaccias. 10-20€. Fermé mercredi. Calle Elvira, 117
-- AYLIN ART CUISINE : cuisine raffinée. 20-30€. Av. de la Constitución, 12
-- Tetería Oriente : thés, milk-shakes. Acera de la Merced, 4
-- HORNO DEL PROGRESO : boulangerie, madeleines, pain huile d'olive. Real de Cartuja, 13
-- Mercadona : supermarché 9h-21h (fermé dimanche). Calle Ancha de Capuchinos, 15
-- Kiki : poulets rôtis, churros. Real de Cartuja, 26
-
-MONUMENTS:
-- Hospital Real : ancien hôpital des Rois Catholiques, beaux patios
-- Puerta Elvira : porte du XIe siècle, ancienne entrée principale
-- Librería Inusual : librairie avec patio. Calle Natalio Rivas, 7
-- La Estupenda : petit théâtre à 300m. C. Real de Cartuja, 37
-
-TRANSPORTS:
-- Bus : arrêt TRIUNFO à 5 min à pied
-- Métro : Caleta à 15 min à pied
-- Taxis : station à 4 min, Calle San Juan de Dios. Tél: +34 958 28 06 54
-- Parking : zone horodatée + Parking Triunfo
-- Navette aéroport : Ligne 245, arrêt Constitución. 3,10€, 40 min
-
-DÉPART (avant 12h):
-- Remettre clés dans le boîtier
-- Jeter les ordures
-- Éteindre le chauffage
-
-URGENCES:
-- Urgences générales : 112
-- Centre médical Gran Capitán : Calle Gran Capitán, 10. Urgences à partir de 15h. Tél: +34 958 022 600
-- Pharmacie : Plaza de San Isidro 6, 9h-22h (fermé dimanche)
-
-RÈGLES: Réponds uniquement avec ces infos. Si tu ne sais pas, invite à contacter Marie par WhatsApp.
-`;
+const getRandomSuggestions = (count: number, lang: string = "fr") => {
+  const suggestions = allSuggestions[lang] || allSuggestions.fr;
+  const shuffled = [...suggestions].sort(() => Math.random() - 0.5);
+  return shuffled.slice(0, count);
+};
 
 // ============================================
 // COMPOSANTS DE BASE
@@ -527,7 +831,7 @@ const HomePage = ({
         {t('welcome')}
       </h1>
       <p className="text-gray-600 mt-1 text-sm px-4">
-        Un havre de calme au cœur de l'Albayzin
+        {t('subtitle')}
       </p>
     </div>
 
@@ -542,7 +846,7 @@ const HomePage = ({
         <div className="flex-1">
           <h3 className="font-semibold text-amber-800">{t('assistant')}</h3>
           <p className="text-sm text-gray-600">
-            Posez vos questions en temps réel
+            {t('assistant_subtitle')}
           </p>
         </div>
         <SparklesIcon className="w-5 h-5 text-amber-500" />
@@ -551,40 +855,15 @@ const HomePage = ({
 
     <div className="grid grid-cols-2 gap-3">
       {[
-        {
-          id: "access",
-          icon: KeyIcon,
-          label: t('access'),
-          desc: t('access_desc'),
-        },
+        { id: "access", icon: KeyIcon, label: t('access'), desc: t('access_desc') },
         { id: "wifi", icon: WifiIcon, label: t('wifi'), desc: t('wifi_desc') },
-        {
-          id: "kitchen",
-          icon: ChefHatIcon,
-          label: t('kitchen'),
-          desc: t('kitchen_desc'),
-        },
+        { id: "kitchen", icon: ChefHatIcon, label: t('kitchen'), desc: t('kitchen_desc') },
         { id: "living", icon: SofaIcon, label: t('living'), desc: t('living_desc') },
-        {
-          id: "bathroom",
-          icon: BathIcon,
-          label: t('bathroom'),
-          desc: t('bathroom_desc'),
-        },
+        { id: "bathroom", icon: BathIcon, label: t('bathroom'), desc: t('bathroom_desc') },
         { id: "family", icon: UsersIcon, label: t('family'), desc: t('family_desc') },
-        {
-          id: "explorer",
-          icon: MapPinIcon,
-          label: t('explorer'),
-          desc: t('explorer_desc'),
-        },
-        {
-          id: "transport",
-          icon: BusIcon,
-          label: t('transport'),
-          desc: t('transport_desc'),
-        },
-        { id: "map", icon: MapIcon, label: t('map'), desc: "Adresses" },
+        { id: "explorer", icon: MapPinIcon, label: t('explorer'), desc: t('explorer_desc') },
+        { id: "transport", icon: BusIcon, label: t('transport'), desc: t('transport_desc') },
+        { id: "map", icon: MapIcon, label: t('map'), desc: t('map_desc') },
         { id: "checkout", icon: AlertIcon, label: t('checkout'), desc: t('checkout_desc') },
       ].map((item) => {
         const IconComponent = item.icon;
@@ -607,53 +886,20 @@ const HomePage = ({
         <MapPinIcon className="w-5 h-5 text-amber-600 mt-0.5 flex-shrink-0" />
         <div>
           <p className="font-medium text-amber-800">{ADDRESS.street}</p>
-          <p className="text-sm text-gray-600">{ADDRESS.floor}</p>
+          <p className="text-sm text-gray-600">{ADDRESS.floor[language as keyof typeof ADDRESS.floor] || ADDRESS.floor.fr}</p>
           <a
             href={GOOGLE_MAPS_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-1 text-sm text-amber-700 mt-2 hover:underline"
           >
-            <NavigationIcon className="w-4 h-4" /> Ouvrir dans Maps
+            <NavigationIcon className="w-4 h-4" /> {t('open_maps')}
           </a>
         </div>
       </div>
     </Card>
   </div>
 );
-
-const allSuggestions: Record<string, string[]> = {
-  fr: [
-    "Code WiFi ?", "Comment entrer ?", "Où manger ce soir ?", "Un resto végétarien ?", "Tapas gratuites ?",
-    "Où boire un thé ?", "Un bar sympa ?", "Bonne paella ?", "Où faire les courses ?", "Du bon pain ?",
-    "Comment marche la clim ?", "Comment marche le chauffage ?", "Changer le gaz ?", "Visiter l'Alhambra ?",
-    "Coucher de soleil ?", "Spectacle flamenco ?", "Se détendre ?", "Où se baigner ?", "Chemin secret ?",
-    "Activités enfants ?", "Parc pour enfants ?", "Prendre un taxi ?", "Navette aéroport ?", "Bus Albaicín ?",
-    "Sierra Nevada ?", "Où se garer ?", "Urgences ?", "Pharmacie ?", "Heure checkout ?", "Sécurité la nuit ?"
-  ],
-  en: [
-    "WiFi code?", "How to enter?", "Where to eat tonight?", "Vegetarian restaurant?", "Free tapas?",
-    "Where to drink tea?", "Nice bar?", "Good paella?", "Where to shop?", "Good bread?",
-    "How does AC work?", "How does heating work?", "Change gas bottle?", "Visit Alhambra?",
-    "Sunset spot?", "Flamenco show?", "Relax activity?", "Where to swim?", "Secret path?",
-    "Kids activities?", "Playground?", "Get a taxi?", "Airport shuttle?", "Albaicín bus?",
-    "Sierra Nevada?", "Where to park?", "Emergencies?", "Pharmacy?", "Checkout time?", "Safe at night?"
-  ],
-  es: [
-    "¿Código WiFi?", "¿Cómo entrar?", "¿Dónde cenar?", "¿Restaurante vegetariano?", "¿Tapas gratis?",
-    "¿Dónde tomar té?", "¿Un bar?", "¿Buena paella?", "¿Dónde comprar?", "¿Buen pan?",
-    "¿Cómo funciona el aire?", "¿Cómo funciona la calefacción?", "¿Cambiar gas?", "¿Visitar Alhambra?",
-    "¿Atardecer?", "¿Flamenco?", "¿Relajarse?", "¿Dónde bañarse?", "¿Camino secreto?",
-    "¿Actividades niños?", "¿Parque infantil?", "¿Taxi?", "¿Bus aeropuerto?", "¿Bus Albaicín?",
-    "¿Sierra Nevada?", "¿Dónde aparcar?", "¿Urgencias?", "¿Farmacia?", "¿Hora checkout?", "¿Seguro de noche?"
-  ]
-};
-
-const getRandomSuggestions = (count: number, lang: string = "fr") => {
-  const suggestions = allSuggestions[lang] || allSuggestions.fr;
-  const shuffled = [...suggestions].sort(() => Math.random() - 0.5);
-  return shuffled.slice(0, count);
-};
 
 interface Message {
   role: string;
@@ -662,45 +908,11 @@ interface Message {
   videoUrl?: string;
 }
 
-const AssistantPage = () => {
-  const [language, setLanguage] = useState(() => {
-    const saved = localStorage.getItem("app_lang");
-    if (saved) return saved;
-    const navLang = navigator.language.toLowerCase();
-    if (navLang.startsWith("es")) return "es";
-    if (navLang.startsWith("en")) return "en";
-    return "fr";
-  });
-
-  useEffect(() => {
-    localStorage.setItem("app_lang", language);
-  }, [language]);
-
-  const t = (key: string) => translations[language][key] || key;
-
-  const logConversation = async (question: string, answer: string, lang: string) => {
-    console.log("Logging conversation:", { question, answer, lang });
-    try {
-      const response = await fetch('https://script.google.com/macros/s/AKfycbxRruJ2jtKXE2HLZtgZ7h47Ftz97j4aS0lSwY7NA0LXGdZWINB9tqn6k5oakS2CTLmj/exec', {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ 
-          question, 
-          answer, 
-          language: lang
-        })
-      });
-      console.log("Log request sent (no-cors mode)");
-    } catch (error) {
-      console.error('Logging failed:', error);
-    }
-  };
-
+const AssistantPage = ({ language, t }: { language: string; t: (key: string) => string }) => {
   const [messages, setMessages] = useState<Message[]>([
     {
       role: "assistant",
-      content: translations[language].welcome_bot,
+      content: t('welcome_bot'),
     },
   ]);
   const [suggestions, setSuggestions] = useState(() => getRandomSuggestions(5, language));
@@ -716,6 +928,46 @@ const AssistantPage = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
+  // Update welcome message when language changes
+  useEffect(() => {
+    setMessages([{
+      role: "assistant",
+      content: t('welcome_bot'),
+    }]);
+  }, [language]);
+
+  const logConversation = async (question: string, answer: string, lang: string) => {
+    console.log("Logging conversation:", { question, answer, lang });
+    try {
+      await fetch('https://script.google.com/macros/s/AKfycbxRruJ2jtKXE2HLZtgZ7h47Ftz97j4aS0lSwY7NA0LXGdZWINB9tqn6k5oakS2CTLmj/exec', {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ 
+          question, 
+          answer, 
+          language: lang,
+          timestamp: new Date().toISOString()
+        })
+      });
+      console.log("Log request sent (no-cors mode)");
+    } catch (error) {
+      console.error('Logging failed:', error);
+    }
+  };
+
+  const gasKeywords: Record<string, string[]> = {
+    fr: ['gaz', 'bouteille', 'bonbonne', 'chauffe-eau', 'eau chaude'],
+    en: ['gas', 'bottle', 'water heater', 'hot water', 'propane'],
+    es: ['gas', 'botella', 'bombona', 'calentador', 'agua caliente']
+  };
+
+  const gasResponse: Record<string, string> = {
+    fr: '🎬 Voici la vidéo explicative pour changer la bouteille de gaz :',
+    en: '🎬 Here is the video tutorial to change the gas bottle:',
+    es: '🎬 Aquí tienes el video explicativo para cambiar la botella de gas:'
+  };
+
   const sendMessage = async (overrideMessage?: string) => {
     const userMessage = (overrideMessage || input).trim();
     if (!userMessage || isLoading) return;
@@ -724,11 +976,12 @@ const AssistantPage = () => {
     setSuggestions(getRandomSuggestions(5, language));
     setIsLoading(true);
 
-    const gasKeywords = ['gaz', 'bouteille', 'bonbonne', 'chauffe-eau', 'eau chaude'];
-    const isGasQuestion = gasKeywords.some(kw => userMessage.toLowerCase().includes(kw));
+    // Check for gas-related questions in any language
+    const keywords = gasKeywords[language] || gasKeywords.fr;
+    const isGasQuestion = keywords.some(kw => userMessage.toLowerCase().includes(kw));
 
     if (isGasQuestion) {
-      const assistantResponse = '🎬 Voici la vidéo explicative pour changer la bouteille de gaz :';
+      const assistantResponse = gasResponse[language] || gasResponse.fr;
       setMessages(prev => [...prev, { 
         role: 'assistant', 
         content: assistantResponse,
@@ -749,7 +1002,7 @@ const AssistantPage = () => {
         body: JSON.stringify({ 
           message: userMessage,
           history: messages.slice(1),
-          selectedLanguage: language
+          language: language
         }),
       });
 
@@ -777,7 +1030,6 @@ const AssistantPage = () => {
 
     return parts.map((part, i) => {
       if (part.match(urlRegex)) {
-        // Clean the URL of trailing punctuation
         const cleanUrl = part.replace(/[.,!?;:]$/, '');
         const suffix = part.slice(cleanUrl.length);
 
@@ -790,7 +1042,7 @@ const AssistantPage = () => {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1 px-3 py-1 bg-green-500 text-white rounded-full text-sm hover:bg-green-600 mt-2 no-underline"
               >
-                <span>📱</span> {language === "fr" ? "Contacter Marie sur WhatsApp" : language === "es" ? "Contactar a Marie por WhatsApp" : "Contact Marie on WhatsApp"}
+                <span>📱</span> {t('contact_marie')}
               </a>
               {suffix}
             </React.Fragment>
@@ -892,7 +1144,7 @@ const AssistantPage = () => {
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder="Posez votre question..."
+            placeholder={t('ask_question')}
             className="flex-1 bg-amber-50 border-none rounded-full px-4 py-2 text-sm focus:ring-2 focus:ring-amber-400 outline-none"
           />
           <button
@@ -926,7 +1178,7 @@ export default function App() {
     localStorage.setItem("app_lang", language);
   }, [language]);
 
-  const t = (key: string) => translations[language][key] || key;
+  const t = (key: string) => translations[language]?.[key] || translations.fr[key] || key;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-amber-100 via-orange-50 to-amber-100 flex items-center justify-center p-4">
@@ -969,36 +1221,38 @@ export default function App() {
 
         <main className="h-[calc(100%-70px)] overflow-y-auto custom-scrollbar">
           {view === "home" && <HomePage onNavigate={setView} language={language} t={t} />}
-          {view === "assistant" && <AssistantPage />}
+          {view === "assistant" && <AssistantPage language={language} t={t} />}
+          
           {view === "access" && (
             <div className="p-4 space-y-4 animate-in fade-in slide-in-from-bottom-2">
               <Card>
-                <SectionTitle>{t('access')}</SectionTitle>
+                <SectionTitle>{t('access_title')}</SectionTitle>
                 <BulletList
                   items={[
-                    `Adresse : ${ADDRESS.street}`,
-                    ADDRESS.floor,
-                    `Code boîte à clés : ${ADDRESS.keyCode}`,
-                    "La porte de l'immeuble reste toujours ouverte",
-                    "Pas d'ascenseur (3ème étage)",
+                    `${t('address_label')} : ${ADDRESS.street}`,
+                    ADDRESS.floor[language as keyof typeof ADDRESS.floor] || ADDRESS.floor.fr,
+                    `${t('keycode_label')} : ${ADDRESS.keyCode} (${t('keycode_location')})`,
+                    t('building_door'),
+                    t('no_elevator'),
                   ]}
                 />
                 <Photo
                   src={PHOTOS.boite_cles}
-                  alt="Boîte à clés"
+                  alt="Key box"
                   className="mt-4"
                 />
               </Card>
             </div>
           )}
+          
           {view === "wifi" && (
             <div className="p-4 space-y-4">
               <Card>
-                <SectionTitle>{t('wifi')}</SectionTitle>
+                <SectionTitle>{t('wifi_title')}</SectionTitle>
                 <div className="space-y-4">
                   <div>
                     <p className="text-xs text-gray-500 uppercase font-semibold">
-                      Réseau
+                      {t('network_label')}
                     </p>
                     <div className="flex items-center justify-between">
                       <p className="text-lg font-mono text-amber-900">
@@ -1009,7 +1263,7 @@ export default function App() {
                   </div>
                   <div>
                     <p className="text-xs text-gray-500 uppercase font-semibold">
-                      Mot de passe
+                      {t('password_label')}
                     </p>
                     <div className="flex items-center justify-between">
                       <p className="text-lg font-mono text-amber-900">
@@ -1027,42 +1281,41 @@ export default function App() {
               </Card>
             </div>
           )}
+          
           {view === "kitchen" && (
             <div className="p-4 space-y-4">
               <Card>
-                <SectionTitle>Équipements Cuisine</SectionTitle>
+                <SectionTitle>{t('kitchen_title')}</SectionTitle>
                 <div className="space-y-6">
                   <div>
                     <h4 className="flex items-center gap-2 font-medium text-amber-800 mb-2">
-                      <FlameIcon className="w-4 h-4" /> Plaques Induction
+                      <FlameIcon className="w-4 h-4" /> {t('induction_title')}
                     </h4>
                     <p className="text-sm text-gray-600 mb-3">
-                      Marque Bosch. Appuyez sur On/Off, sélectionnez la plaque,
-                      puis +/-.
+                      {t('induction_desc')}
                     </p>
-                    <Photo src={PHOTOS.plaques} alt="Plaques" />
+                    <Photo src={PHOTOS.plaques} alt="Induction hob" />
                   </div>
                   <div>
                     <h4 className="flex items-center gap-2 font-medium text-amber-800 mb-2">
-                      <UtensilsIcon className="w-4 h-4" /> Cafetière Nespresso
+                      <UtensilsIcon className="w-4 h-4" /> {t('nespresso_title')}
                     </h4>
                     <p className="text-sm text-gray-600 mb-3">
-                      Réservoir d'eau à l'arrière. Capsules disponibles dans le
-                      placard.
+                      {t('nespresso_desc')}
                     </p>
                     <Photo src={PHOTOS.nespresso} alt="Nespresso" />
                   </div>
                   <div>
                     <h4 className="flex items-center gap-2 font-medium text-amber-800 mb-2">
-                      <RecycleIcon className="w-4 h-4" /> Tri des déchets
+                      <RecycleIcon className="w-4 h-4" /> {t('trash_title')}
                     </h4>
                     <BulletList
                       items={[
-                        "Bleu : Papier/Carton",
-                        "Jaune : Plastiques/Conserves",
-                        "Vert : Verre",
-                        "Gris : Reste",
-                        "Conteneurs en face de l'immeuble",
+                        t('trash_blue'),
+                        t('trash_yellow'),
+                        t('trash_green'),
+                        t('trash_gray'),
+                        t('trash_location'),
                       ]}
                     />
                   </div>
@@ -1070,166 +1323,157 @@ export default function App() {
               </Card>
             </div>
           )}
+          
           {view === "living" && (
             <div className="p-4 space-y-4">
               <Card>
-                <SectionTitle>Salon & Confort</SectionTitle>
+                <SectionTitle>{t('living_title')}</SectionTitle>
                 <div className="space-y-6">
                   <div>
                     <h4 className="flex items-center gap-2 font-medium text-amber-800 mb-2">
-                      <ThermometerIcon className="w-4 h-4" /> Chauffage
+                      <ThermometerIcon className="w-4 h-4" /> {t('heating_title')}
                     </h4>
                     <p className="text-sm text-gray-600 mb-3">
-                      Pour activer les radiateurs, mettez le fusible (cercle
-                      rouge) en position haute sur le compteur.
+                      {t('heating_desc')}
                     </p>
-                    <div className="grid grid-cols-2 gap-2">
-                      <Photo src={PHOTOS.compteur} alt="Compteur" />
-                      <Photo src={PHOTOS.radiateur} alt="Radiateur" />
-                    </div>
+                    <Photo src={PHOTOS.compteur} alt="Meter" />
                   </div>
                   <div>
                     <h4 className="flex items-center gap-2 font-medium text-amber-800 mb-2">
-                      <SnowflakeIcon className="w-4 h-4" /> Climatisation
+                      <SnowflakeIcon className="w-4 h-4" /> {t('ac_title')}
                     </h4>
                     <p className="text-sm text-gray-600 mb-3">
-                      Disponible dans chaque chambre. Utilisez la télécommande
-                      dédiée.
+                      {t('ac_desc')}
                     </p>
-                    <Photo
-                      src={PHOTOS.telecommande_clim}
-                      alt="Télécommande Clim"
-                    />
+                    <Photo src={PHOTOS.telecommande_clim} alt="AC Remote" />
                   </div>
                   <div>
                     <h4 className="flex items-center gap-2 font-medium text-amber-800 mb-2">
-                      <FanIcon className="w-4 h-4" /> Ventilateur de plafond
+                      <FanIcon className="w-4 h-4" /> {t('fan_title')}
                     </h4>
                     <p className="text-sm text-gray-600 mb-3">
-                      Activez d'abord l'interrupteur mural à gauche, puis utilisez
-                      la télécommande Sulion (vitesse 1-6).
+                      {t('fan_desc')}
                     </p>
                   </div>
                   <div>
                     <h4 className="flex items-center gap-2 font-medium text-amber-800 mb-2">
-                      <TvIcon className="w-4 h-4" /> Smart TV
+                      <TvIcon className="w-4 h-4" /> {t('tv_title')}
                     </h4>
                     <p className="text-sm text-gray-600">
-                      Interface Xiaomi avec Netflix, Prime Video et YouTube
-                      pré-installés.
+                      {t('tv_desc')}
                     </p>
                   </div>
                 </div>
               </Card>
             </div>
           )}
+          
           {view === "bathroom" && (
             <div className="p-4 space-y-4">
               <Card>
-                <SectionTitle>Salle de bain & Lessive</SectionTitle>
+                <SectionTitle>{t('bathroom_title')}</SectionTitle>
                 <div className="space-y-6">
                   <div>
                     <h4 className="font-medium text-amber-800 mb-2">
-                      Lave-linge
+                      {t('washing_title')}
                     </h4>
                     <p className="text-sm text-gray-600 mb-3">
-                      Situé dans la buanderie après la cuisine. Lessive dans le
-                      tiroir de la commode.
+                      {t('washing_desc')}
                     </p>
-                    <Photo src={PHOTOS.lave_linge} alt="Lave-linge" />
+                    <Photo src={PHOTOS.lave_linge} alt="Washing machine" />
                   </div>
                   <div>
                     <h4 className="font-medium text-amber-800 mb-2">
-                      Chauffage d'appoint
+                      {t('bathroom_heater_title')}
                     </h4>
-                    <Photo
-                      src={PHOTOS.chauffage_appoint}
-                      alt="Chauffage Appoint"
-                    />
+                    <Photo src={PHOTOS.chauffage_appoint} alt="Space heater" />
                   </div>
                 </div>
               </Card>
             </div>
           )}
+          
           {view === "family" && (
             <div className="p-4 space-y-4">
               <Card>
-                <SectionTitle>Pour les enfants</SectionTitle>
+                <SectionTitle>{t('family_title')}</SectionTitle>
                 <div className="space-y-6">
                   <div>
                     <h4 className="font-medium text-amber-800 mb-2">
-                      Jeux & Livres
+                      {t('toys_title')}
                     </h4>
                     <p className="text-sm text-gray-600 mb-3">
-                      Une sélection est disponible dans le placard du salon.
+                      {t('toys_desc')}
                     </p>
-                    <Photo src={PHOTOS.jeux_enfants} alt="Jeux" />
+                    <Photo src={PHOTOS.jeux_enfants} alt="Games" />
                   </div>
                   <div>
                     <h4 className="font-medium text-amber-800 mb-2">
-                      Parc de jeux
+                      {t('playground_title')}
                     </h4>
                     <p className="text-sm text-gray-600 mb-3">
-                      Situé à 100m à gauche en sortant de l'immeuble.
+                      {t('playground_desc')}
                     </p>
-                    <Photo src={PHOTOS.parc} alt="Parc" />
+                    <Photo src={PHOTOS.parc} alt="Playground" />
                   </div>
                 </div>
               </Card>
             </div>
           )}
+          
           {view === "explorer" && (
             <div className="p-4 space-y-4">
               <Card>
-                <SectionTitle>Visites & Restaurants</SectionTitle>
+                <SectionTitle>{t('explorer_title')}</SectionTitle>
                 <div className="space-y-4">
                   <h3 className="font-bold text-amber-900 border-l-4 border-amber-600 pl-2">
-                    Mes Restaurants Favoris
+                    {t('my_favorites')}
                   </h3>
                   <PlaceCard
                     name="ATIPICO"
-                    description="Petit-déjeuner sous les orangers, toasts tomate."
-                    address="Rez-de-chaussée de l'immeuble"
+                    description={t('atipico_desc')}
+                    address={t('atipico_addr')}
                   />
                   <PlaceCard
                     name="Los Diamantes"
-                    description="Les meilleures tapas de poisson. Allez-y tôt !"
-                    address="Plaza Nueva"
+                    description={t('diamantes_desc')}
+                    address={t('diamantes_addr')}
                   />
                   <PlaceCard
                     name="Torquato"
-                    description="Terrasse dans l'Albaicin, friture de poisson."
-                    address="Calle Pagés"
+                    description={t('torquato_desc')}
+                    address={t('torquato_addr')}
                   />
 
                   <h3 className="font-bold text-amber-900 border-l-4 border-amber-600 pl-2 mt-6">
-                    À ne pas manquer
+                    {t('must_see')}
                   </h3>
                   <PlaceCard
                     name="L'Alhambra"
-                    description="Réservez vos billets des semaines à l'avance !"
+                    description={t('alhambra_desc')}
                   />
                   <PlaceCard
                     name="Mirador San Nicolás"
-                    description="La plus belle vue sur l'Alhambra au coucher de soleil."
+                    description={t('mirador_desc')}
                   />
                   <PlaceCard
                     name="Hammam Al Ándalus"
-                    description="Bains arabes traditionnels pour se détendre."
+                    description={t('hammam_desc')}
                   />
                 </div>
               </Card>
             </div>
           )}
+          
           {view === "transport" && (
             <div className="p-4 space-y-4">
               <Card>
-                <SectionTitle>Transports</SectionTitle>
+                <SectionTitle>{t('transport_title')}</SectionTitle>
                 <div className="space-y-4">
                   <div className="p-3 bg-amber-50 rounded-lg">
-                    <h4 className="font-bold text-amber-800 mb-1">Taxis</h4>
+                    <h4 className="font-bold text-amber-800 mb-1">{t('taxi_title')}</h4>
                     <p className="text-sm text-gray-600">
-                      Station à 4 min à pied (Calle San Juan de Dios).
+                      {t('taxi_desc')}
                     </p>
                     <a
                       href="tel:+34958280654"
@@ -1239,65 +1483,82 @@ export default function App() {
                     </a>
                   </div>
                   <div className="p-3 bg-amber-50 rounded-lg">
-                    <h4 className="font-bold text-amber-800 mb-1">Bus</h4>
+                    <h4 className="font-bold text-amber-800 mb-1">{t('bus_title')}</h4>
                     <p className="text-sm text-gray-600">
-                      Arrêt "Triunfo" à 5 min à pied. Lignes vers le centre et
-                      l'Alhambra.
+                      {t('bus_desc')}
                     </p>
                   </div>
                   <div className="p-3 bg-amber-50 rounded-lg">
-                    <h4 className="font-bold text-amber-800 mb-1">Aéroport</h4>
+                    <h4 className="font-bold text-amber-800 mb-1">{t('airport_title')}</h4>
                     <p className="text-sm text-gray-600">
-                      Navette Ligne 245, arrêt "Constitución". 3,10€.
+                      {t('airport_desc')}
                     </p>
                   </div>
                 </div>
               </Card>
             </div>
           )}
+          
           {view === "map" && (
             <div className="p-4 space-y-4">
+              <Card className="bg-gradient-to-r from-amber-50 to-orange-50">
+                <SectionTitle>{t('map_title')}</SectionTitle>
+                <p className="text-sm text-gray-600 mb-4">
+                  {t('map_intro')}
+                </p>
+                <a
+                  href={MYMAPS_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 bg-amber-600 text-white px-4 py-2 rounded-full font-medium hover:bg-amber-700 transition-colors"
+                >
+                  <ExternalLinkIcon className="w-4 h-4" />
+                  {t('open_map')}
+                </a>
+              </Card>
+              
               <Card>
-                <SectionTitle>Commerces & Adresses</SectionTitle>
+                <SectionTitle>{t('shops_title')}</SectionTitle>
                 <div className="space-y-4">
                   <PlaceCard
                     name="AL SUR DE GRANADA"
-                    description="Épicerie fine, pain artisanal, vins et fromages locaux."
-                    address="200m de l'appartement"
+                    description={t('alsur_desc')}
+                    address={t('alsur_addr')}
                   />
                   <PlaceCard
                     name="HORNO DEL PROGRESO"
-                    description="Excellente boulangerie traditionnelle."
-                    address="Real de Cartuja, 13"
+                    description={t('horno_desc')}
+                    address={t('horno_addr')}
                   />
                   <PlaceCard
                     name="Tetería Oriente"
-                    description="Thés à la menthe et pâtisseries arabes."
-                    address="Acera de la Merced, 4"
+                    description={t('teteria_desc')}
+                    address={t('teteria_addr')}
                   />
                   <PlaceCard
                     name="Mercadona"
-                    description="Grand supermarché (fermé le dimanche)."
-                    address="Calle Ancha de Capuchinos, 15"
+                    description={t('mercadona_desc')}
+                    address={t('mercadona_addr')}
                   />
                 </div>
               </Card>
             </div>
           )}
+          
           {view === "checkout" && (
             <div className="p-4 space-y-4">
               <Card className="bg-red-50 border-red-100">
-                <SectionTitle>Urgences</SectionTitle>
+                <SectionTitle>{t('emergencies_title')}</SectionTitle>
                 <div className="space-y-4">
                   <div>
                     <p className="text-xs text-red-600 uppercase font-bold">
-                      Général
+                      {t('general_emergency')}
                     </p>
                     <p className="text-2xl font-bold text-red-800">112</p>
                   </div>
                   <div>
                     <p className="text-xs text-red-600 uppercase font-bold">
-                      Centre Médical
+                      {t('medical_center')}
                     </p>
                     <p className="text-sm text-red-800 font-medium">
                       Gran Capitán, 10
@@ -1312,13 +1573,13 @@ export default function App() {
                 </div>
               </Card>
               <Card>
-                <SectionTitle>Check-out</SectionTitle>
+                <SectionTitle>{t('checkout_title')}</SectionTitle>
                 <BulletList
                   items={[
-                    "Départ avant 12h00",
-                    "Remettre les clés dans le boîtier",
-                    "Éteindre toutes les lumières et le chauffage",
-                    "Jeter les ordures dans les conteneurs en face",
+                    t('checkout_time'),
+                    t('checkout_keys'),
+                    t('checkout_lights'),
+                    t('checkout_trash'),
                   ]}
                 />
               </Card>
