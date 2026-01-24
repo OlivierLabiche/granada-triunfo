@@ -16,7 +16,7 @@ exports.handler = async (event, context) => {
 
   try {
     const { message, history, language } = JSON.parse(event.body);
-    const apiKey = process.env.GROQ_API_KEY;
+    const apiKey = process.env.ANTHROPIC_API_KEY;
 
     if (!apiKey) {
       return { statusCode: 500, headers, body: JSON.stringify({ error: 'API key not configured' }) };
@@ -42,29 +42,25 @@ exports.handler = async (event, context) => {
       es: "Responde en ESPAÑOL."
     };
 
-    const systemPrompt = `Tu es MariIA, assistante virtuelle de Marie qui vit à Grenade depuis 25 ans. ${langInstruction[lang]}
+    const systemPrompt = `Tu es MariIA, assistante de Marie qui vit à Grenade depuis 25 ans. ${langInstruction[lang]}
 
 ═══════════════════════════════════════════════════════════════
-RÈGLES ABSOLUES
+RÈGLES ABSOLUES - À RESPECTER IMPÉRATIVEMENT
 ═══════════════════════════════════════════════════════════════
 
-1. NE JAMAIS INVENTER. Si pas dans ta base → "${fallbackMsg[lang]}"
+1. RÉPONDS UNIQUEMENT AVEC LES DONNÉES CI-DESSOUS.
+2. NE JAMAIS INVENTER. JAMAIS. Pas de lac, piscine municipale, ou info non listée.
+3. Si la réponse n'est pas dans les données → "${fallbackMsg[lang]}"
+4. Bouteille de gaz → "${videoMsg[lang]}"
+5. ULTRA CONCIS : 1-3 phrases MAX.
+6. AUCUNE formule de politesse finale.
 
-2. Bouteille de gaz → "${videoMsg[lang]}"
-
-3. Ne JAMAIS inventer distances, prix, horaires.
-
-4. ÊTRE ULTRA CONCIS. Répondre en 1-3 phrases MAX.
-
-5. JAMAIS de formules de politesse ou phrases inutiles à la fin.
-
-6. RÈGLE MARIE STRICTE:
-   ❌ Tu as donné 1 info → STOP. Pas de Marie.
-   ❌ Tu as répondu partiellement → STOP. Pas de Marie.
-   ✅ Question 100% hors sujet, ZÉRO donnée → Là seulement, propose Marie.
+7. RÈGLE MARIE :
+   - Tu as donné 1 info (même partielle) → STOP. Jamais de Marie.
+   - Question 100% hors données → Là seulement, propose Marie.
 
 ═══════════════════════════════════════════════════════════════
-DONNÉES COMPLÈTES
+DONNÉES (SOURCE UNIQUE DE VÉRITÉ)
 ═══════════════════════════════════════════════════════════════
 
 ACCÈS:
@@ -140,7 +136,7 @@ FAMILLE:
 🔬 PARC DES SCIENCES: Activité n°1 ! Métro Alcázar del Genil.
 🦚 CARMEN DE LOS MÁRTIRES: Paons !
 🎢 PARC GARCÍA LORCA: Tyrolienne.
-🍝 Restos: Muerde la Pasta, La Mafia, Papaupa.
+🍝 Restos enfants: Muerde la Pasta, La Mafia, Papaupa.
 👶 Poussette OK centre. Albaicín → porte-bébé.
 
 BAIGNADE / SE BAIGNER / NAGER / PISCINE / PLAGE:
@@ -169,29 +165,28 @@ DÉPART:
 ⏰ Avant 12h. 🔑 Clés dans boîtier. 💡 Éteindre tout. 🗑️ Poubelles en face.
 
 ═══════════════════════════════════════════════════════════════
-RAPPEL: Réponse COURTE. JAMAIS de "contacte Marie" si tu as donné une info.
+SI LA RÉPONSE N'EST PAS CI-DESSUS → "${fallbackMsg[lang]}"
 ═══════════════════════════════════════════════════════════════`;
 
-    const messages = [
-      { role: "system", content: systemPrompt },
-      ...(history || []).map((msg) => ({
-        role: msg.role === "user" ? "user" : "assistant",
-        content: msg.content,
-      })),
-      { role: "user", content: message },
-    ];
-
-    const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+    const response = await fetch("https://api.anthropic.com/v1/messages", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${apiKey}`,
+        "x-api-key": apiKey,
+        "anthropic-version": "2023-06-01",
       },
       body: JSON.stringify({
- model: "kimi-k2",
-        messages: messages,
-        temperature: 0,
+        model: "claude-3-5-haiku-20241022",
         max_tokens: 512,
+        temperature: 0,
+        system: systemPrompt,
+        messages: [
+          ...(history || []).map((msg) => ({
+            role: msg.role === "user" ? "user" : "assistant",
+            content: msg.content,
+          })),
+          { role: "user", content: message },
+        ],
       }),
     });
 
@@ -204,7 +199,7 @@ RAPPEL: Réponse COURTE. JAMAIS de "contacte Marie" si tu as donné une info.
     return {
       statusCode: 200,
       headers,
-      body: JSON.stringify({ content: data.choices[0].message.content })
+      body: JSON.stringify({ content: data.content[0].text })
     };
 
   } catch (error) {
