@@ -353,7 +353,7 @@ Sinon, réponds directement SANS mentionner Marie.`;
       body: JSON.stringify({
         model: "claude-3-5-sonnet-20241022",
         max_tokens: 1024,
-        temperature: 0.5,
+        temperature: 0,
         system: systemPrompt,
         messages: [
           ...(history || []).map((msg) => ({
