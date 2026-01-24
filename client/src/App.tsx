@@ -57,21 +57,6 @@ const MapPinIcon = ({ className }: { className?: string }) => (
     <path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
   </Icon>
 );
-const PhoneIcon = ({ className }: { className?: string }) => (
-  <Icon className={className}>
-    <path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-  </Icon>
-);
-const MenuIcon = ({ className }: { className?: string }) => (
-  <Icon className={className}>
-    <path d="M4 6h16M4 12h16M4 18h16" />
-  </Icon>
-);
-const XIcon = ({ className }: { className?: string }) => (
-  <Icon className={className}>
-    <path d="M6 18L18 6M6 6l12 12" />
-  </Icon>
-);
 const BotIcon = ({ className }: { className?: string }) => (
   <Icon className={className}>
     <rect x="3" y="11" width="18" height="10" rx="2" />
@@ -126,23 +111,6 @@ const SnowflakeIcon = ({ className }: { className?: string }) => (
     <path d="M12 2v20m5-17l-5 5-5-5m10 14l-5-5-5 5M2 12h20M5 7l5 5-5 5m14-10l-5 5 5 5" />
   </Icon>
 );
-const WashingMachineIcon = ({ className }: { className?: string }) => (
-  <Icon className={className}>
-    <rect x="3" y="3" width="18" height="18" rx="2" />
-    <circle cx="12" cy="13" r="5" />
-    <path d="M12 3v3" />
-  </Icon>
-);
-const TrashIcon = ({ className }: { className?: string }) => (
-  <Icon className={className}>
-    <path d="M3 6h18m-2 0v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2" />
-  </Icon>
-);
-const BuildingIcon = ({ className }: { className?: string }) => (
-  <Icon className={className}>
-    <path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-  </Icon>
-);
 const UtensilsIcon = ({ className }: { className?: string }) => (
   <Icon className={className}>
     <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 002-2V2M7 2v20M21 15V2v0a5 5 0 00-5 5v6c0 1.1.9 2 2 2h3zm0 0v7" />
@@ -169,21 +137,6 @@ const UsersIcon = ({ className }: { className?: string }) => (
     <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
     <circle cx="9" cy="7" r="4" />
     <path d="M23 21v-2a4 4 0 00-3-3.87m-4-12a4 4 0 010 7.75" />
-  </Icon>
-);
-const ShoppingBagIcon = ({ className }: { className?: string }) => (
-  <Icon className={className}>
-    <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18M16 10a4 4 0 01-8 0" />
-  </Icon>
-);
-const LandmarkIcon = ({ className }: { className?: string }) => (
-  <Icon className={className}>
-    <path d="M3 22h18M6 18v-7M10 18v-7M14 18v-7M18 18v-7M12 2l9 5H3l9-5z" />
-  </Icon>
-);
-const PlaneIcon = ({ className }: { className?: string }) => (
-  <Icon className={className}>
-    <path d="M17.8 19.2L16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z" />
   </Icon>
 );
 const AlertIcon = ({ className }: { className?: string }) => (
@@ -246,11 +199,10 @@ const PHOTOS: Record<string, string> = {
 };
 
 // ============================================
-// TRADUCTIONS COMPLÈTES
+// TRADUCTIONS
 // ============================================
 const translations: Record<string, Record<string, string>> = {
   fr: {
-    // Navigation & Headers
     welcome: "Bienvenue à Grenade",
     subtitle: "Un havre de calme au cœur de l'Albayzin",
     assistant: "MariIA",
@@ -266,8 +218,6 @@ const translations: Record<string, Record<string, string>> = {
     checkout: "Départ",
     contact: "Contact",
     map: "Carte",
-    
-    // Descriptions menu
     access_desc: "Codes & accès",
     wifi_desc: "Connexion",
     kitchen_desc: "Équipements",
@@ -278,17 +228,11 @@ const translations: Record<string, Record<string, string>> = {
     transport_desc: "Se déplacer",
     checkout_desc: "Urgences",
     map_desc: "Interactive",
-    
-    // Explorer page
     open_mymaps: "Ouvrir ma carte interactive",
     shops_title: "Commerces & Courses",
-    
-    // Chatbot
     welcome_bot: "🌸 ¡Hola! Je suis MariIA, votre assistante virtuelle.\n\nMarie, votre hôte, vit à Grenade depuis 25 ans. Elle m'a transmis tous ses conseils et ses adresses préférées pour vous faire vivre le meilleur séjour.\n\n💡 Je suis une IA : mes réponses peuvent parfois être imprécises. En cas de doute, contactez Marie !",
     contact_marie: "Contacter Marie",
     ask_question: "Posez votre question...",
-    
-    // Accès
     access_title: "Arrivée",
     address_label: "Adresse",
     floor_label: "Étage",
@@ -297,13 +241,9 @@ const translations: Record<string, Record<string, string>> = {
     building_door: "La porte de l'immeuble reste toujours ouverte",
     no_elevator: "Pas d'ascenseur (3ème étage)",
     open_maps: "Ouvrir dans Maps",
-    
-    // WiFi
     wifi_title: "WiFi",
     network_label: "Réseau",
     password_label: "Mot de passe",
-    
-    // Cuisine
     kitchen_title: "Équipements Cuisine",
     induction_title: "Plaques Induction",
     induction_desc: "Marque Bosch. Appuyez sur On/Off, sélectionnez la plaque, puis +/-.",
@@ -315,8 +255,6 @@ const translations: Record<string, Record<string, string>> = {
     trash_green: "Vert : Verre",
     trash_gray: "Gris : Reste",
     trash_location: "Conteneurs en face de l'immeuble",
-    
-    // Salon
     living_title: "Salon & Confort",
     heating_title: "Chauffage",
     heating_desc: "Pour activer les radiateurs, mettez le fusible (cercle rouge) en position haute sur le compteur.",
@@ -326,39 +264,27 @@ const translations: Record<string, Record<string, string>> = {
     fan_desc: "Activez d'abord l'interrupteur mural à gauche, puis utilisez la télécommande Sulion (vitesse 1-6).",
     tv_title: "Smart TV",
     tv_desc: "Interface Xiaomi avec Netflix, Prime Video et YouTube pré-installés.",
-    
-    // Salle de bain
     bathroom_title: "Salle de bain & Lessive",
     washing_title: "Lave-linge",
     washing_desc: "Situé dans la buanderie après la cuisine. Lessive dans le tiroir de la commode.",
     bathroom_heater_title: "Chauffage d'appoint - Salle de bain",
-    
-    // Famille
     family_title: "Pour les enfants",
     toys_title: "Jeux & Livres",
     toys_desc: "Une sélection est disponible dans le placard du salon.",
     playground_title: "Parc de jeux",
     playground_desc: "Situé à 100m à gauche en sortant de l'immeuble.",
-    
-    // Explorer
     explorer_title: "Visites & Restaurants",
     my_favorites: "Mes Restaurants Favoris",
     must_see: "À ne pas manquer",
-    
-    // Restaurants
     atipico_desc: "Petit-déjeuner sous les orangers, toasts tomate.",
     atipico_addr: "Rez-de-chaussée de l'immeuble",
     diamantes_desc: "Les meilleures tapas de poisson. Allez-y tôt !",
     diamantes_addr: "Plaza Nueva",
     torquato_desc: "Terrasse dans l'Albaicin, friture de poisson.",
     torquato_addr: "Calle Pagés",
-    
-    // Monuments
     alhambra_desc: "Réservez vos billets des semaines à l'avance !",
     mirador_desc: "La plus belle vue sur l'Alhambra au coucher de soleil.",
     hammam_desc: "Bains arabes traditionnels pour se détendre.",
-    
-    // Transport
     transport_title: "Transports",
     taxi_title: "Taxis",
     taxi_desc: "Station à 4 min à pied (Calle San Juan de Dios).",
@@ -366,12 +292,9 @@ const translations: Record<string, Record<string, string>> = {
     bus_desc: "Arrêt \"Triunfo\" à 5 min à pied. Lignes vers le centre et l'Alhambra.",
     airport_title: "Aéroport",
     airport_desc: "Navette Ligne 245, arrêt \"Constitución\". 3,10€.",
-    
-    // Map / Adresses
     map_title: "Adresses de Marie",
     map_intro: "Découvrez tous mes coups de cœur sur ma carte personnalisée !",
     open_map: "Ouvrir la carte",
-    shops_title: "Commerces & Adresses",
     alsur_desc: "Épicerie fine, pain artisanal, vins et fromages locaux.",
     alsur_addr: "200m de l'appartement",
     horno_desc: "Excellente boulangerie traditionnelle.",
@@ -380,8 +303,6 @@ const translations: Record<string, Record<string, string>> = {
     teteria_addr: "Acera de la Merced, 4",
     mercadona_desc: "Grand supermarché (fermé le dimanche).",
     mercadona_addr: "Calle Ancha de Capuchinos, 15",
-    
-    // Checkout
     emergencies_title: "Urgences",
     general_emergency: "Général",
     medical_center: "Centre Médical",
@@ -391,9 +312,7 @@ const translations: Record<string, Record<string, string>> = {
     checkout_lights: "Éteindre toutes les lumières et le chauffage",
     checkout_trash: "Jeter les ordures dans les conteneurs en face",
   },
-  
   en: {
-    // Navigation & Headers
     welcome: "Welcome to Granada",
     subtitle: "A peaceful haven in the heart of Albayzin",
     assistant: "MariIA",
@@ -409,8 +328,6 @@ const translations: Record<string, Record<string, string>> = {
     checkout: "Checkout",
     contact: "Contact",
     map: "Map",
-    
-    // Descriptions menu
     access_desc: "Codes & access",
     wifi_desc: "Connection",
     kitchen_desc: "Equipment",
@@ -421,17 +338,11 @@ const translations: Record<string, Record<string, string>> = {
     transport_desc: "Getting around",
     checkout_desc: "Emergencies",
     map_desc: "Interactive",
-    
-    // Explorer page
     open_mymaps: "Open my interactive map",
     shops_title: "Shops & Groceries",
-    
-    // Chatbot
     welcome_bot: "🌸 ¡Hola! I'm MariIA, your virtual assistant.\n\nMarie, your host, has been living in Granada for 25 years. She shared all her tips and favorite spots with me to help you have the best stay.\n\n💡 I'm an AI: my answers may sometimes be inaccurate. When in doubt, contact Marie!",
     contact_marie: "Contact Marie",
     ask_question: "Ask your question...",
-    
-    // Accès
     access_title: "Arrival",
     address_label: "Address",
     floor_label: "Floor",
@@ -440,13 +351,9 @@ const translations: Record<string, Record<string, string>> = {
     building_door: "The building door is always open",
     no_elevator: "No elevator (3rd floor)",
     open_maps: "Open in Maps",
-    
-    // WiFi
     wifi_title: "WiFi",
     network_label: "Network",
     password_label: "Password",
-    
-    // Cuisine
     kitchen_title: "Kitchen Equipment",
     induction_title: "Induction Hob",
     induction_desc: "Bosch brand. Press On/Off, select the plate, then +/-.",
@@ -458,8 +365,6 @@ const translations: Record<string, Record<string, string>> = {
     trash_green: "Green: Glass",
     trash_gray: "Gray: Other waste",
     trash_location: "Bins across from the building",
-    
-    // Salon
     living_title: "Living Room & Comfort",
     heating_title: "Heating",
     heating_desc: "To activate the radiators, set the fuse (red circle) to the high position on the meter.",
@@ -469,39 +374,27 @@ const translations: Record<string, Record<string, string>> = {
     fan_desc: "First turn on the wall switch on the left, then use the Sulion remote (speed 1-6).",
     tv_title: "Smart TV",
     tv_desc: "Xiaomi interface with Netflix, Prime Video and YouTube pre-installed.",
-    
-    // Salle de bain
     bathroom_title: "Bathroom & Laundry",
     washing_title: "Washing Machine",
     washing_desc: "Located in the laundry room after the kitchen. Detergent in the dresser drawer.",
     bathroom_heater_title: "Space Heater - Bathroom",
-    
-    // Famille
     family_title: "For Children",
     toys_title: "Games & Books",
     toys_desc: "A selection is available in the living room closet.",
     playground_title: "Playground",
     playground_desc: "Located 100m to the left when leaving the building.",
-    
-    // Explorer
     explorer_title: "Visits & Restaurants",
     my_favorites: "My Favorite Restaurants",
     must_see: "Must See",
-    
-    // Restaurants
     atipico_desc: "Breakfast under the orange trees, tomato toast.",
     atipico_addr: "Ground floor of the building",
     diamantes_desc: "The best fish tapas. Go early!",
     diamantes_addr: "Plaza Nueva",
     torquato_desc: "Terrace in the Albaicin, fried fish.",
     torquato_addr: "Calle Pagés",
-    
-    // Monuments
     alhambra_desc: "Book your tickets weeks in advance!",
     mirador_desc: "The most beautiful view of the Alhambra at sunset.",
     hammam_desc: "Traditional Arab baths to relax.",
-    
-    // Transport
     transport_title: "Transportation",
     taxi_title: "Taxis",
     taxi_desc: "Station 4 min walk (Calle San Juan de Dios).",
@@ -509,12 +402,9 @@ const translations: Record<string, Record<string, string>> = {
     bus_desc: "\"Triunfo\" stop 5 min walk. Lines to the center and Alhambra.",
     airport_title: "Airport",
     airport_desc: "Shuttle Line 245, \"Constitución\" stop. €3.10.",
-    
-    // Map / Adresses
     map_title: "Marie's Addresses",
     map_intro: "Discover all my favorites on my personalized map!",
     open_map: "Open the map",
-    shops_title: "Shops & Addresses",
     alsur_desc: "Gourmet grocery, artisan bread, local wines and cheeses.",
     alsur_addr: "200m from the apartment",
     horno_desc: "Excellent traditional bakery.",
@@ -523,8 +413,6 @@ const translations: Record<string, Record<string, string>> = {
     teteria_addr: "Acera de la Merced, 4",
     mercadona_desc: "Large supermarket (closed on Sundays).",
     mercadona_addr: "Calle Ancha de Capuchinos, 15",
-    
-    // Checkout
     emergencies_title: "Emergencies",
     general_emergency: "General",
     medical_center: "Medical Center",
@@ -534,9 +422,7 @@ const translations: Record<string, Record<string, string>> = {
     checkout_lights: "Turn off all lights and heating",
     checkout_trash: "Throw garbage in the bins across the street",
   },
-  
   es: {
-    // Navigation & Headers
     welcome: "Bienvenido a Granada",
     subtitle: "Un remanso de paz en el corazón del Albayzín",
     assistant: "MariIA",
@@ -552,8 +438,6 @@ const translations: Record<string, Record<string, string>> = {
     checkout: "Salida",
     contact: "Contacto",
     map: "Mapa",
-    
-    // Descriptions menu
     access_desc: "Códigos y acceso",
     wifi_desc: "Conexión",
     kitchen_desc: "Equipamiento",
@@ -564,17 +448,11 @@ const translations: Record<string, Record<string, string>> = {
     transport_desc: "Moverse",
     checkout_desc: "Urgencias",
     map_desc: "Interactivo",
-    
-    // Explorer page
     open_mymaps: "Abrir mi mapa interactivo",
     shops_title: "Comercios y Compras",
-    
-    // Chatbot
     welcome_bot: "🌸 ¡Hola! Soy MariIA, tu asistente virtual.\n\nMarie, tu anfitriona, vive en Granada desde hace 25 años. Me ha transmitido todos sus consejos y direcciones favoritas para que disfrutes de la mejor estancia.\n\n💡 Soy una IA: mis respuestas pueden ser imprecisas a veces. En caso de duda, ¡contacta a Marie!",
     contact_marie: "Contactar a Marie",
     ask_question: "Haz tu pregunta...",
-    
-    // Accès
     access_title: "Llegada",
     address_label: "Dirección",
     floor_label: "Planta",
@@ -583,13 +461,9 @@ const translations: Record<string, Record<string, string>> = {
     building_door: "La puerta del edificio siempre está abierta",
     no_elevator: "Sin ascensor (3ª planta)",
     open_maps: "Abrir en Maps",
-    
-    // WiFi
     wifi_title: "WiFi",
     network_label: "Red",
     password_label: "Contraseña",
-    
-    // Cuisine
     kitchen_title: "Equipamiento de Cocina",
     induction_title: "Placa de Inducción",
     induction_desc: "Marca Bosch. Pulsa On/Off, selecciona la placa, luego +/-.",
@@ -601,8 +475,6 @@ const translations: Record<string, Record<string, string>> = {
     trash_green: "Verde: Vidrio",
     trash_gray: "Gris: Resto",
     trash_location: "Contenedores frente al edificio",
-    
-    // Salon
     living_title: "Salón y Confort",
     heating_title: "Calefacción",
     heating_desc: "Para activar los radiadores, pon el fusible (círculo rojo) en posición alta en el contador.",
@@ -612,39 +484,27 @@ const translations: Record<string, Record<string, string>> = {
     fan_desc: "Primero enciende el interruptor de pared a la izquierda, luego usa el mando Sulion (velocidad 1-6).",
     tv_title: "Smart TV",
     tv_desc: "Interfaz Xiaomi con Netflix, Prime Video y YouTube preinstalados.",
-    
-    // Salle de bain
     bathroom_title: "Baño y Lavandería",
     washing_title: "Lavadora",
     washing_desc: "Situada en el lavadero después de la cocina. Detergente en el cajón de la cómoda.",
     bathroom_heater_title: "Calefactor - Baño",
-    
-    // Famille
     family_title: "Para los niños",
     toys_title: "Juegos y Libros",
     toys_desc: "Una selección está disponible en el armario del salón.",
     playground_title: "Parque infantil",
     playground_desc: "Situado a 100m a la izquierda al salir del edificio.",
-    
-    // Explorer
     explorer_title: "Visitas y Restaurantes",
     my_favorites: "Mis Restaurantes Favoritos",
     must_see: "Imprescindibles",
-    
-    // Restaurants
     atipico_desc: "Desayuno bajo los naranjos, tostadas de tomate.",
     atipico_addr: "Planta baja del edificio",
     diamantes_desc: "Las mejores tapas de pescado. ¡Ve temprano!",
     diamantes_addr: "Plaza Nueva",
     torquato_desc: "Terraza en el Albaicín, pescado frito.",
     torquato_addr: "Calle Pagés",
-    
-    // Monuments
     alhambra_desc: "¡Reserva tus entradas con semanas de antelación!",
     mirador_desc: "La vista más bonita de la Alhambra al atardecer.",
     hammam_desc: "Baños árabes tradicionales para relajarse.",
-    
-    // Transport
     transport_title: "Transportes",
     taxi_title: "Taxis",
     taxi_desc: "Parada a 4 min a pie (Calle San Juan de Dios).",
@@ -652,12 +512,9 @@ const translations: Record<string, Record<string, string>> = {
     bus_desc: "Parada \"Triunfo\" a 5 min a pie. Líneas al centro y la Alhambra.",
     airport_title: "Aeropuerto",
     airport_desc: "Lanzadera Línea 245, parada \"Constitución\". 3,10€.",
-    
-    // Map / Adresses
     map_title: "Direcciones de Marie",
     map_intro: "¡Descubre todos mis favoritos en mi mapa personalizado!",
     open_map: "Abrir el mapa",
-    shops_title: "Comercios y Direcciones",
     alsur_desc: "Tienda gourmet, pan artesanal, vinos y quesos locales.",
     alsur_addr: "200m del apartamento",
     horno_desc: "Excelente panadería tradicional.",
@@ -666,8 +523,6 @@ const translations: Record<string, Record<string, string>> = {
     teteria_addr: "Acera de la Merced, 4",
     mercadona_desc: "Gran supermercado (cerrado los domingos).",
     mercadona_addr: "Calle Ancha de Capuchinos, 15",
-    
-    // Checkout
     emergencies_title: "Urgencias",
     general_emergency: "General",
     medical_center: "Centro Médico",
@@ -679,13 +534,13 @@ const translations: Record<string, Record<string, string>> = {
   }
 };
 
-// Suggestions par langue - MODIFIEZ ICI pour ajouter/enlever des suggestions
+// Suggestions par langue (sans paella, avec plages)
 const allSuggestions: Record<string, string[]> = {
   fr: [
     "Code WiFi ?", "Comment entrer ?", "Où manger ce soir ?", "Un resto végétarien ?", "Tapas gratuites ?",
     "Où boire un thé ?", "Hammam ?", "Où faire les courses ?", "Du bon pain ?",
     "Comment marche la clim ?", "Comment marche le chauffage ?", "Changer le gaz ?", "Visiter l'Alhambra ?",
-    "Coucher de soleil ?", "Spectacle flamenco ?", "Se détendre ?", "Plages proches ?",
+    "Coucher de soleil ?", "Spectacle flamenco ?", "Se détendre ?", "Où se baigner ?",
     "Activités enfants ?", "Parc pour enfants ?", "Prendre un taxi ?", "Navette aéroport ?",
     "Sierra Nevada ?", "Urgences ?", "Heure checkout ?"
   ],
@@ -693,7 +548,7 @@ const allSuggestions: Record<string, string[]> = {
     "WiFi code?", "How to enter?", "Where to eat tonight?", "Vegetarian restaurant?", "Free tapas?",
     "Where to drink tea?", "Hammam?", "Where to shop?", "Good bread?",
     "How does AC work?", "How does heating work?", "Change gas bottle?", "Visit Alhambra?",
-    "Sunset spot?", "Flamenco show?", "Relax activity?", "Nearby beaches?",
+    "Sunset spot?", "Flamenco show?", "Relax activity?", "Where to swim?",
     "Kids activities?", "Playground?", "Get a taxi?", "Airport shuttle?",
     "Sierra Nevada?", "Emergencies?", "Checkout time?"
   ],
@@ -701,7 +556,7 @@ const allSuggestions: Record<string, string[]> = {
     "¿Código WiFi?", "¿Cómo entrar?", "¿Dónde cenar?", "¿Restaurante vegetariano?", "¿Tapas gratis?",
     "¿Dónde tomar té?", "¿Hammam?", "¿Dónde comprar?", "¿Buen pan?",
     "¿Cómo funciona el aire?", "¿Cómo funciona la calefacción?", "¿Cambiar gas?", "¿Visitar Alhambra?",
-    "¿Atardecer?", "¿Flamenco?", "¿Relajarse?", "¿Playas cercanas?",
+    "¿Atardecer?", "¿Flamenco?", "¿Relajarse?", "¿Dónde bañarse?",
     "¿Actividades niños?", "¿Parque infantil?", "¿Taxi?", "¿Bus aeropuerto?",
     "¿Sierra Nevada?", "¿Urgencias?", "¿Hora checkout?"
   ]
@@ -839,12 +694,8 @@ const HomePage = ({
           }}
         />
       </div>
-      <h1 className="text-2xl font-bold text-amber-800">
-        {t('welcome')}
-      </h1>
-      <p className="text-gray-600 mt-1 text-sm px-4">
-        {t('subtitle')}
-      </p>
+      <h1 className="text-2xl font-bold text-amber-800">{t('welcome')}</h1>
+      <p className="text-gray-600 mt-1 text-sm px-4">{t('subtitle')}</p>
     </div>
 
     <Card
@@ -857,9 +708,7 @@ const HomePage = ({
         </div>
         <div className="flex-1">
           <h3 className="font-semibold text-amber-800">{t('assistant')}</h3>
-          <p className="text-sm text-gray-600">
-            {t('assistant_subtitle')}
-          </p>
+          <p className="text-sm text-gray-600">{t('assistant_subtitle')}</p>
         </div>
         <SparklesIcon className="w-5 h-5 text-amber-500" />
       </div>
@@ -891,7 +740,6 @@ const HomePage = ({
         );
       })}
       
-      {/* Bouton Carte - ouvre directement MyMaps */}
       <a
         href={MYMAPS_URL}
         target="_blank"
@@ -933,10 +781,7 @@ interface Message {
 
 const AssistantPage = ({ language, t }: { language: string; t: (key: string) => string }) => {
   const [messages, setMessages] = useState<Message[]>([
-    {
-      role: "assistant",
-      content: t('welcome_bot'),
-    },
+    { role: "assistant", content: t('welcome_bot') },
   ]);
   const [suggestions, setSuggestions] = useState(() => getRandomSuggestions(5, language));
   const [input, setInput] = useState("");
@@ -951,29 +796,20 @@ const AssistantPage = ({ language, t }: { language: string; t: (key: string) => 
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
-  // Update welcome message when language changes
   useEffect(() => {
-    setMessages([{
-      role: "assistant",
-      content: t('welcome_bot'),
-    }]);
+    setMessages([{ role: "assistant", content: t('welcome_bot') }]);
   }, [language]);
 
-  const logConversation = async (question: string, answer: string, lang: string) => {
-    console.log("Logging conversation:", { question, answer, lang });
+  const logConversation = (question: string, answer: string, lang: string) => {
     try {
-      await fetch('https://script.google.com/macros/s/AKfycbz7XtNUY-RA8H2EG3vEZY_rPZoVNs7Ze7HCMNxt3tGCTNwdm547QpYwSbC_7NMnh40E/exec', {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ 
-          question, 
-          answer, 
-          language: lang,
-          timestamp: new Date().toISOString()
-        })
+      const params = new URLSearchParams({
+        question: question.substring(0, 500),
+        answer: answer.substring(0, 1000),
+        language: lang,
+        timestamp: new Date().toISOString()
       });
-      console.log("Log request sent (no-cors mode)");
+      const img = new Image();
+      img.src = `https://script.google.com/macros/s/AKfycbz7XtNUY-RA8H2EG3vEZY_rPZoVNs7Ze7HCMNxt3tGCTNwdm547QpYwSbC_7NMnh40E/exec?${params.toString()}`;
     } catch (error) {
       console.error('Logging failed:', error);
     }
@@ -995,18 +831,16 @@ const AssistantPage = ({ language, t }: { language: string; t: (key: string) => 
     es: '🎬 Aquí tienes el video explicativo para cambiar la botella de gas:'
   };
 
-  // NOUVEAU: Mots-clés baignade
   const baignadeKeywords: Record<string, string[]> = {
-    fr: ['baigner', 'baignade', 'piscine', 'plage', 'nager', 'rivière', 'mer'],
+    fr: ['baigner', 'baignade', 'piscine', 'plage', 'nager', 'rivière', 'mer', 'nage'],
     en: ['swim', 'swimming', 'pool', 'beach', 'river', 'sea'],
     es: ['bañar', 'bañarse', 'piscina', 'playa', 'nadar', 'río', 'mar']
   };
 
-  // NOUVEAU: Réponses baignade
   const baignadeResponse: Record<string, string> = {
-    fr: "🏊 Pour se baigner près de Grenade :\n\n• **Rivière gratuite** : au bout du Paseo de los Tristes, sous le pont\n• **Piscines été** : restaurants JR et EL GUERRA\n• **Plages (45min)** : Almuñécar, Salobreña, La Herradura",
-    en: "🏊 For swimming near Granada:\n\n• **Free river** : end of Paseo de los Tristes, under the bridge\n• **Summer pools** : JR and EL GUERRA restaurants\n• **Beaches (45min)** : Almuñécar, Salobreña, La Herradura",
-    es: "🏊 Para bañarse cerca de Granada:\n\n• **Río gratis** : al final del Paseo de los Tristes, bajo el puente\n• **Piscinas verano** : restaurantes JR y EL GUERRA\n• **Playas (45min)** : Almuñécar, Salobreña, La Herradura"
+    fr: "🏊 Pour se baigner près de Grenade :\n\n• Rivière gratuite au bout du Paseo de los Tristes (sous le pont)\n• Piscines été aux restos JR et EL GUERRA\n• Plages à 45min : Almuñécar, Salobreña, La Herradura",
+    en: "🏊 For swimming near Granada:\n\n• Free river at the end of Paseo de los Tristes (under the bridge)\n• Summer pools at JR and EL GUERRA restaurants\n• Beaches 45min away: Almuñécar, Salobreña, La Herradura",
+    es: "🏊 Para bañarse cerca de Granada:\n\n• Río gratis al final del Paseo de los Tristes (bajo el puente)\n• Piscinas verano en restaurantes JR y EL GUERRA\n• Playas a 45min: Almuñécar, Salobreña, La Herradura"
   };
 
   const sendMessage = async (overrideMessage?: string) => {
@@ -1019,62 +853,38 @@ const AssistantPage = ({ language, t }: { language: string; t: (key: string) => 
 
     const lowerMessage = userMessage.toLowerCase();
 
-    // Check for gas-related questions
+    // Check gaz
     const gasKw = gasKeywords[language] || gasKeywords.fr;
-    const isGasQuestion = gasKw.some(kw => lowerMessage.includes(kw));
-
-    if (isGasQuestion) {
-      const assistantResponse = gasResponse[language] || gasResponse.fr;
-      setMessages(prev => [...prev, { 
-        role: 'assistant', 
-        content: assistantResponse,
-        hasVideo: true,
-        videoUrl: 'https://www.youtube.com/embed/0tTqNYdg21E'
-      }]);
-      logConversation(userMessage, assistantResponse, language);
+    if (gasKw.some(kw => lowerMessage.includes(kw))) {
+      const resp = gasResponse[language] || gasResponse.fr;
+      setMessages(prev => [...prev, { role: 'assistant', content: resp, hasVideo: true, videoUrl: 'https://www.youtube.com/embed/0tTqNYdg21E' }]);
+      logConversation(userMessage, resp, language);
       setIsLoading(false);
       return;
     }
 
-    // NOUVEAU: Check for baignade-related questions
+    // Check baignade
     const baignadeKw = baignadeKeywords[language] || baignadeKeywords.fr;
-    const isBaignadeQuestion = baignadeKw.some(kw => lowerMessage.includes(kw));
-
-    if (isBaignadeQuestion) {
-      const assistantResponse = baignadeResponse[language] || baignadeResponse.fr;
-      setMessages(prev => [...prev, { 
-        role: 'assistant', 
-        content: assistantResponse
-      }]);
-      logConversation(userMessage, assistantResponse, language);
+    if (baignadeKw.some(kw => lowerMessage.includes(kw))) {
+      const resp = baignadeResponse[language] || baignadeResponse.fr;
+      setMessages(prev => [...prev, { role: 'assistant', content: resp }]);
+      logConversation(userMessage, resp, language);
       setIsLoading(false);
       return;
     }
 
-    // Sinon, appel à l'API
+    // Sinon API
     try {
       const response = await fetch("/api/chat", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ 
-          message: userMessage,
-          history: messages.slice(1),
-          language: language
-        }),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: userMessage, history: messages.slice(1), language }),
       });
 
       if (response.ok) {
         const data = await response.json();
-        const assistantResponse = data.content;
-        setMessages((prev) => [
-          ...prev,
-          { role: "assistant", content: assistantResponse },
-        ]);
-        logConversation(userMessage, assistantResponse, language);
-        setIsLoading(false);
-        return;
+        setMessages((prev) => [...prev, { role: "assistant", content: data.content }]);
+        logConversation(userMessage, data.content, language);
       }
     } catch (error) {
       console.error("Chat error:", error);
@@ -1108,13 +918,7 @@ const AssistantPage = ({ language, t }: { language: string; t: (key: string) => 
           );
         }
         return (
-          <a
-            key={i}
-            href={part}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-amber-600 underline hover:text-amber-800 break-all"
-          >
+          <a key={i} href={part} target="_blank" rel="noopener noreferrer" className="text-amber-600 underline hover:text-amber-800 break-all">
             {part}
           </a>
         );
@@ -1123,53 +927,23 @@ const AssistantPage = ({ language, t }: { language: string; t: (key: string) => 
     });
   };
 
-  // Fonction pour formater le texte avec **bold**
-  const formatText = (text: string) => {
-    const parts = text.split(/(\*\*[^*]+\*\*)/g);
-    return parts.map((part, i) => {
-      if (part.startsWith('**') && part.endsWith('**')) {
-        return <strong key={i}>{part.slice(2, -2)}</strong>;
-      }
-      return renderMessageWithLinks(part);
-    });
-  };
-
   return (
     <div className="flex flex-col h-full bg-amber-50">
       <div className="flex-1 overflow-y-auto p-4 space-y-4">
         <div className="flex flex-col gap-3">
           {messages.map((msg, i) => (
-            <div
-              key={i}
-              className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
-            >
-              <div
-                className={`max-w-[85%] rounded-2xl px-4 py-2 text-sm ${
-                  msg.role === "user"
-                    ? "bg-amber-600 text-white rounded-tr-none"
-                    : "bg-white text-gray-800 border border-amber-100 rounded-tl-none"
-                }`}
-              >
-                <div className="whitespace-pre-wrap">{formatText(msg.content)}</div>
+            <div key={i} className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
+              <div className={`max-w-[85%] rounded-2xl px-4 py-2 text-sm ${msg.role === "user" ? "bg-amber-600 text-white rounded-tr-none" : "bg-white text-gray-800 border border-amber-100 rounded-tl-none"}`}>
+                <div className="whitespace-pre-wrap">{renderMessageWithLinks(msg.content)}</div>
                 {i === 0 && (
-                  <a
-                    href="https://wa.me/34661558334"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-3 inline-flex items-center gap-2 bg-green-500 text-white px-4 py-2 rounded-full font-medium hover:bg-green-600 transition-colors"
-                  >
+                  <a href="https://wa.me/34661558334" target="_blank" rel="noopener noreferrer" className="mt-3 inline-flex items-center gap-2 bg-green-500 text-white px-4 py-2 rounded-full font-medium hover:bg-green-600 transition-colors">
                     <MessageCircleIcon className="w-4 h-4" />
                     {t('contact_marie')}
                   </a>
                 )}
                 {msg.hasVideo && msg.videoUrl && (
                   <div className="mt-3 aspect-video rounded-lg overflow-hidden border border-amber-100">
-                    <iframe
-                      src={msg.videoUrl}
-                      className="w-full h-full"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                    ></iframe>
+                    <iframe src={msg.videoUrl} className="w-full h-full" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                   </div>
                 )}
               </div>
@@ -1193,23 +967,13 @@ const AssistantPage = ({ language, t }: { language: string; t: (key: string) => 
       <div className="p-4 bg-white border-t border-amber-100">
         <div className="flex flex-wrap gap-2 mb-4">
           {suggestions.map((s) => (
-            <button
-              key={s}
-              onClick={() => sendMessage(s)}
-              className="text-xs bg-amber-100 text-amber-800 px-3 py-1.5 rounded-full hover:bg-amber-200 transition-colors"
-            >
+            <button key={s} onClick={() => sendMessage(s)} className="text-xs bg-amber-100 text-amber-800 px-3 py-1.5 rounded-full hover:bg-amber-200 transition-colors">
               {s}
             </button>
           ))}
         </div>
 
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            sendMessage();
-          }}
-          className="flex gap-2"
-        >
+        <form onSubmit={(e) => { e.preventDefault(); sendMessage(); }} className="flex gap-2">
           <input
             type="text"
             value={input}
@@ -1217,11 +981,7 @@ const AssistantPage = ({ language, t }: { language: string; t: (key: string) => 
             placeholder={t('ask_question')}
             className="flex-1 bg-amber-50 border-none rounded-full px-4 py-2 text-sm focus:ring-2 focus:ring-amber-400 outline-none"
           />
-          <button
-            type="submit"
-            disabled={isLoading || !input.trim()}
-            className="p-2 bg-amber-600 text-white rounded-full disabled:opacity-50 hover:bg-amber-700 transition-colors"
-          >
+          <button type="submit" disabled={isLoading || !input.trim()} className="p-2 bg-amber-600 text-white rounded-full disabled:opacity-50 hover:bg-amber-700 transition-colors">
             <SendIcon className="w-5 h-5" />
           </button>
         </form>
@@ -1231,7 +991,7 @@ const AssistantPage = ({ language, t }: { language: string; t: (key: string) => 
 };
 
 // ============================================
-// MAIN APP COMPONENT
+// MAIN APP
 // ============================================
 export default function App() {
   const [view, setView] = useState("home");
@@ -1258,16 +1018,11 @@ export default function App() {
         <header className="bg-white border-b border-amber-100 p-4 pt-8 flex items-center justify-between sticky top-0 z-10">
           <div className="flex items-center gap-2">
             {view !== "home" && (
-              <button
-                onClick={() => setView("home")}
-                className="p-1 rounded-full hover:bg-amber-50"
-              >
+              <button onClick={() => setView("home")} className="p-1 rounded-full hover:bg-amber-50">
                 <HomeIcon className="w-5 h-5 text-amber-800" />
               </button>
             )}
-            <h2 className="font-bold text-amber-900">
-              {view === "home" ? t('welcome') : t(view)}
-            </h2>
+            <h2 className="font-bold text-amber-900">{view === "home" ? t('welcome') : t(view)}</h2>
           </div>
           <div className="flex items-center gap-2">
             <div className="flex bg-amber-50 rounded-lg p-1 border border-amber-100">
@@ -1275,11 +1030,7 @@ export default function App() {
                 <button
                   key={lang}
                   onClick={() => setLanguage(lang)}
-                  className={`px-2 py-1 text-[10px] font-bold rounded uppercase transition-colors ${
-                    language === lang
-                      ? "bg-amber-600 text-white"
-                      : "text-amber-800 hover:bg-amber-100"
-                  }`}
+                  className={`px-2 py-1 text-[10px] font-bold rounded uppercase transition-colors ${language === lang ? "bg-amber-600 text-white" : "text-amber-800 hover:bg-amber-100"}`}
                 >
                   {lang}
                 </button>
@@ -1294,23 +1045,17 @@ export default function App() {
           {view === "assistant" && <AssistantPage language={language} t={t} />}
           
           {view === "access" && (
-            <div className="p-4 space-y-4 animate-in fade-in slide-in-from-bottom-2">
+            <div className="p-4 space-y-4">
               <Card>
                 <SectionTitle>{t('access_title')}</SectionTitle>
-                <BulletList
-                  items={[
-                    `${t('address_label')} : ${ADDRESS.street}`,
-                    ADDRESS.floor[language as keyof typeof ADDRESS.floor] || ADDRESS.floor.fr,
-                    `${t('keycode_label')} : ${ADDRESS.keyCode} (${t('keycode_location')})`,
-                    t('building_door'),
-                    t('no_elevator'),
-                  ]}
-                />
-                <Photo
-                  src={PHOTOS.boite_cles}
-                  alt="Key box"
-                  className="mt-4"
-                />
+                <BulletList items={[
+                  `${t('address_label')} : ${ADDRESS.street}`,
+                  ADDRESS.floor[language as keyof typeof ADDRESS.floor] || ADDRESS.floor.fr,
+                  `${t('keycode_label')} : ${ADDRESS.keyCode} (${t('keycode_location')})`,
+                  t('building_door'),
+                  t('no_elevator'),
+                ]} />
+                <Photo src={PHOTOS.boite_cles} alt="Key box" className="mt-4" />
               </Card>
             </div>
           )}
@@ -1321,32 +1066,20 @@ export default function App() {
                 <SectionTitle>{t('wifi_title')}</SectionTitle>
                 <div className="space-y-4">
                   <div>
-                    <p className="text-xs text-gray-500 uppercase font-semibold">
-                      {t('network_label')}
-                    </p>
+                    <p className="text-xs text-gray-500 uppercase font-semibold">{t('network_label')}</p>
                     <div className="flex items-center justify-between">
-                      <p className="text-lg font-mono text-amber-900">
-                        {WIFI_INFO.network}
-                      </p>
+                      <p className="text-lg font-mono text-amber-900">{WIFI_INFO.network}</p>
                       <CopyButton text={WIFI_INFO.network} />
                     </div>
                   </div>
                   <div>
-                    <p className="text-xs text-gray-500 uppercase font-semibold">
-                      {t('password_label')}
-                    </p>
+                    <p className="text-xs text-gray-500 uppercase font-semibold">{t('password_label')}</p>
                     <div className="flex items-center justify-between">
-                      <p className="text-lg font-mono text-amber-900">
-                        {WIFI_INFO.password}
-                      </p>
+                      <p className="text-lg font-mono text-amber-900">{WIFI_INFO.password}</p>
                       <CopyButton text={WIFI_INFO.password} />
                     </div>
                   </div>
-                  <Photo
-                    src={PHOTOS.wifi_qr}
-                    alt="WiFi QR Code"
-                    className="mt-2"
-                  />
+                  <Photo src={PHOTOS.wifi_qr} alt="WiFi QR Code" className="mt-2" />
                 </div>
               </Card>
             </div>
@@ -1361,33 +1094,21 @@ export default function App() {
                     <h4 className="flex items-center gap-2 font-medium text-amber-800 mb-2">
                       <FlameIcon className="w-4 h-4" /> {t('induction_title')}
                     </h4>
-                    <p className="text-sm text-gray-600 mb-3">
-                      {t('induction_desc')}
-                    </p>
+                    <p className="text-sm text-gray-600 mb-3">{t('induction_desc')}</p>
                     <Photo src={PHOTOS.plaques} alt="Induction hob" />
                   </div>
                   <div>
                     <h4 className="flex items-center gap-2 font-medium text-amber-800 mb-2">
                       <UtensilsIcon className="w-4 h-4" /> {t('nespresso_title')}
                     </h4>
-                    <p className="text-sm text-gray-600 mb-3">
-                      {t('nespresso_desc')}
-                    </p>
+                    <p className="text-sm text-gray-600 mb-3">{t('nespresso_desc')}</p>
                     <Photo src={PHOTOS.nespresso} alt="Nespresso" />
                   </div>
                   <div>
                     <h4 className="flex items-center gap-2 font-medium text-amber-800 mb-2">
                       <RecycleIcon className="w-4 h-4" /> {t('trash_title')}
                     </h4>
-                    <BulletList
-                      items={[
-                        t('trash_blue'),
-                        t('trash_yellow'),
-                        t('trash_green'),
-                        t('trash_gray'),
-                        t('trash_location'),
-                      ]}
-                    />
+                    <BulletList items={[t('trash_blue'), t('trash_yellow'), t('trash_green'), t('trash_gray'), t('trash_location')]} />
                   </div>
                 </div>
               </Card>
@@ -1403,35 +1124,27 @@ export default function App() {
                     <h4 className="flex items-center gap-2 font-medium text-amber-800 mb-2">
                       <ThermometerIcon className="w-4 h-4" /> {t('heating_title')}
                     </h4>
-                    <p className="text-sm text-gray-600 mb-3">
-                      {t('heating_desc')}
-                    </p>
+                    <p className="text-sm text-gray-600 mb-3">{t('heating_desc')}</p>
                     <Photo src={PHOTOS.compteur} alt="Meter" />
                   </div>
                   <div>
                     <h4 className="flex items-center gap-2 font-medium text-amber-800 mb-2">
                       <SnowflakeIcon className="w-4 h-4" /> {t('ac_title')}
                     </h4>
-                    <p className="text-sm text-gray-600 mb-3">
-                      {t('ac_desc')}
-                    </p>
+                    <p className="text-sm text-gray-600 mb-3">{t('ac_desc')}</p>
                     <Photo src={PHOTOS.telecommande_clim} alt="AC Remote" />
                   </div>
                   <div>
                     <h4 className="flex items-center gap-2 font-medium text-amber-800 mb-2">
                       <FanIcon className="w-4 h-4" /> {t('fan_title')}
                     </h4>
-                    <p className="text-sm text-gray-600 mb-3">
-                      {t('fan_desc')}
-                    </p>
+                    <p className="text-sm text-gray-600 mb-3">{t('fan_desc')}</p>
                   </div>
                   <div>
                     <h4 className="flex items-center gap-2 font-medium text-amber-800 mb-2">
                       <TvIcon className="w-4 h-4" /> {t('tv_title')}
                     </h4>
-                    <p className="text-sm text-gray-600">
-                      {t('tv_desc')}
-                    </p>
+                    <p className="text-sm text-gray-600">{t('tv_desc')}</p>
                   </div>
                 </div>
               </Card>
@@ -1444,18 +1157,12 @@ export default function App() {
                 <SectionTitle>{t('bathroom_title')}</SectionTitle>
                 <div className="space-y-6">
                   <div>
-                    <h4 className="font-medium text-amber-800 mb-2">
-                      {t('washing_title')}
-                    </h4>
-                    <p className="text-sm text-gray-600 mb-3">
-                      {t('washing_desc')}
-                    </p>
+                    <h4 className="font-medium text-amber-800 mb-2">{t('washing_title')}</h4>
+                    <p className="text-sm text-gray-600 mb-3">{t('washing_desc')}</p>
                     <Photo src={PHOTOS.lave_linge} alt="Washing machine" />
                   </div>
                   <div>
-                    <h4 className="font-medium text-amber-800 mb-2">
-                      {t('bathroom_heater_title')}
-                    </h4>
+                    <h4 className="font-medium text-amber-800 mb-2">{t('bathroom_heater_title')}</h4>
                     <Photo src={PHOTOS.chauffage_appoint} alt="Space heater" />
                   </div>
                 </div>
@@ -1469,21 +1176,13 @@ export default function App() {
                 <SectionTitle>{t('family_title')}</SectionTitle>
                 <div className="space-y-6">
                   <div>
-                    <h4 className="font-medium text-amber-800 mb-2">
-                      {t('toys_title')}
-                    </h4>
-                    <p className="text-sm text-gray-600 mb-3">
-                      {t('toys_desc')}
-                    </p>
+                    <h4 className="font-medium text-amber-800 mb-2">{t('toys_title')}</h4>
+                    <p className="text-sm text-gray-600 mb-3">{t('toys_desc')}</p>
                     <Photo src={PHOTOS.jeux_enfants} alt="Games" />
                   </div>
                   <div>
-                    <h4 className="font-medium text-amber-800 mb-2">
-                      {t('playground_title')}
-                    </h4>
-                    <p className="text-sm text-gray-600 mb-3">
-                      {t('playground_desc')}
-                    </p>
+                    <h4 className="font-medium text-amber-800 mb-2">{t('playground_title')}</h4>
+                    <p className="text-sm text-gray-600 mb-3">{t('playground_desc')}</p>
                     <Photo src={PHOTOS.parc} alt="Playground" />
                   </div>
                 </div>
@@ -1493,13 +1192,7 @@ export default function App() {
           
           {view === "explorer" && (
             <div className="p-4 space-y-4">
-              {/* Bouton MyMaps en haut */}
-              <a
-                href={MYMAPS_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 w-full bg-gradient-to-r from-amber-500 to-orange-500 text-white px-4 py-3 rounded-xl font-medium hover:from-amber-600 hover:to-orange-600 transition-all shadow-md"
-              >
+              <a href={MYMAPS_URL} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 w-full bg-gradient-to-r from-amber-500 to-orange-500 text-white px-4 py-3 rounded-xl font-medium hover:from-amber-600 hover:to-orange-600 transition-all shadow-md">
                 <ExternalLinkIcon className="w-5 h-5" />
                 {t('open_mymaps')}
               </a>
@@ -1507,64 +1200,21 @@ export default function App() {
               <Card>
                 <SectionTitle>{t('explorer_title')}</SectionTitle>
                 <div className="space-y-4">
-                  <h3 className="font-bold text-amber-900 border-l-4 border-amber-600 pl-2">
-                    {t('my_favorites')}
-                  </h3>
-                  <PlaceCard
-                    name="ATIPICO"
-                    description={t('atipico_desc')}
-                    address={t('atipico_addr')}
-                  />
-                  <PlaceCard
-                    name="Los Diamantes"
-                    description={t('diamantes_desc')}
-                    address={t('diamantes_addr')}
-                  />
-                  <PlaceCard
-                    name="Torquato"
-                    description={t('torquato_desc')}
-                    address={t('torquato_addr')}
-                  />
+                  <h3 className="font-bold text-amber-900 border-l-4 border-amber-600 pl-2">{t('my_favorites')}</h3>
+                  <PlaceCard name="ATIPICO" description={t('atipico_desc')} address={t('atipico_addr')} />
+                  <PlaceCard name="Los Diamantes" description={t('diamantes_desc')} address={t('diamantes_addr')} />
+                  <PlaceCard name="Torquato" description={t('torquato_desc')} address={t('torquato_addr')} />
 
-                  <h3 className="font-bold text-amber-900 border-l-4 border-amber-600 pl-2 mt-6">
-                    {t('must_see')}
-                  </h3>
-                  <PlaceCard
-                    name="L'Alhambra"
-                    description={t('alhambra_desc')}
-                  />
-                  <PlaceCard
-                    name="Mirador San Nicolás"
-                    description={t('mirador_desc')}
-                  />
-                  <PlaceCard
-                    name="Hammam Al Ándalus"
-                    description={t('hammam_desc')}
-                  />
+                  <h3 className="font-bold text-amber-900 border-l-4 border-amber-600 pl-2 mt-6">{t('must_see')}</h3>
+                  <PlaceCard name="L'Alhambra" description={t('alhambra_desc')} />
+                  <PlaceCard name="Mirador San Nicolás" description={t('mirador_desc')} />
+                  <PlaceCard name="Hammam Al Ándalus" description={t('hammam_desc')} />
                   
-                  <h3 className="font-bold text-amber-900 border-l-4 border-amber-600 pl-2 mt-6">
-                    {t('shops_title')}
-                  </h3>
-                  <PlaceCard
-                    name="AL SUR DE GRANADA"
-                    description={t('alsur_desc')}
-                    address={t('alsur_addr')}
-                  />
-                  <PlaceCard
-                    name="HORNO DEL PROGRESO"
-                    description={t('horno_desc')}
-                    address={t('horno_addr')}
-                  />
-                  <PlaceCard
-                    name="Tetería Oriente"
-                    description={t('teteria_desc')}
-                    address={t('teteria_addr')}
-                  />
-                  <PlaceCard
-                    name="Mercadona"
-                    description={t('mercadona_desc')}
-                    address={t('mercadona_addr')}
-                  />
+                  <h3 className="font-bold text-amber-900 border-l-4 border-amber-600 pl-2 mt-6">{t('shops_title')}</h3>
+                  <PlaceCard name="AL SUR DE GRANADA" description={t('alsur_desc')} address={t('alsur_addr')} />
+                  <PlaceCard name="HORNO DEL PROGRESO" description={t('horno_desc')} address={t('horno_addr')} />
+                  <PlaceCard name="Tetería Oriente" description={t('teteria_desc')} address={t('teteria_addr')} />
+                  <PlaceCard name="Mercadona" description={t('mercadona_desc')} address={t('mercadona_addr')} />
                 </div>
               </Card>
             </div>
@@ -1577,27 +1227,16 @@ export default function App() {
                 <div className="space-y-4">
                   <div className="p-3 bg-amber-50 rounded-lg">
                     <h4 className="font-bold text-amber-800 mb-1">{t('taxi_title')}</h4>
-                    <p className="text-sm text-gray-600">
-                      {t('taxi_desc')}
-                    </p>
-                    <a
-                      href="tel:+34958280654"
-                      className="text-amber-700 font-bold text-sm block mt-1"
-                    >
-                      📞 +34 958 28 06 54
-                    </a>
+                    <p className="text-sm text-gray-600">{t('taxi_desc')}</p>
+                    <a href="tel:+34958280654" className="text-amber-700 font-bold text-sm block mt-1">📞 +34 958 28 06 54</a>
                   </div>
                   <div className="p-3 bg-amber-50 rounded-lg">
                     <h4 className="font-bold text-amber-800 mb-1">{t('bus_title')}</h4>
-                    <p className="text-sm text-gray-600">
-                      {t('bus_desc')}
-                    </p>
+                    <p className="text-sm text-gray-600">{t('bus_desc')}</p>
                   </div>
                   <div className="p-3 bg-amber-50 rounded-lg">
                     <h4 className="font-bold text-amber-800 mb-1">{t('airport_title')}</h4>
-                    <p className="text-sm text-gray-600">
-                      {t('airport_desc')}
-                    </p>
+                    <p className="text-sm text-gray-600">{t('airport_desc')}</p>
                   </div>
                 </div>
               </Card>
@@ -1610,37 +1249,19 @@ export default function App() {
                 <SectionTitle>{t('emergencies_title')}</SectionTitle>
                 <div className="space-y-4">
                   <div>
-                    <p className="text-xs text-red-600 uppercase font-bold">
-                      {t('general_emergency')}
-                    </p>
+                    <p className="text-xs text-red-600 uppercase font-bold">{t('general_emergency')}</p>
                     <p className="text-2xl font-bold text-red-800">112</p>
                   </div>
                   <div>
-                    <p className="text-xs text-red-600 uppercase font-bold">
-                      {t('medical_center')}
-                    </p>
-                    <p className="text-sm text-red-800 font-medium">
-                      Gran Capitán, 10
-                    </p>
-                    <a
-                      href="tel:+34958022600"
-                      className="text-red-700 font-bold"
-                    >
-                      +34 958 022 600
-                    </a>
+                    <p className="text-xs text-red-600 uppercase font-bold">{t('medical_center')}</p>
+                    <p className="text-sm text-red-800 font-medium">Gran Capitán, 10</p>
+                    <a href="tel:+34958022600" className="text-red-700 font-bold">+34 958 022 600</a>
                   </div>
                 </div>
               </Card>
               <Card>
                 <SectionTitle>{t('checkout_title')}</SectionTitle>
-                <BulletList
-                  items={[
-                    t('checkout_time'),
-                    t('checkout_keys'),
-                    t('checkout_lights'),
-                    t('checkout_trash'),
-                  ]}
-                />
+                <BulletList items={[t('checkout_time'), t('checkout_keys'), t('checkout_lights'), t('checkout_trash')]} />
               </Card>
             </div>
           )}
