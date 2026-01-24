@@ -176,7 +176,7 @@ SI LA RÉPONSE N'EST PAS CI-DESSUS → "${fallbackMsg[lang]}"
         "anthropic-version": "2023-06-01",
       },
       body: JSON.stringify({
-        model: "claude-sonnet-4-20250514",
+   model: "claude-3-5-sonnet-20241022",
         max_tokens: 512,
         temperature: 0.1,
         system: systemPrompt,
