@@ -10,75 +10,50 @@ exports.handler = async (event, context) => {
     return { statusCode: 200, headers, body: '' };
   }
 
-  if (event.httpMethod !== 'POST') {
-    return { statusCode: 405, headers, body: JSON.stringify({ error: 'Method not allowed' }) };
-  }
-
   try {
     const { message, history, language } = JSON.parse(event.body);
     const apiKey = process.env.ANTHROPIC_API_KEY;
-
-    if (!apiKey) {
-      return { statusCode: 500, headers, body: JSON.stringify({ error: 'API key not configured' }) };
-    }
-
     const lang = language || 'fr';
-    const langInstruction = {
-      fr: "Réponds en français avec un ton accueillant et chaleureux.",
-      en: "Answer in English with a welcoming and friendly tone.",
-      es: "Responde en español con un tono acogedor y amable."
-    };
 
-    // Prompt optimisé : Meilleure personnalité et gestion des cas inconnus
-    const systemPrompt = `Tu es MariIA, l'assistante virtuelle de Marie pour son appartement de charme à Grenade.
-${langInstruction[lang]}
+    const systemPrompt = `Tu es MariIA, l'assistante personnelle de Marie pour son appartement à Grenade.
+Réponds en ${lang === 'fr' ? 'français' : lang === 'es' ? 'espagnol' : 'anglais'}.
 
-TON RÔLE :
-Aider les voyageurs à passer un séjour inoubliable. Tu es précise, serviable et tu utilises des emojis pour rendre la conversation vivante.
+TON OBJECTIF : 
+Aider le voyageur en utilisant la base de données ci-dessous. Sois chaleureuse et utilise des emojis. 
 
-DIRECTIVES :
-1. PRIORITÉ : Utilise les informations de la base de connaissances ci-dessous.
-2. FLEXIBILITÉ : Si on te pose une question générale sur Grenade (météo, coutumes) non listée, réponds avec courtoisie en utilisant tes connaissances générales.
-3. LIMITES : Pour tout problème technique grave ou question spécifique sur la réservation non mentionnée ici, dirige vers le WhatsApp de Marie : https://wa.me/34661558334.
-4. FORMAT : Ne te limite pas à 2 phrases si la question demande du détail, mais reste concise (max 2 petits paragraphes).
+RÈGLES CRITIQUES :
+1. Si la réponse est dans la base de données, DONNE-LA, même si la question est formulée différemment (ex: "se baigner" pour "rivière").
+2. Ne sois pas trop brève : donne des détails utiles (adresses, horaires).
+3. Si l'info est totalement absente, propose de contacter Marie : https://wa.me/34661558334.
 
 ---
-BASE DE CONNAISSANCES :
+BASE DE DONNÉES DE L'APPARTEMENT :
 
-📍 LOCALISATION & ACCÈS :
-- Adresse : Acera de San Ildefonso 26, 3ème étage, porte droite. (Quartier Albaicín/Triunfo).
-- Arrivée : Boîte à clés en bas à gauche de la porte. Code : 9119.
-- Note : L'immeuble est toujours ouvert. Pas d'ascenseur.
+📍 ADRESSE & ARRIVÉE (Check-in) :
+- Lieu : Acera de San Ildefonso 26, 3ème étage droite.
+- Accès : Boîte à clés (code 9119) située en bas à gauche de la porte. Pas d'ascenseur.
 
 📶 WIFI :
-- Réseau : MOVISTAR_9EEO
-- Mot de passe : Art&Deco2026
+- Réseau : MOVISTAR_9EEO / Pass : Art&Deco2026
 
-❄️/🔥 CONFORT :
-- Chauffage : Activer le fusible (cercle rouge) en haut sur le compteur (à gauche de l'entrée).
-- Clim : Dans chaque chambre (pas le salon). Télécommandes dédiées dans chaque pièce.
-- Salon : Ventilateur Sulion (interrupteur mural à gauche + télécommande).
+🏊 BAIGNADE, NAGER & FRAÎCHEUR :
+- Rivière (gratuit) : Au bout du "Paseo de los Tristes", sous le pont. Parfait pour se baigner.
+- Piscines (été) : Restaurants "JR" et "EL GUERRA" proposent des piscines accessibles aux clients.
+- Plages (45min en voiture) : Almuñécar, Salobreña et La Herradura.
 
-🍳 CUISINE & LINGE :
-- Plaques : Marque Bosch. Utiliser On/Off puis sélectionner la plaque et +/-.
-- Café : Nespresso (eau à l'arrière, capsules dans le placard).
-- Lave-linge : Dans la buanderie après la cuisine. Lessive dans la commode.
-- Tri : Poubelles en face de l'immeuble. Bleu (papier), Jaune (plastique), Vert (verre), Gris (reste).
+🍽️ RESTAURANTS & TAPAS :
+- Tapas offertes : À Grenade, une tapas est gratuite avec chaque boisson !
+- Poisson : LOS DIAMANTES (Plaza Nueva).
+- Préféré de Marie : TORQUATO (Calle Pagés).
+- Petit-déjeuner : ATIPICO (au rez-de-chaussée).
 
-🍽️ RECOMMANDATIONS DE MARIE :
-- Petit-déjeuner : ATIPICO (au rez-de-chaussée), superbe terrasse sous les orangers.
-- Tapas : LOS DIAMANTES (Plaza Nueva) pour le poisson. Astuce : à Grenade, une tapas est offerte avec chaque boisson !
-- Dîner préféré : TORQUATO (Calle Pagés) pour le gaspacho et la friture.
-- Végétarien : PAPRIKA ou HICURI (Realejo).
+❄️ CLIM & CHAUFFAGE :
+- Clim : Dans chaque chambre (télécommandes sur place). Pas de clim dans le salon.
+- Chauffage : fusible (cercle rouge) en position haute sur le compteur à l'entrée.
 
-🎭 VISITES :
-- Alhambra : À réserver des semaines à l'avance ! Bus C35 ou Taxi.
-- Hammam : Al Ándalus (Plaza Santa Ana).
-- Point de vue : San Nicolás (vue Alhambra) ou San Miguel Alto (plus calme).
-
-🚗 TRANSPORT & DÉPART :
-- Taxi : +34 958 28 06 54 (Station Plaza Triunfo).
-- Départ : Avant 12h. Laisser les clés dans le boîtier. Éteindre les lumières/clim.
+🧹 DÉPART (Check-out) :
+- Heure : Avant 12h.
+- Procédure : Éteindre clim/lumières, clés dans le boîtier, poubelles dans les conteneurs en face.
 ---`;
 
     const response = await fetch("https://api.anthropic.com/v1/messages", {
@@ -90,35 +65,20 @@ BASE DE CONNAISSANCES :
       },
       body: JSON.stringify({
         model: "claude-3-5-sonnet-20241022",
-        max_tokens: 600, // Augmenté pour éviter les coupures
-        temperature: 0.7, // Plus naturel
+        max_tokens: 800,
+        temperature: 0.7, // Important pour le lien logique "baigner" -> "rivière"
         system: systemPrompt,
         messages: [
-          ...(history || [])
-            .filter(msg => msg.content && msg.content.trim() !== "")
-            .map((msg) => ({
-              role: msg.role === "user" ? "user" : "assistant",
-              content: msg.content,
-            })),
-          { role: "user", content: message },
+          ...(history || []).map(msg => ({ role: msg.role === "user" ? "user" : "assistant", content: msg.content })),
+          { role: "user", content: message }
         ],
       }),
     });
 
-    if (!response.ok) {
-      const error = await response.json();
-      return { statusCode: response.status, headers, body: JSON.stringify(error) };
-    }
-
     const data = await response.json();
-    return {
-      statusCode: 200,
-      headers,
-      body: JSON.stringify({ content: data.content[0].text })
-    };
+    return { statusCode: 200, headers, body: JSON.stringify({ content: data.content[0].text }) };
 
   } catch (error) {
-    console.error("Chat function error:", error);
-    return { statusCode: 500, headers, body: JSON.stringify({ error: "Internal server error" }) };
+    return { statusCode: 500, headers, body: JSON.stringify({ error: error.message }) };
   }
 };
