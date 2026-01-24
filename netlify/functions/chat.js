@@ -143,10 +143,10 @@ FAMILLE:
 🍝 Restos: Muerde la Pasta, La Mafia, Papaupa.
 👶 Poussette OK centre. Albaicín → porte-bébé.
 
-BAIGNADE:
-🏊 Rivière: bout du Paseo de los Tristes, sous le pont.
-🏊 Piscines été: JR et EL GUERRA.
-🏖️ Plages (45min en voiture): Almuñécar, Salobreña, La Herradura.
+BAIGNADE / SE BAIGNER / NAGER / PISCINE / PLAGE:
+🏊 Rivière (gratuit): bout du Paseo de los Tristes, sous le pont.
+🏊 Piscines été: restaurants JR et EL GUERRA.
+🏖️ Plages mer (45min voiture): Almuñécar, Salobreña, La Herradura.
 
 SIERRA NEVADA:
 🎿 Teleférico, luge, chocolat chaud.
