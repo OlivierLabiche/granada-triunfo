@@ -1,5 +1,3 @@
-// netlify/functions/chat.js
-
 exports.handler = async (event, context) => {
   const headers = {
     'Access-Control-Allow-Origin': '*',
@@ -18,7 +16,7 @@ exports.handler = async (event, context) => {
 
   try {
     const { message, history, language } = JSON.parse(event.body);
-    const apiKey = process.env.ANTHROPIC_API_KEY;
+    const apiKey = process.env.GROQ_API_KEY;
 
     if (!apiKey) {
       return { statusCode: 500, headers, body: JSON.stringify({ error: 'API key not configured' }) };
@@ -46,164 +44,73 @@ exports.handler = async (event, context) => {
 
     const systemPrompt = `Tu es MariIA. ${langInstruction[lang]}
 
-═══════════════════════════════════════════════════════════════
-RÈGLES ABSOLUES
-═══════════════════════════════════════════════════════════════
-
+RÈGLES:
 1. NE JAMAIS INVENTER. Si pas dans ta base → "${fallbackMsg[lang]}"
-
 2. Bouteille de gaz → "${videoMsg[lang]}"
-
 3. Ne JAMAIS inventer distances, prix, horaires.
+4. ULTRA CONCIS: 1-3 phrases MAX.
+5. JAMAIS de formules de politesse finale.
+6. WhatsApp Marie → UNIQUEMENT si ZÉRO info trouvée.
 
-4. ÊTRE ULTRA CONCIS. Répondre en 1-3 phrases MAX.
+DONNÉES:
 
-5. ❌ PHRASES INTERDITES - NE JAMAIS ÉCRIRE :
-   - "Si necesitas más detalles" / "If you need more details" / "Si tu veux plus de détails"
-   - "No dudes en contactar" / "Don't hesitate to contact" / "N'hésite pas à contacter"
-   - "Espero que te sea útil" / "Hope this helps" / "J'espère que ça t'aide"
-   - "¡Que disfrutes!" / "Enjoy!" / "Bon appétit !"
-   - "Marie podrá ayudarte" / "Marie can help you" / "Marie pourra t'aider"
-   - "Según la información" / "According to my information" / "Selon mes informations"
-   - Toute formule de politesse finale
+ACCÈS: Acera de San Ildefonso 26, 3e porte droite. Code: 9119. Pas d'ascenseur.
 
-6. WHATSAPP MARIE (https://wa.me/34661558334) :
-   → UNIQUEMENT si tu n'as PAS l'info demandée
-   → JAMAIS si tu as répondu à la question
+WIFI: MOVISTAR_9EEO / Art&Deco2026
 
-7. EXEMPLE DE BONNE RÉPONSE :
-   Q: "¿Un restaurante vegetariano?"
-   R: "🥬 PAPRIKA, près de Puerta Elvira. Houmous, tofu teriyaki. Très bon !"
-   
-   ❌ PAS : "Te recomiendo PAPRIKA... Si necesitas más info sobre horarios, contacta a Marie... ¡Que disfrutes!"
+CHAUFFAGE: Fusible rouge en position haute (compteur gauche entrée). Appoint salle de bain.
 
-═══════════════════════════════════════════════════════════════
-DONNÉES
-═══════════════════════════════════════════════════════════════
+CLIM: Dans chaque chambre (pas salon). Ventilateur salon: interrupteur mural + télécommande Sulion.
 
-ACCÈS:
-📍 Acera de San Ildefonso nº 26, 3ème étage porte droite
-🔑 Code boîte: 9119 (bas gauche de la porte appart)
-🚪 Porte immeuble toujours ouverte. Pas d'ascenseur.
-
-WIFI:
-📶 MOVISTAR_9EEO / 🔐 Art&Deco2026
-
-CHAUFFAGE:
-🔥 Fusible (cercle rouge) en position HAUTE sur compteur à GAUCHE de la porte d'entrée.
-🛁 Chauffage d'appoint dans salle de bain.
-
-CLIM & VENTILATION:
-❄️ Clim dans chaque CHAMBRE (pas salon). Télécommande dans chaque chambre.
-🌀 Ventilateur salon: 1) interrupteur mural gauche 2) télécommande Sulion (1-6)
-
-CUISINE:
-🔥 Plaques Bosch: On/Off → plaque → +/-
-☕ Nespresso: eau derrière, capsules dans placard
-🍳 Hotte: BRANCHER LA PRISE
-♻️ Tri: 🔵Papier 🟡Plastique 🟢Verre ⚫Reste. Conteneurs en face.
-
-SALLE DE BAIN:
-💡 Lumière principale: 2 pas après l'entrée, droite du lavabo
-🧺 Lave-linge: buanderie après cuisine. Lessive dans commode.
-🔥 Gaz: 3 bonbonnes de rechange.
-
-SALON:
-📺 TV Xiaomi: Netflix, Prime, YouTube
-💡 Grande lampe: bouton noir près abat-jour
+CUISINE: Plaques Bosch (On/Off→plaque→+/-). Nespresso. Hotte: brancher prise. Tri: conteneurs en face.
 
 RESTAURANTS:
-🍊 ATIPICO (rez-de-chaussée): Petit-déj orangers. Fermé dimanche.
-🐟 LOS DIAMANTES (Plaza Nueva): Tapas poisson. Y aller 13h ou 20h.
-🏔️ TORQUATO (Calle Pagés): ❤️ Préféré de Marie ! Friture, gaspacho.
-🍷 LA TRASTIENDA (Plaza Cuchilleros): Salle cachée. Vin, fromage.
-🥬 PAPRIKA (Puerta Elvira): Végétarien. Houmous, tofu.
-🥗 HICURI (Realejo): 100% végétarien.
-🦐 CASA MANIGUA (Realejo): Gambas, bacalao.
-🏰 RUTA DE LA AZAFRÁN (Paseo Tristes): Vue Alhambra !
-🏊 JR et EL GUERRA: Piscine en été !
-🌳 EL HIGO (Plaza Larga): Patio figuier.
-💡 TAPAS GRATUITES avec chaque boisson à Grenade !
+- ATIPICO (rez-de-chaussée): Petit-déj. Fermé dimanche.
+- LOS DIAMANTES (Plaza Nueva): Tapas poisson. 13h ou 20h.
+- TORQUATO (Calle Pagés): Préféré Marie. Friture, gaspacho.
+- LA TRASTIENDA (Plaza Cuchilleros): Vin, fromage.
+- PAPRIKA (Puerta Elvira): Végétarien.
+- HICURI (Realejo): 100% végétarien.
+💡 TAPAS GRATUITES avec chaque boisson !
 
-BARS:
-🎸 LEMON ROCK (Calle Montalbán): Musique, terrasse.
-🎓 Pedro Antonio de Alarcón: Quartier étudiant.
+COURSES: AL SUR DE GRANADA (200m). HORNO DEL PROGRESO. MERCADONA (fermé dimanche).
 
-COURSES:
-🧀 AL SUR DE GRANADA (200m): Épicerie fine, pain.
-🥖 HORNO DEL PROGRESO (Real de Cartuja 13): Boulangerie.
-🍵 TETERÍA ORIENTE (Puerta Elvira): Thé, pâtisseries arabes.
-🛒 MERCADONA (Calle Ancha Capuchinos 15): 9h-21h, fermé dimanche.
+VISITES: ALHAMBRA (réserver semaines avant!). ALBAICÍN. SACROMONTE.
 
-VISITES:
-🏰 ALHAMBRA: Réserver SEMAINES à l'avance ! Bus C35, taxi Plaza Triunfo, ou 35min à pied.
-🏘️ ALBAICÍN: Ruelles blanches.
-🕳️ SACROMONTE: Casas cueva, flamenco.
-🌊 CARRERA DEL DARRO: Plus beau paseo.
-🛁 HAMMAM AL ÁNDALUS (Plaza Santa Ana): Bains arabes. Réserver.
+MIRADORS: SAN NICOLÁS (coucher soleil). SAN MIGUEL ALTO (360°).
 
-MIRADORS:
-🌅 SAN NICOLÁS: Coucher soleil, vue Alhambra.
-⛰️ SAN MIGUEL ALTO: Plus calme, 360°.
+FLAMENCO: PEÑA LA PLATERÍA (authentique).
 
-FLAMENCO:
-💃 PEÑA LA PLATERÍA: Authentique, pas cher.
+HAMMAM: AL ÁNDALUS (Plaza Santa Ana). Réserver.
 
-FAMILLE:
-🎠 Parc jeux: 100m à gauche en sortant.
-🔬 PARC DES SCIENCES: Activité n°1 ! Métro Alcázar del Genil.
-🦚 CARMEN DE LOS MÁRTIRES: Paons !
-🎢 PARC GARCÍA LORCA: Tyrolienne.
-🍝 Restos: Muerde la Pasta, La Mafia, Papaupa.
-👶 Poussette OK centre. Albaicín → porte-bébé.
+FAMILLE: Parc 100m à gauche. PARC DES SCIENCES. CARMEN DE LOS MÁRTIRES.
 
-BAIGNADE:
-🏊 Bout du Paseo de los Tristes, sous le pont.
-🏊 JR et EL GUERRA: piscines été.
+TRANSPORTS: Taxi Plaza Triunfo (+34 958 28 06 54). Aéroport: Línea 245, 3.10€.
 
-SIERRA NEVADA:
-🎿 Teleférico, luge, chocolat chaud.
+URGENCES: 112. Centre médical: Gran Capitán 10 (+34 958 022 600).
 
-TRANSPORTS:
-🚕 Taxi Plaza Triunfo. 📞 +34 958 28 06 54
-🚌 Bus: 5,11,21→Sciences / C31→Albaicín / C34→Sacromonte / C30→Alhambra
-✈️ Aéroport: Línea 245, Constitución. 3,10€.
-🚗 Parking gratuit: Calle Cayetano de Lebrija. Zones bleues: app "L Parking".
+DÉPART: Avant 12h. Clés dans boîtier. Éteindre tout.`;
 
-URGENCES:
-🚨 112
-💊 Pharmacie: Plaza de los Girones. 9h-22h.
-🏥 Centre médical: Gran Capitán 10. 📞 +34 958 022 600
+    const messages = [
+      { role: "system", content: systemPrompt },
+      ...(history || []).map((msg) => ({
+        role: msg.role === "user" ? "user" : "assistant",
+        content: msg.content,
+      })),
+      { role: "user", content: message },
+    ];
 
-SÉCURITÉ:
-✅ Grenade sûre. ⚠️ Éviter Albaicín/Sacromonte tard le soir.
-
-DÉPART:
-⏰ Avant 12h. 🔑 Clés dans boîtier. 💡 Éteindre tout. 🗑️ Poubelles en face.
-
-═══════════════════════════════════════════════════════════════
-RAPPEL: Réponse COURTE. Pas de blabla. Pas de "contacte Marie" si tu as répondu.
-═══════════════════════════════════════════════════════════════`;
-
-    const response = await fetch("https://api.anthropic.com/v1/messages", {
+    const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "x-api-key": apiKey,
-        "anthropic-version": "2023-06-01",
+        "Authorization": `Bearer ${apiKey}`,
       },
       body: JSON.stringify({
-        model: "claude-3-5-sonnet-20241022",
+        model: "llama-3.3-70b-versatile",
+        messages: messages,
+        temperature: 0,
         max_tokens: 512,
-        temperature: 0.3,
-        system: systemPrompt,
-        messages: [
-          ...(history || []).map((msg) => ({
-            role: msg.role === "user" ? "user" : "assistant",
-            content: msg.content,
-          })),
-          { role: "user", content: message },
-        ],
       }),
     });
 
@@ -216,15 +123,11 @@ RAPPEL: Réponse COURTE. Pas de blabla. Pas de "contacte Marie" si tu as répond
     return {
       statusCode: 200,
       headers,
-      body: JSON.stringify({ content: data.content[0].text })
+      body: JSON.stringify({ content: data.choices[0].message.content })
     };
 
   } catch (error) {
     console.error("Chat function error:", error);
-    return {
-      statusCode: 500,
-      headers,
-      body: JSON.stringify({ error: "Internal server error" })
-    };
+    return { statusCode: 500, headers, body: JSON.stringify({ error: "Internal server error" }) };
   }
 };
