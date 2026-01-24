@@ -188,7 +188,7 @@ RAPPEL: Réponse COURTE. JAMAIS de "contacte Marie" si tu as donné une info.
         "Authorization": `Bearer ${apiKey}`,
       },
       body: JSON.stringify({
-        model: "qwen-qwq-32b",
+     model: "meta-llama/llama-4-scout-17b-16e-instruct",
         messages: messages,
         temperature: 0,
         max_tokens: 512,
