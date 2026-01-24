@@ -431,7 +431,7 @@ Si tu ne connais pas la réponse: ${fallbackMsg[lang] || fallbackMsg.fr}`;
       body: JSON.stringify({
         model: "claude-3-haiku-20240307",
         max_tokens: 1024,
-        temperature: 0.3,
+        temperature: 0.5,
         system: systemPrompt,
         messages: [
           ...(history || []).map((msg) => ({
