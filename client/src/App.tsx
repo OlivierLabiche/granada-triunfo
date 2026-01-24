@@ -265,7 +265,7 @@ const translations: Record<string, Record<string, string>> = {
     transport: "Transport",
     checkout: "Départ",
     contact: "Contact",
-    map: "Mes Adresses",
+    map: "Carte",
     
     // Descriptions menu
     access_desc: "Codes & accès",
@@ -274,10 +274,14 @@ const translations: Record<string, Record<string, string>> = {
     living_desc: "TV & confort",
     bathroom_desc: "Buanderie",
     family_desc: "Enfants",
-    explorer_desc: "Restos & visites",
+    explorer_desc: "Toutes les adresses",
     transport_desc: "Se déplacer",
     checkout_desc: "Urgences",
-    map_desc: "Carte Marie",
+    map_desc: "Interactive",
+    
+    // Explorer page
+    open_mymaps: "Ouvrir ma carte interactive",
+    shops_title: "Commerces & Courses",
     
     // Chatbot
     welcome_bot: "🌸 ¡Hola! Je suis MariIA, votre assistante virtuelle.\n\nMarie, votre hôte, vit à Grenade depuis 25 ans. Elle m'a transmis tous ses conseils et ses adresses préférées pour vous faire vivre le meilleur séjour.\n\n💡 Je suis une IA : mes réponses peuvent parfois être imprécises. En cas de doute, contactez Marie !",
@@ -404,7 +408,7 @@ const translations: Record<string, Record<string, string>> = {
     transport: "Transport",
     checkout: "Checkout",
     contact: "Contact",
-    map: "My Favorites",
+    map: "Map",
     
     // Descriptions menu
     access_desc: "Codes & access",
@@ -413,10 +417,14 @@ const translations: Record<string, Record<string, string>> = {
     living_desc: "TV & comfort",
     bathroom_desc: "Laundry",
     family_desc: "Kids",
-    explorer_desc: "Food & visits",
+    explorer_desc: "All addresses",
     transport_desc: "Getting around",
     checkout_desc: "Emergencies",
-    map_desc: "Marie's map",
+    map_desc: "Interactive",
+    
+    // Explorer page
+    open_mymaps: "Open my interactive map",
+    shops_title: "Shops & Groceries",
     
     // Chatbot
     welcome_bot: "🌸 ¡Hola! I'm MariIA, your virtual assistant.\n\nMarie, your host, has been living in Granada for 25 years. She shared all her tips and favorite spots with me to help you have the best stay.\n\n💡 I'm an AI: my answers may sometimes be inaccurate. When in doubt, contact Marie!",
@@ -543,7 +551,7 @@ const translations: Record<string, Record<string, string>> = {
     transport: "Transporte",
     checkout: "Salida",
     contact: "Contacto",
-    map: "Mis Direcciones",
+    map: "Mapa",
     
     // Descriptions menu
     access_desc: "Códigos y acceso",
@@ -552,10 +560,14 @@ const translations: Record<string, Record<string, string>> = {
     living_desc: "TV y confort",
     bathroom_desc: "Lavandería",
     family_desc: "Niños",
-    explorer_desc: "Restaurantes y visitas",
+    explorer_desc: "Todas las direcciones",
     transport_desc: "Moverse",
     checkout_desc: "Urgencias",
-    map_desc: "Mapa de Marie",
+    map_desc: "Interactivo",
+    
+    // Explorer page
+    open_mymaps: "Abrir mi mapa interactivo",
+    shops_title: "Comercios y Compras",
     
     // Chatbot
     welcome_bot: "🌸 ¡Hola! Soy MariIA, tu asistente virtual.\n\nMarie, tu anfitriona, vive en Granada desde hace 25 años. Me ha transmitido todos sus consejos y direcciones favoritas para que disfrutes de la mejor estancia.\n\n💡 Soy una IA: mis respuestas pueden ser imprecisas a veces. En caso de duda, ¡contacta a Marie!",
@@ -863,7 +875,6 @@ const HomePage = ({
         { id: "family", icon: UsersIcon, label: t('family'), desc: t('family_desc') },
         { id: "explorer", icon: MapPinIcon, label: t('explorer'), desc: t('explorer_desc') },
         { id: "transport", icon: BusIcon, label: t('transport'), desc: t('transport_desc') },
-        { id: "map", icon: MapIcon, label: t('map'), desc: t('map_desc') },
         { id: "checkout", icon: AlertIcon, label: t('checkout'), desc: t('checkout_desc') },
       ].map((item) => {
         const IconComponent = item.icon;
@@ -879,6 +890,18 @@ const HomePage = ({
           </Card>
         );
       })}
+      
+      {/* Bouton Carte - ouvre directement MyMaps */}
+      <a
+        href={MYMAPS_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="bg-white rounded-xl shadow-sm border border-amber-100 p-4 mb-4 cursor-pointer hover:shadow-md transition-shadow text-center py-4"
+      >
+        <MapIcon className="w-7 h-7 mx-auto text-amber-600 mb-2" />
+        <p className="font-medium text-amber-800 text-sm">{t('map')}</p>
+        <p className="text-xs text-gray-500">{t('map_desc')}</p>
+      </a>
     </div>
 
     <Card className="mt-4 bg-amber-50">
@@ -1423,6 +1446,17 @@ export default function App() {
           
           {view === "explorer" && (
             <div className="p-4 space-y-4">
+              {/* Bouton MyMaps en haut */}
+              <a
+                href={MYMAPS_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 w-full bg-gradient-to-r from-amber-500 to-orange-500 text-white px-4 py-3 rounded-xl font-medium hover:from-amber-600 hover:to-orange-600 transition-all shadow-md"
+              >
+                <ExternalLinkIcon className="w-5 h-5" />
+                {t('open_mymaps')}
+              </a>
+              
               <Card>
                 <SectionTitle>{t('explorer_title')}</SectionTitle>
                 <div className="space-y-4">
@@ -1460,6 +1494,30 @@ export default function App() {
                     name="Hammam Al Ándalus"
                     description={t('hammam_desc')}
                   />
+                  
+                  <h3 className="font-bold text-amber-900 border-l-4 border-amber-600 pl-2 mt-6">
+                    {t('shops_title')}
+                  </h3>
+                  <PlaceCard
+                    name="AL SUR DE GRANADA"
+                    description={t('alsur_desc')}
+                    address={t('alsur_addr')}
+                  />
+                  <PlaceCard
+                    name="HORNO DEL PROGRESO"
+                    description={t('horno_desc')}
+                    address={t('horno_addr')}
+                  />
+                  <PlaceCard
+                    name="Tetería Oriente"
+                    description={t('teteria_desc')}
+                    address={t('teteria_addr')}
+                  />
+                  <PlaceCard
+                    name="Mercadona"
+                    description={t('mercadona_desc')}
+                    address={t('mercadona_addr')}
+                  />
                 </div>
               </Card>
             </div>
@@ -1494,52 +1552,6 @@ export default function App() {
                       {t('airport_desc')}
                     </p>
                   </div>
-                </div>
-              </Card>
-            </div>
-          )}
-          
-          {view === "map" && (
-            <div className="p-4 space-y-4">
-              <Card className="bg-gradient-to-r from-amber-50 to-orange-50">
-                <SectionTitle>{t('map_title')}</SectionTitle>
-                <p className="text-sm text-gray-600 mb-4">
-                  {t('map_intro')}
-                </p>
-                <a
-                  href={MYMAPS_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 bg-amber-600 text-white px-4 py-2 rounded-full font-medium hover:bg-amber-700 transition-colors"
-                >
-                  <ExternalLinkIcon className="w-4 h-4" />
-                  {t('open_map')}
-                </a>
-              </Card>
-              
-              <Card>
-                <SectionTitle>{t('shops_title')}</SectionTitle>
-                <div className="space-y-4">
-                  <PlaceCard
-                    name="AL SUR DE GRANADA"
-                    description={t('alsur_desc')}
-                    address={t('alsur_addr')}
-                  />
-                  <PlaceCard
-                    name="HORNO DEL PROGRESO"
-                    description={t('horno_desc')}
-                    address={t('horno_addr')}
-                  />
-                  <PlaceCard
-                    name="Tetería Oriente"
-                    description={t('teteria_desc')}
-                    address={t('teteria_addr')}
-                  />
-                  <PlaceCard
-                    name="Mercadona"
-                    description={t('mercadona_desc')}
-                    address={t('mercadona_addr')}
-                  />
                 </div>
               </Card>
             </div>
