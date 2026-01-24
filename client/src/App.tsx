@@ -962,7 +962,7 @@ const AssistantPage = ({ language, t }: { language: string; t: (key: string) => 
   const logConversation = async (question: string, answer: string, lang: string) => {
     console.log("Logging conversation:", { question, answer, lang });
     try {
-      await fetch('https://script.google.com/macros/s/AKfycbxRruJ2jtKXE2HLZtgZ7h47Ftz97j4aS0lSwY7NA0LXGdZWINB9tqn6k5oakS2CTLmj/exec', {
+      await fetch('https://script.google.com/macros/s/AKfycbz7XtNUY-RA8H2EG3vEZY_rPZoVNs7Ze7HCMNxt3tGCTNwdm547QpYwSbC_7NMnh40E/exec', {
         method: 'POST',
         mode: 'no-cors',
         headers: { 'Content-Type': 'application/json' },
