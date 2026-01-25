@@ -949,7 +949,11 @@ const AssistantPage = ({ language, t }: { language: string; t: (key: string) => 
     
     for (const [key, data] of Object.entries(localResponses)) {
       const keywords = data.keywords[lang] || data.keywords.fr;
-      if (keywords.some(kw => lowerMessage.includes(kw))) {
+      // Utiliser word boundaries pour éviter les faux positifs (ex: "spectacle" contient "ac")
+      if (keywords.some(kw => {
+        const regex = new RegExp(`\\b${kw.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'i');
+        return regex.test(lowerMessage);
+      })) {
         return {
           response: data.response[lang] || data.response.fr,
           isGas: key === 'gaz'
