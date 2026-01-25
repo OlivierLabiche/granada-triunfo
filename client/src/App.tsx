@@ -562,9 +562,11 @@ const allSuggestions: Record<string, string[]> = {
   ]
 };
 
-const getRandomSuggestions = (count: number, lang: string = "fr") => {
+const getRandomSuggestions = (count: number, lang: string = "fr", exclude?: string) => {
   const suggestions = allSuggestions[lang] || allSuggestions.fr;
-  const shuffled = [...suggestions].sort(() => Math.random() - 0.5);
+  // Exclure la suggestion cliquée pour éviter qu'elle réapparaisse immédiatement
+  const filtered = exclude ? suggestions.filter(s => s !== exclude) : suggestions;
+  const shuffled = [...filtered].sort(() => Math.random() - 0.5);
   return shuffled.slice(0, count);
 };
 
@@ -968,7 +970,8 @@ const AssistantPage = ({ language, t }: { language: string; t: (key: string) => 
     if (!userMessage || isLoading) return;
     setInput("");
     setMessages((prev) => [...prev, { role: "user", content: userMessage }]);
-    setSuggestions(getRandomSuggestions(5, language));
+    // Si c'est une suggestion cliquée, l'exclure du prochain tirage
+    setSuggestions(getRandomSuggestions(5, language, overrideMessage));
     setIsLoading(true);
 
     // Chercher une réponse locale d'abord
