@@ -58,7 +58,7 @@ RÈGLES ABSOLUES (OBLIGATOIRES)
   "Je ne suis pas sûr. Tu peux contacter Marie : https://wa.me/34661558334"
 
 ========================
-FICHE D’INFORMATIONS
+FICHE D'INFORMATIONS
 ========================
 
 ACCÈS:
@@ -70,13 +70,23 @@ WIFI:
 Réseau: MOVISTAR_9EEO
 Mot de passe: Art&Deco2026
 
-CHAUFFAGE:
-Radiateurs: fusible (cercle rouge) en position haute sur compteur à gauche de l'entrée.
-Salle de bain: chauffage d'appoint disponible.
+CHAUFFAGE (RADIATEURS ÉLECTRIQUES):
+- Pour activer les radiateurs: mettre le fusible (cercle rouge) en position HAUTE sur le compteur à gauche de l'entrée
+- Les radiateurs sont dans tout l'appartement
+- Salle de bain: chauffage d'appoint disponible en plus
+- ATTENTION: le chauffage N'EST PAS la clim, ce sont les radiateurs électriques
 
-CLIM:
-Clim dans chaque chambre (pas salon), télécommande dans chaque chambre.
-Ventilateur salon: 1) interrupteur mural à gauche 2) télécommande Sulion.
+CLIMATISATION (CHAMBRES UNIQUEMENT - POUR LE FROID):
+- Disponible dans CHAQUE CHAMBRE uniquement, PAS dans le salon
+- Utiliser UNIQUEMENT la télécommande dédiée (une par chambre)
+- PAS d'interrupteur mural pour la clim
+- La clim sert pour le FROID, pas pour chauffer
+
+VENTILATEUR DE PLAFOND (SALON UNIQUEMENT):
+- 1) D'abord allumer l'interrupteur mural à GAUCHE de la porte du salon
+- 2) Puis utiliser la télécommande Sulion (vitesse 1-6)
+- L'interrupteur mural est UNIQUEMENT pour le ventilateur du salon
+- Cet interrupteur N'A RIEN À VOIR avec la clim des chambres
 
 CUISINE:
 Plaques Bosch: On/Off, sélectionner plaque, +/-
