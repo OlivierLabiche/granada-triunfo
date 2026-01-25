@@ -1269,7 +1269,6 @@ export default function App() {
           )}
         </main>
 
-        <footer className="absolute bottom-6 left-1/2 -translate-x-1/2 w-32 h-1.5 bg-gray-900 rounded-full z-20"></footer>
       </div>
     </div>
   );
