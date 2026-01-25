@@ -814,9 +814,9 @@ const localResponses: Record<string, { keywords: Record<string, string[]>; respo
       es: ['aire acondicionado', 'aire', 'ac', 'climatización', 'enfriar', 'refrescar']
     },
     response: {
-      fr: "❄️ Climatisation :\n\n• Disponible dans CHAQUE CHAMBRE (pas dans le salon)\n• Utilisez simplement la télécommande dédiée dans chaque chambre\n• Pas d'interrupteur mural pour la clim\n\n💡 Pour le salon : utilisez le ventilateur de plafond (interrupteur mural + télécommande Sulion)",
-      en: "❄️ Air conditioning:\n\n• Available in EACH BEDROOM (not in living room)\n• Simply use the dedicated remote control in each room\n• No wall switch for AC\n\n💡 For living room: use the ceiling fan (wall switch + Sulion remote)",
-      es: "❄️ Aire acondicionado:\n\n• Disponible en CADA HABITACIÓN (no en el salón)\n• Usa simplemente el mando a distancia en cada habitación\n• No hay interruptor de pared para el aire\n\n💡 Para el salón: usa el ventilador de techo (interruptor de pared + mando Sulion)"
+      fr: "❄️ Climatisation :\n\n• Disponible dans CHAQUE CHAMBRE (pas dans le salon)\n• Utilisez simplement la télécommande dédiée dans chaque chambre\n\n💡 Pour le salon : utilisez le ventilateur de plafond (interrupteur mural + télécommande Sulion)",
+      en: "❄️ Air conditioning:\n\n• Available in EACH BEDROOM (not in living room)\n• Simply use the dedicated remote control in each room\n\n💡 For living room: use the ceiling fan (wall switch + Sulion remote)",
+      es: "❄️ Aire acondicionado:\n\n• Disponible en CADA HABITACIÓN (no en el salón)\n• Usa simplemente el mando a distancia en cada habitación\n\n💡 Para el salón: usa el ventilador de techo (interruptor de pared + mando Sulion)"
     }
   },
   ventilateur: {
