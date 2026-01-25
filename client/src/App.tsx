@@ -800,20 +800,22 @@ const AssistantPage = ({ language, t }: { language: string; t: (key: string) => 
     setMessages([{ role: "assistant", content: t('welcome_bot') }]);
   }, [language]);
 
-  const logConversation = (question: string, answer: string, lang: string) => {
-    try {
-      const params = new URLSearchParams({
-        question: question.substring(0, 500),
-        answer: answer.substring(0, 1000),
-        language: lang,
-        timestamp: new Date().toISOString()
-      });
-      const img = new Image();
-      img.src = `https://script.google.com/macros/s/AKfycbwpAaA8ddhCbMSGQRfVrJpeuAwH8jRVi8GDxmpDrsfhQI_O98ipK7tkIzgcITkwN31s/exec?${params.toString()}`;
-    } catch (error) {
-      console.error('Logging failed:', error);
-    }
-  };
+const logConversation = (question: string, answer: string, lang: string) => {
+  try {
+    const params = new URLSearchParams({
+      question: question.substring(0, 500),
+      answer: answer.substring(0, 1000),
+      language: lang,
+      timestamp: new Date().toISOString()
+    });
+    fetch(`https://script.google.com/macros/s/AKfycbwpAaA8ddhCbMSGQRfVrJpeuAwH8jRVi8GDxmpDrsfhQI_O98ipK7tkIzgcITkwN31s/exec?${params.toString()}`, {
+      method: 'GET',
+      mode: 'no-cors'
+    }).catch(() => {});
+  } catch (error) {
+    console.error('Logging failed:', error);
+  }
+};
 
   // ============================================
   // RÉPONSES CÔTÉ CLIENT (gaz + baignade)
