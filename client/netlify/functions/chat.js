@@ -100,7 +100,7 @@ ${knowledgeContext}`;
         "anthropic-version": "2023-06-01",
       },
       body: JSON.stringify({
-  model: "claude-3-5-haiku-latest",
+model: "claude-3-5-sonnet-20241022",
         max_tokens: 200,
         temperature: 0,
         system: systemPrompt,
