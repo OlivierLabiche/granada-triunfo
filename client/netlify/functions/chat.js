@@ -101,7 +101,7 @@ ${knowledgeContext}`;
       },
       body: JSON.stringify({
         model: "claude-3-haiku-20240307",
-        max_tokens: 1024,
+        max_tokens: 300,
         temperature: 0,
         system: systemPrompt,
         messages: [
