@@ -54,7 +54,11 @@ exports.handler = async (event) => {
     let total = 0;
 
     for (let i = 0; i < chunks.length; i += batchSize) {
-      const batch = chunks.slice(i, i + batchSize);
+      const batch = chunks.slice(i, i + batchSize).map(c => ({
+        _id: c.id,
+        text: c.text,
+        category: c.category
+      }));
 
       const upsertRes = await fetch(`https://${host}/records/namespaces/default/upsert`, {
         method: 'POST',
