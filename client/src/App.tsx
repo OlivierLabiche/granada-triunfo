@@ -534,7 +534,7 @@ const translations: Record<string, Record<string, string>> = {
   }
 };
 
-// Suggestions par langue (sans paella, avec plages)
+// Suggestions par langue
 const allSuggestions: Record<string, string[]> = {
   fr: [
     "Code WiFi ?", "Comment entrer ?", "Où manger ce soir ?", "Un resto végétarien ?", "Tapas gratuites ?",
@@ -564,7 +564,6 @@ const allSuggestions: Record<string, string[]> = {
 
 const getRandomSuggestions = (count: number, lang: string = "fr", exclude?: string) => {
   const suggestions = allSuggestions[lang] || allSuggestions.fr;
-  // Exclure la suggestion cliquée pour éviter qu'elle réapparaisse immédiatement
   const filtered = exclude ? suggestions.filter(s => s !== exclude) : suggestions;
   const shuffled = [...filtered].sort(() => Math.random() - 0.5);
   return shuffled.slice(0, count);
@@ -782,7 +781,7 @@ interface Message {
 }
 
 // ============================================
-// RÉPONSES EN DUR (CÔTÉ CLIENT)
+// RÉPONSE LOCALE : GAZ UNIQUEMENT (vidéo YouTube)
 // ============================================
 const localResponses: Record<string, { keywords: Record<string, string[]>; response: Record<string, string> }> = {
   gaz: {
@@ -843,7 +842,6 @@ const AssistantPage = ({ language, t }: { language: string; t: (key: string) => 
     
     for (const [key, data] of Object.entries(localResponses)) {
       const keywords = data.keywords[lang] || data.keywords.fr;
-      // Utiliser word boundaries pour éviter les faux positifs (ex: "spectacle" contient "ac")
       if (keywords.some(kw => {
         const regex = new RegExp(`\\b${kw.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'i');
         return regex.test(lowerMessage);
@@ -862,7 +860,6 @@ const AssistantPage = ({ language, t }: { language: string; t: (key: string) => 
     if (!userMessage || isLoading) return;
     setInput("");
     setMessages((prev) => [...prev, { role: "user", content: userMessage }]);
-    // Si c'est une suggestion cliquée, l'exclure du prochain tirage
     setSuggestions(getRandomSuggestions(5, language, overrideMessage));
     setIsLoading(true);
 
@@ -871,7 +868,6 @@ const AssistantPage = ({ language, t }: { language: string; t: (key: string) => 
     
     if (localResult) {
       if (localResult.isGas) {
-        // Cas spécial gaz avec vidéo
         setMessages(prev => [...prev, { 
           role: 'assistant', 
           content: localResult.response, 
@@ -936,7 +932,10 @@ const AssistantPage = ({ language, t }: { language: string; t: (key: string) => 
           </a>
         );
       }
-      return part;
+      // Parser le **gras** en <strong>
+      return part.split(/\*\*(.*?)\*\*/g).map((segment, j) =>
+        j % 2 === 1 ? <strong key={`${i}-${j}`}>{segment}</strong> : segment
+      );
     });
   };
 
