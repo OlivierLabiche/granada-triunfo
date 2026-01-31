@@ -99,7 +99,7 @@ ${knowledgeContext}`;
         "anthropic-version": "2023-06-01",
       },
       body: JSON.stringify({
-    model: "claude-3-5-sonnet-20240620",
+    model: "claude-3-5-sonnet-v2@20241022",
         max_tokens: 300,
         temperature: 0,
         system: systemPrompt,
