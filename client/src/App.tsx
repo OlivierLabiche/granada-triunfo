@@ -785,102 +785,6 @@ interface Message {
 // RÉPONSES EN DUR (CÔTÉ CLIENT)
 // ============================================
 const localResponses: Record<string, { keywords: Record<string, string[]>; response: Record<string, string> }> = {
-  wifi: {
-    keywords: {
-      fr: ['wifi', 'internet', 'connexion', 'mot de passe', 'mdp', 'password', 'réseau'],
-      en: ['wifi', 'internet', 'connection', 'password', 'network'],
-      es: ['wifi', 'internet', 'conexión', 'contraseña', 'clave', 'red']
-    },
-    response: {
-      fr: "📶 WiFi de l'appartement :\n\n• Réseau : MOVISTAR_9EEO\n• Mot de passe : Art&Deco2026",
-      en: "📶 Apartment WiFi:\n\n• Network: MOVISTAR_9EEO\n• Password: Art&Deco2026",
-      es: "📶 WiFi del apartamento:\n\n• Red: MOVISTAR_9EEO\n• Contraseña: Art&Deco2026"
-    }
-  },
-  chauffage: {
-    keywords: {
-      fr: ['chauffage', 'chauffer', 'radiateur', 'froid', 'chaud', 'température', 'chaleur'],
-      en: ['heating', 'heater', 'radiator', 'cold', 'warm', 'heat', 'temperature'],
-      es: ['calefacción', 'calefactor', 'radiador', 'frío', 'calentar', 'calor', 'temperatura']
-    },
-    response: {
-      fr: "🔥 Pour activer le chauffage :\n\nMettez le fusible (cercle rouge) en position HAUTE sur le compteur électrique situé à gauche de l'entrée.\n\nCela active les radiateurs électriques dans l'appartement.\n\n⚠️ Ne pas confondre avec la clim (chambres uniquement) qui sert pour le froid.",
-      en: "🔥 To turn on the heating:\n\nSet the fuse (red circle) to the HIGH position on the electrical meter located to the left of the entrance.\n\nThis activates the electric radiators in the apartment.\n\n⚠️ Don't confuse with AC (bedrooms only) which is for cooling.",
-      es: "🔥 Para encender la calefacción:\n\nPon el fusible (círculo rojo) en posición ALTA en el contador eléctrico situado a la izquierda de la entrada.\n\nEsto activa los radiadores eléctricos del apartamento.\n\n⚠️ No confundir con el aire acondicionado (solo habitaciones) que es para el frío."
-    }
-  },
-  clim: {
-    keywords: {
-      fr: ['clim', 'climatisation', 'climatiseur', 'air conditionné', 'ac', 'rafraîchir', 'refroidir'],
-      en: ['ac', 'air conditioning', 'air conditioner', 'cool', 'cooling'],
-      es: ['aire acondicionado', 'aire', 'ac', 'climatización', 'enfriar', 'refrescar']
-    },
-    response: {
-      fr: "❄️ Climatisation :\n\n• Disponible dans CHAQUE CHAMBRE (pas dans le salon)\n• Utilisez simplement la télécommande dédiée dans chaque chambre\n\n💡 Pour le salon : utilisez le ventilateur de plafond (interrupteur mural + télécommande Sulion)",
-      en: "❄️ Air conditioning:\n\n• Available in EACH BEDROOM (not in living room)\n• Simply use the dedicated remote control in each room\n\n💡 For living room: use the ceiling fan (wall switch + Sulion remote)",
-      es: "❄️ Aire acondicionado:\n\n• Disponible en CADA HABITACIÓN (no en el salón)\n• Usa simplemente el mando a distancia en cada habitación\n\n💡 Para el salón: usa el ventilador de techo (interruptor de pared + mando Sulion)"
-    }
-  },
-  ventilateur: {
-    keywords: {
-      fr: ['ventilateur', 'ventilo', 'plafond', 'sulion'],
-      en: ['fan', 'ceiling fan', 'sulion'],
-      es: ['ventilador', 'techo', 'sulion']
-    },
-    response: {
-      fr: "🌀 Ventilateur de plafond (salon) :\n\n1. Allumez l'interrupteur mural à GAUCHE de la porte\n2. Utilisez la télécommande Sulion (vitesse 1-6)\n\n⚠️ Cet interrupteur est UNIQUEMENT pour le ventilateur du salon, pas pour la clim des chambres.",
-      en: "🌀 Ceiling fan (living room):\n\n1. Turn on the wall switch to the LEFT of the door\n2. Use the Sulion remote (speed 1-6)\n\n⚠️ This switch is ONLY for the living room fan, not for bedroom AC.",
-      es: "🌀 Ventilador de techo (salón):\n\n1. Enciende el interruptor de pared a la IZQUIERDA de la puerta\n2. Usa el mando Sulion (velocidad 1-6)\n\n⚠️ Este interruptor es SOLO para el ventilador del salón, no para el aire de las habitaciones."
-    }
-  },
-  acces: {
-    keywords: {
-      fr: ['code', 'clé', 'clef', 'clés', 'boîte', 'boite', 'entrer', 'accès', 'acces', 'arriver', 'arrivée'],
-      en: ['code', 'key', 'keys', 'box', 'enter', 'access', 'arrive', 'arrival'],
-      es: ['código', 'codigo', 'llave', 'llaves', 'caja', 'entrar', 'acceso', 'llegar', 'llegada']
-    },
-    response: {
-      fr: "🔑 Accès à l'appartement :\n\n• Adresse : Acera de San Ildefonso 26, 3ème étage porte droite\n• Code boîte à clés : 9119 (en bas à gauche de la porte de l'appartement)\n• La porte de l'immeuble reste toujours ouverte\n• Pas d'ascenseur",
-      en: "🔑 Apartment access:\n\n• Address: Acera de San Ildefonso 26, 3rd floor right door\n• Key box code: 9119 (bottom left of apartment door)\n• Building door is always open\n• No elevator",
-      es: "🔑 Acceso al apartamento:\n\n• Dirección: Acera de San Ildefonso 26, 3ª planta puerta derecha\n• Código caja de llaves: 9119 (abajo a la izquierda de la puerta del apartamento)\n• La puerta del edificio siempre está abierta\n• No hay ascensor"
-    }
-  },
-  laveLinge: {
-    keywords: {
-      fr: ['lave-linge', 'lave linge', 'machine à laver', 'lessive', 'laver', 'lavage', 'buanderie'],
-      en: ['washing machine', 'washer', 'laundry', 'detergent', 'wash'],
-      es: ['lavadora', 'lavar', 'lavado', 'detergente', 'colada', 'lavandería']
-    },
-    response: {
-      fr: "🧺 Lave-linge :\n\n• Situé dans la buanderie (après la cuisine)\n• Lessive disponible dans le tiroir de la commode\n• Programme standard recommandé",
-      en: "🧺 Washing machine:\n\n• Located in the laundry room (after the kitchen)\n• Detergent available in the dresser drawer\n• Standard program recommended",
-      es: "🧺 Lavadora:\n\n• Situada en el lavadero (después de la cocina)\n• Detergente disponible en el cajón de la cómoda\n• Programa estándar recomendado"
-    }
-  },
-  plaques: {
-    keywords: {
-      fr: ['plaque', 'plaques', 'induction', 'cuisinière', 'cuisson', 'cuire', 'cuisine'],
-      en: ['hob', 'stove', 'induction', 'cooktop', 'cook', 'cooking'],
-      es: ['placa', 'vitro', 'vitrocerámica', 'inducción', 'cocinar', 'cocina', 'fuego']
-    },
-    response: {
-      fr: "🍳 Plaques à induction (Bosch) :\n\n1. Appuyez sur On/Off\n2. Sélectionnez la plaque souhaitée\n3. Réglez la puissance avec +/-\n\n💡 N'oubliez pas de brancher la hotte si besoin !",
-      en: "🍳 Induction hob (Bosch):\n\n1. Press On/Off\n2. Select the desired plate\n3. Adjust power with +/-\n\n💡 Don't forget to plug in the hood if needed!",
-      es: "🍳 Placa de inducción (Bosch):\n\n1. Pulsa On/Off\n2. Selecciona la placa deseada\n3. Ajusta la potencia con +/-\n\n💡 ¡No olvides enchufar la campana si la necesitas!"
-    }
-  },
-  nespresso: {
-    keywords: {
-      fr: ['café', 'coffee', 'nespresso', 'cafetière', 'capsule', 'expresso', 'espresso'],
-      en: ['coffee', 'nespresso', 'capsule', 'espresso', 'machine'],
-      es: ['café', 'nespresso', 'cafetera', 'cápsula', 'espresso']
-    },
-    response: {
-      fr: "☕ Cafetière Nespresso :\n\n• Réservoir d'eau à l'arrière\n• Capsules disponibles dans le placard au-dessus\n• Allumez, insérez capsule, appuyez !",
-      en: "☕ Nespresso machine:\n\n• Water tank at the back\n• Capsules available in the cupboard above\n• Turn on, insert capsule, press!",
-      es: "☕ Cafetera Nespresso:\n\n• Depósito de agua en la parte trasera\n• Cápsulas disponibles en el armario de arriba\n• ¡Enciende, inserta cápsula, pulsa!"
-    }
-  },
   gaz: {
     keywords: {
       fr: ['gaz', 'bouteille', 'bonbonne', 'chauffe-eau', 'eau chaude'],
@@ -891,18 +795,6 @@ const localResponses: Record<string, { keywords: Record<string, string[]>; respo
       fr: "🎬 Voici la vidéo explicative pour changer la bouteille de gaz :",
       en: "🎬 Here is the video tutorial to change the gas bottle:",
       es: "🎬 Aquí tienes el video explicativo para cambiar la botella de gas:"
-    }
-  },
-  baignade: {
-    keywords: {
-      fr: ['baigner', 'baignade', 'piscine', 'plage', 'nager', 'rivière', 'mer', 'nage'],
-      en: ['swim', 'swimming', 'pool', 'beach', 'river', 'sea'],
-      es: ['bañar', 'bañarse', 'piscina', 'playa', 'nadar', 'río', 'mar']
-    },
-    response: {
-      fr: "🏊 Pour se baigner près de Grenade :\n\n• Rivière gratuite au bout du Paseo de los Tristes (sous le pont)\n• Piscines été aux restos JR et EL GUERRA\n• Plages à 45min : Almuñécar, Salobreña, La Herradura",
-      en: "🏊 For swimming near Granada:\n\n• Free river at the end of Paseo de los Tristes (under the bridge)\n• Summer pools at JR and EL GUERRA restaurants\n• Beaches 45min away: Almuñécar, Salobreña, La Herradura",
-      es: "🏊 Para bañarse cerca de Granada:\n\n• Río gratis al final del Paseo de los Tristes (bajo el puente)\n• Piscinas verano en restaurantes JR y EL GUERRA\n• Playas a 45min: Almuñécar, Salobreña, La Herradura"
     }
   }
 };
