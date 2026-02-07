@@ -803,7 +803,7 @@ const localResponses: Record<string, { keywords: Record<string, string[]>; respo
   },
   canapeLit: {
     keywords: {
-      fr: ['canapé', 'canape', 'canapé-lit', 'canapé lit', 'sofa', 'convertible', 'déplier', 'deplier', 'couchage', 'lit du salon', 'dormir salon'],
+      fr: ['canapé', 'canape', 'canapé-lit', 'canapé lit', 'déplier', 'deplier', 'couchage', 'lit du salon', 'dormir salon'],
       en: ['sofa', 'sofa bed', 'couch', 'pull out', 'pullout', 'unfold', 'sleeper', 'sleeping sofa'],
       es: ['sofá', 'sofa', 'sofá cama', 'sofa cama', 'desplegar', 'despliego', 'despliega', 'cama del salón', 'cama salon']
     },
@@ -858,20 +858,28 @@ const AssistantPage = ({ language, t }: { language: string; t: (key: string) => 
     const lowerMessage = message.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
     
     for (const [key, data] of Object.entries(localResponses)) {
-      // Tester toutes les langues pour détecter celle du message
-      for (const testLang of [lang, 'fr', 'en', 'es']) {
+      // Compter les matches par langue pour détecter la bonne
+      let bestLang = lang;
+      let bestCount = 0;
+      
+      for (const testLang of ['fr', 'en', 'es']) {
         const keywords = data.keywords[testLang];
         if (!keywords) continue;
-        if (keywords.some(kw => {
+        const count = keywords.filter(kw => {
           const normalizedKw = kw.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
           return lowerMessage.includes(normalizedKw);
-        })) {
-          // Répondre dans la langue détectée
-          return {
-            response: data.response[testLang] || data.response[lang] || data.response.fr,
-            videoUrl: VIDEO_URLS[key]
-          };
+        }).length;
+        if (count > bestCount) {
+          bestCount = count;
+          bestLang = testLang;
         }
+      }
+      
+      if (bestCount > 0) {
+        return {
+          response: data.response[bestLang] || data.response[lang] || data.response.fr,
+          videoUrl: VIDEO_URLS[key]
+        };
       }
     }
     return null;
