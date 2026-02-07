@@ -858,15 +858,20 @@ const AssistantPage = ({ language, t }: { language: string; t: (key: string) => 
     const lowerMessage = message.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
     
     for (const [key, data] of Object.entries(localResponses)) {
-      const keywords = data.keywords[lang] || data.keywords.fr;
-      if (keywords.some(kw => {
-        const normalizedKw = kw.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-        return lowerMessage.includes(normalizedKw);
-      })) {
-        return {
-          response: data.response[lang] || data.response.fr,
-          videoUrl: VIDEO_URLS[key]
-        };
+      // Tester toutes les langues pour détecter celle du message
+      for (const testLang of [lang, 'fr', 'en', 'es']) {
+        const keywords = data.keywords[testLang];
+        if (!keywords) continue;
+        if (keywords.some(kw => {
+          const normalizedKw = kw.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+          return lowerMessage.includes(normalizedKw);
+        })) {
+          // Répondre dans la langue détectée
+          return {
+            response: data.response[testLang] || data.response[lang] || data.response.fr,
+            videoUrl: VIDEO_URLS[key]
+          };
+        }
       }
     }
     return null;
