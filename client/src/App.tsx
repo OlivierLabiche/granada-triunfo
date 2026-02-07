@@ -899,16 +899,13 @@ const findLocalResponse = (message: string, lang: string): { response: string; v
     // Chercher une réponse locale d'abord
     const localResult = findLocalResponse(userMessage, language);
     
-    if (localResult) {
-      if (localResult.isGas) {
-        setMessages(prev => [...prev, { 
-          role: 'assistant', 
-          content: localResult.response, 
-          hasVideo: true, 
-          videoUrl: 'https://www.youtube.com/embed/0tTqNYdg21E' 
-        }]);
-      } else {
-        setMessages(prev => [...prev, { role: 'assistant', content: localResult.response }]);
+if (localResult) {
+      setMessages(prev => [...prev, { 
+        role: 'assistant', 
+        content: localResult.response, 
+        hasVideo: !!localResult.videoUrl, 
+        videoUrl: localResult.videoUrl 
+      }]);
       }
       logConversation(userMessage, localResult.response, language);
       setIsLoading(false);
