@@ -791,9 +791,9 @@ const VIDEO_URLS: Record<string, string> = {
 const localResponses: Record<string, { keywords: Record<string, string[]>; response: Record<string, string> }> = {
   gaz: {
     keywords: {
-      fr: ['gaz', 'bouteille', 'bonbonne', 'chauffe-eau', 'eau chaude'],
-      en: ['gas', 'bottle', 'water heater', 'hot water', 'propane'],
-      es: ['gas', 'botella', 'bombona', 'calentador', 'agua caliente']
+      fr: ['gaz', 'bouteille', 'bonbonne', 'chauffe-eau'],
+      en: ['gas', 'bottle', 'water heater', 'propane'],
+      es: ['gas', 'botella', 'bombona', 'calentador']
     },
     response: {
       fr: "🎬 Voici la vidéo explicative pour changer la bouteille de gaz :",
