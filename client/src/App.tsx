@@ -854,7 +854,7 @@ const AssistantPage = ({ language, t }: { language: string; t: (key: string) => 
   };
 
   // Fonction pour trouver une réponse locale
-const findLocalResponse = (message: string, lang: string): { response: string; videoUrl?: string } | null => {
+  const findLocalResponse = (message: string, lang: string): { response: string; videoUrl?: string } | null => {
     const lowerMessage = message.toLowerCase();
     
     for (const [key, data] of Object.entries(localResponses)) {
@@ -866,22 +866,6 @@ const findLocalResponse = (message: string, lang: string): { response: string; v
         return {
           response: data.response[lang] || data.response.fr,
           videoUrl: VIDEO_URLS[key]
-        };
-      }
-    }
-    return null;
-  };
-    const lowerMessage = message.toLowerCase();
-    
-    for (const [key, data] of Object.entries(localResponses)) {
-      const keywords = data.keywords[lang] || data.keywords.fr;
-      if (keywords.some(kw => {
-        const regex = new RegExp(`\\b${kw.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'i');
-        return regex.test(lowerMessage);
-      })) {
-        return {
-          response: data.response[lang] || data.response.fr,
-          isGas: key === 'gaz'
         };
       }
     }
@@ -899,14 +883,13 @@ const findLocalResponse = (message: string, lang: string): { response: string; v
     // Chercher une réponse locale d'abord
     const localResult = findLocalResponse(userMessage, language);
     
-if (localResult) {
+    if (localResult) {
       setMessages(prev => [...prev, { 
         role: 'assistant', 
         content: localResult.response, 
         hasVideo: !!localResult.videoUrl, 
         videoUrl: localResult.videoUrl 
       }]);
-      }
       logConversation(userMessage, localResult.response, language);
       setIsLoading(false);
       return;
