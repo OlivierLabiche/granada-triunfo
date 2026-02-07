@@ -805,7 +805,7 @@ const localResponses: Record<string, { keywords: Record<string, string[]>; respo
     keywords: {
       fr: ['canapé', 'canape', 'canapé-lit', 'canapé lit', 'sofa', 'convertible', 'déplier', 'deplier', 'couchage', 'lit du salon', 'dormir salon'],
       en: ['sofa', 'sofa bed', 'couch', 'pull out', 'pullout', 'unfold', 'sleeper', 'sleeping sofa'],
-      es: ['sofá', 'sofa', 'sofá cama', 'sofa cama', 'desplegar', 'cama del salón', 'cama salon']
+      es: ['sofá', 'sofa', 'sofá cama', 'sofa cama', 'desplegar', 'despliego', 'despliega', 'cama del salón', 'cama salon']
     },
     response: {
       fr: "🛋️ Voici la vidéo pour déplier le canapé-lit :\n\n💡 Les draps, oreillers et couettes se trouvent sous la méridienne (chaise longue).",
@@ -855,13 +855,13 @@ const AssistantPage = ({ language, t }: { language: string; t: (key: string) => 
 
   // Fonction pour trouver une réponse locale
   const findLocalResponse = (message: string, lang: string): { response: string; videoUrl?: string } | null => {
-    const lowerMessage = message.toLowerCase();
+    const lowerMessage = message.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
     
     for (const [key, data] of Object.entries(localResponses)) {
       const keywords = data.keywords[lang] || data.keywords.fr;
       if (keywords.some(kw => {
-        const regex = new RegExp(`\\b${kw.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'i');
-        return regex.test(lowerMessage);
+        const normalizedKw = kw.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+        return lowerMessage.includes(normalizedKw);
       })) {
         return {
           response: data.response[lang] || data.response.fr,
