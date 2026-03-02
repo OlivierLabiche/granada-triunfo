@@ -237,7 +237,7 @@ const translations: Record<string, Record<string, string>> = {
     address_label: "Adresse",
     floor_label: "Étage",
     keycode_label: "Code boîte à clés",
-    keycode_location: "en bas à gauche de la porte d'entrée de l'appartement, au 3ème étage",
+    keycode_location: "à gauche de la porte d'entrée de l'appartement, au 3ème étage",
     building_door: "La porte de l'immeuble reste toujours ouverte",
     no_elevator: "Pas d'ascenseur (3ème étage)",
     open_maps: "Ouvrir dans Maps",
