@@ -179,7 +179,7 @@ const ADDRESS = {
     en: "3rd floor – right door",
     es: "3ª planta – puerta derecha"
   },
-  keyCode: "9119",
+  keyCode: "9118",
 };
 
 const PHOTOS: Record<string, string> = {

@@ -22,7 +22,7 @@ exports.handler = async (event) => {
     }
 
     const chunks = [
-      { id: 'acces', text: "Accès à l'appartement: Adresse: Acera de San Ildefonso 26, 3ème étage porte droite. Code boîte à clés: 9119 (en bas à gauche de la porte). La porte de l'immeuble est toujours ouverte. Il n'y a pas d'ascenseur.", category: 'logement' },
+      { id: 'acces', text: "Accès à l'appartement: Adresse: Acera de San Ildefonso 26, 3ème étage porte droite. Code boîte à clés: 9118 (en bas à gauche de la porte). La porte de l'immeuble est toujours ouverte. Il n'y a pas d'ascenseur.", category: 'logement' },
       { id: 'wifi', text: "WiFi de l'appartement: Réseau: MOVISTAR_9EEO. Mot de passe: Art&Deco2026.", category: 'logement' },
       { id: 'chauffage', text: "Chauffage de l'appartement: Les radiateurs s'activent avec le fusible (cercle rouge) en position haute sur le compteur à gauche de l'entrée. Attention: ne pas confondre avec la clim (dans les chambres uniquement) qui sert pour le froid ET le chaud. Un chauffage d'appoint est disponible dans la salle de bain.", category: 'logement' },
       { id: 'clim', text: "Climatisation de l'appartement: Il y a la clim dans chaque chambre (pas dans le salon), avec une télécommande dans chaque chambre. La clim sert pour le froid ET le chaud. Pour le ventilateur du salon: 1) utiliser l'interrupteur mural à gauche 2) puis la télécommande Sulion.", category: 'logement' },
