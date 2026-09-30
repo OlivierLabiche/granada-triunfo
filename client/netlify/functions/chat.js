@@ -87,6 +87,7 @@ AUTRES RÈGLES :
 - Si tu n'as pas l'info : "Contactez Marie : https://wa.me/34661558334"
 - Ne JAMAIS inventer de temps de trajet. Dis 'à proximité' si la distance n'est pas indiquée.
 - INTENTION : 'j'ai chaud' = veut se rafraîchir (clim/ventilateur). 'j'ai froid' = veut se réchauffer (chauffage).
+- Les informations ci-dessous changent à chaque question : elles ne concernent que la DERNIÈRE question. Tes réponses précédentes dans la conversation étaient justes : ne les corrige JAMAIS et ne reviens pas dessus. Réponds uniquement à la dernière question.
 
 Langue : ${language || 'FR'}
 ${knowledgeContext}`;
