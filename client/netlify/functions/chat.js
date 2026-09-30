@@ -91,7 +91,6 @@ AUTRES RÈGLES :
 Langue : ${language || 'FR'}
 ${knowledgeContext}`;
 
-    console.log("Calling Anthropic with model: claude-3-5-sonnet-20241022");
 
     const response = await fetch("https://api.anthropic.com/v1/messages", {
       method: "POST",
@@ -101,9 +100,9 @@ ${knowledgeContext}`;
         "anthropic-version": "2023-06-01",
       },
       body: JSON.stringify({
-model: "claude-sonnet-4-20250514",
-        max_tokens: 300,
-        temperature: 0,
+        model: "claude-opus-5-5",
+        max_tokens: 1024,
+        output_config: { effort: "low" },
         system: systemPrompt,
         messages: [
           ...(history || []).map((msg) => ({
@@ -125,7 +124,7 @@ model: "claude-sonnet-4-20250514",
     return {
       statusCode: 200,
       headers,
-      body: JSON.stringify({ content: data.content[0].text })
+      body: JSON.stringify({ content: (data.content || []).find((block) => block.type === "text")?.text || "" })
     };
 
   } catch (error) {

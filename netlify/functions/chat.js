@@ -178,9 +178,9 @@ Avant 12h. Clés dans boîtier. Éteindre tout. Poubelles dans conteneurs en fac
         "anthropic-version": "2023-06-01",
       },
       body: JSON.stringify({
-        model: "claude-3-5-sonnet-20241022",
-        max_tokens: 300,
-        temperature: 0.2,
+        model: "claude-opus-5-5",
+        max_tokens: 1024,
+        output_config: { effort: "low" },
         system: systemPrompt,
         messages: [
           ...(history || []).map((msg) => ({
@@ -194,6 +194,7 @@ Avant 12h. Clés dans boîtier. Éteindre tout. Poubelles dans conteneurs en fac
 
     if (!response.ok) {
       const error = await response.json();
+      console.error("Anthropic API error:", response.status, JSON.stringify(error));
       return {
         statusCode: response.status,
         headers,
@@ -207,7 +208,7 @@ Avant 12h. Clés dans boîtier. Éteindre tout. Poubelles dans conteneurs en fac
       statusCode: 200,
       headers,
       body: JSON.stringify({
-        content: data.content?.[0]?.text || ""
+        content: (data.content || []).find((block) => block.type === "text")?.text || ""
       })
     };
 
